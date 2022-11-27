@@ -1,0 +1,7 @@
+Rent ID - R1
+User ID - 010110102345
+Car ID - C1
+Start date - 10/7/2022
+End date - 12/7/2022
+Total Cost - RM12000
+#-----------------------------
