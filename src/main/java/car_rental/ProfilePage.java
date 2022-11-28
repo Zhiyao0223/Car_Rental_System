@@ -15,6 +15,9 @@ public class ProfilePage extends javax.swing.JFrame {
      */
     public ProfilePage() {
         initComponents();
+        
+        // Set GUI middle of screen
+        this.setLocationRelativeTo(null);
     }
 
     /**

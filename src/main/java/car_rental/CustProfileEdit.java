@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
 package car_rental;
 
 /**
@@ -15,6 +11,9 @@ public class CustProfileEdit extends javax.swing.JPanel {
      */
     public CustProfileEdit() {
         initComponents();
+        
+        // Set GUI middle of screen
+//        this.setLocationRelativeTo(null);
     }
 
     /**

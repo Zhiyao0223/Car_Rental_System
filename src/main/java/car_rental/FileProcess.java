@@ -33,7 +33,7 @@ public interface FileProcess {
             s.close();
         }
         catch(Exception e) {
-            System.out.println("Error has occured. Error code:" + e); 
+            JOptionPane.showMessageDialog(null, "Error: " + e);
         }
 
         return fileLine;

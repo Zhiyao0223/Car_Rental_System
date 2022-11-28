@@ -15,6 +15,9 @@ public class CustomerRentCarPage extends javax.swing.JFrame {
      */
     public CustomerRentCarPage() {
         initComponents();
+        
+        // Set GUI middle of screen
+        this.setLocationRelativeTo(null);
     }
 
     /**

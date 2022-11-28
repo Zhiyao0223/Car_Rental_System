@@ -15,6 +15,9 @@ public class StaffCustInfoPage extends javax.swing.JFrame {
      */
     public StaffCustInfoPage() {
         initComponents();
+        
+        // Set GUI middle of screen
+        this.setLocationRelativeTo(null);
     }
 
     /**

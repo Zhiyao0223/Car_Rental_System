@@ -15,6 +15,9 @@ public class TestPage extends javax.swing.JFrame {
      */
     public TestPage() {
         initComponents();
+        
+        // Set GUI middle of screen
+        this.setLocationRelativeTo(null);
     }
 
     /**

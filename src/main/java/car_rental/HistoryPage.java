@@ -15,6 +15,9 @@ public class HistoryPage extends javax.swing.JFrame {
      */
     public HistoryPage() {
         initComponents();
+        
+        // Set GUI middle of screen
+        this.setLocationRelativeTo(null);
     }
 
     /**

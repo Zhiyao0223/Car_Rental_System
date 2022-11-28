@@ -16,6 +16,9 @@ public class ReceiptPage extends javax.swing.JFrame {
     public ReceiptPage() {
         initComponents();
         
+        // Set GUI middle of screen
+        this.setLocationRelativeTo(null);
+        
     }
 
     /**

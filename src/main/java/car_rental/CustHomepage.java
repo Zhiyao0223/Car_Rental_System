@@ -19,6 +19,9 @@ public class CustHomepage extends javax.swing.JFrame {
      */
     public CustHomepage() {
         initComponents();
+        
+        // Set GUI middle of screen
+        this.setLocationRelativeTo(null);
     }
     
     /**

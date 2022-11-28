@@ -26,7 +26,7 @@ public class Main {
 //        history.show();
         
         CustHomepage homepage = new CustHomepage();
-        homepage.show();
+//        homepage.show();
         
         
         //
@@ -41,8 +41,8 @@ public class Main {
 //        StaffCustInfo staffCustInfo = new StaffCustInfo();
 //        staffCustInfo.show();
 
-//        StartupPage startup = new StartupPage();
-//        startup.show();
+        StartupPage startup = new StartupPage();
+        startup.show();
 
 //        StaffCustInfo custInfo = new StaffCustInfo();
 //        custInfo.show();

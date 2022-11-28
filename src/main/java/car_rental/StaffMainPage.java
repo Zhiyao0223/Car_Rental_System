@@ -15,6 +15,9 @@ public class StaffMainPage extends javax.swing.JFrame {
      */
     public StaffMainPage() {
         initComponents();
+        
+        // Set GUI middle of screen
+        this.setLocationRelativeTo(null);
     }
 
     /**
