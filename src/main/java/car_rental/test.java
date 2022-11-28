@@ -19,7 +19,7 @@ public class test {
         // Initialise variable
         List<String> fileLine = new ArrayList<String>();
         String line = null;
-        int lineCounter = 0;
+        int lineCounter = -1;
 
         // Initialise file path
         String path = String.format("src/main/resources/text_file/%s", file);
@@ -31,17 +31,16 @@ public class test {
 
             // Read through every line in text file
             while(s.hasNextLine()) {
-                // Check if row number index meet file pointer
-                if ((lineNo-1) == lineCounter) {
-                    s.nextLine();
+                line = s.nextLine();
+                lineCounter++;
+
+                // // Check if row number index meet file pointer
+                if ((lineNo-1) == lineCounter) {  
                     continue;
                 }
-                line = s.nextLine();
-
-                // Check if empty line in text file
-                if (!line.isEmpty()) fileLine.add(line);
                 System.out.println(line);
-                lineCounter++;
+                // Check if empty line in text file
+                fileLine.add(line);
             }
              s.close();
         } 

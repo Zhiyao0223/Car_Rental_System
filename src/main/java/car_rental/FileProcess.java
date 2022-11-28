@@ -3,9 +3,7 @@ package car_rental;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.PrintWriter;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
@@ -87,7 +85,7 @@ public interface FileProcess {
         // Initialise variable
         List<String> fileLine = new ArrayList<String>();
         String line = null;
-        int lineCounter = 0;
+        int lineCounter = -1;
 
         // Initialise file path
         String path = String.format("src/main/resources/text_file/%s", file);
@@ -99,16 +97,16 @@ public interface FileProcess {
 
             // Read through every line in text file
             while(s.hasNextLine()) {
-                // Check if row number index meet file pointer
-                if ((lineNo-1) == lineCounter) {
-                    s.nextLine();
+                line = s.nextLine();
+                lineCounter++;
+
+                // // Check if row number index meet file pointer
+                if ((lineNo-1) == lineCounter) {  
                     continue;
                 }
-                line = s.nextLine();
-
+                System.out.println(line);
                 // Check if empty line in text file
-                if (!line.isEmpty()) fileLine.add(line);
-                lineCounter++;
+                fileLine.add(line);
             }
              s.close();
         } 
