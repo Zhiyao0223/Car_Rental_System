@@ -63,14 +63,28 @@ public class Log {
     public void writeLog(int logNo) {
         // Initialise string
         String logString = null;
-        String adminName = "Ali";
+        String adminName = admin.getName();
 
         // Check log number and change string value
+        // Login
         if (logNo == 1) {
             logString = String.format("%s %s login.", setDateTime(), adminName);
         }
+        // Logout
         else if (logNo == 2) {
             logString = String.format("%s %s logout.", setDateTime(), adminName);
+        }
+        // Add data
+        else if (logNo == 3) {
+            logString = String.format("%s %s add a new data in %s.", setDateTime(), adminName, page);
+        }
+        // Edit Data
+        else if (logNo == 4) {
+            logString = String.format("%s %s edit an existing data in %s.", setDateTime(), adminName, page);
+        }
+        // Delete Data
+        else if (logNo == 5) {
+            logString = String.format("%s %s delete a row of data from %s", setDateTime(), adminName, page);
         }
         else {
             logString = "Unknown Error";

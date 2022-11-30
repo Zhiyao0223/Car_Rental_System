@@ -39,20 +39,25 @@ public interface FileProcess {
         return fileLine;
     }
 
-    // Rewrite file
-    default void writeFile(String[] lineData, String file) {
+    
+    // Add data into file
+    default void appendFile(String[] lineData, String file) {
+        // Add prefix to line to append into file
+        String[] newLineArray = addPrefix(lineData, file);
+        
         // Initialise file path
         String path = String.format("src/main/resources/text_file/%s", file);
 
         try {
-            File delete = new File(path);
-            delete.delete();
+//            File delete = new File(path);
+//            delete.delete();
 
-            PrintWriter pw = new PrintWriter(path);
-            for (String lines :lineData) {
+            PrintWriter pw = new PrintWriter(new FileOutputStream(path, true));
+            for (String lines :newLineArray) {
                 pw.append(lines);
                 pw.append("\n");
             }
+            pw.append("#-------------------------\n");
             pw.close();
 
             JOptionPane.showMessageDialog(null, "Update Success!");
@@ -61,31 +66,73 @@ public interface FileProcess {
         }
     }
 
-    // Append data to file
-    default void appendFile(String newLine, String file) {
+    
+    // Edit data in file
+    default void editFile(String[] newLine, String file) {
+        // Declare empty list to store lines in file
+        List<String> fileLines = new ArrayList<String>();
+        
         // Initialise file path
         String path = String.format("src/main/resources/text_file/%s", file);
+        
+        // Add prefix
+        String[] newData = addPrefix(newLine, file);
+//        System.out.println(newData[1]);
+//        System.out.println(newData.length);
 
+        try {
+            File files = new File(path);
+            Scanner s = new Scanner(files);
+            
+            String tmpLine = null;
+            while (s.hasNextLine()) {
+                tmpLine = s.nextLine();
+                
+                // Check if border line
+                if (tmpLine.equals("#-------------------------")) {}
+                // Check for ID row as it cannot be modified
+                else if (tmpLine.split(" - ")[1].equals(newLine[0])) {
+                    for (String tmp : newData) {
+                        System.out.println(tmp);
+                        fileLines.add(tmp);
+                        tmpLine = s.nextLine();
+                    }
+                    fileLines.add(tmpLine);
+                    continue;
+                    
+                }
+                fileLines.add(tmpLine);
+            }
+        } catch(Exception e) {
+            JOptionPane.showMessageDialog(null, "Errorrr " + e);
+        }
+        
+        
         // Write data into text file
         try {
-            PrintWriter pw = new PrintWriter(new FileOutputStream(new File(path), true));
-            pw.append(newLine);
-            pw.append("\n");
+            // Declare PrintWriter for editing
+            PrintWriter pw = new PrintWriter(path);
+            
+            for (String tmpLines : fileLines) {
+                System.out.println(tmpLines);
+                pw.append(tmpLines);
+                pw.append("\n"); 
+            }
 
             pw.close();
-            JOptionPane.showMessageDialog(null, "Add success!");
+            JOptionPane.showMessageDialog(null, "Edit success!");
         }
         catch(Exception e) {
             JOptionPane.showMessageDialog(null, "Error: " + e);
         }
     }
 
+    
     // Delete data from file
-    default void deleteFile(int lineNo, String file) {
+    default void deleteFile(String idNo, int dataLength, String file) {
         // Initialise variable
         List<String> fileLine = new ArrayList<String>();
         String line = null;
-        int lineCounter = -1;
 
         // Initialise file path
         String path = String.format("src/main/resources/text_file/%s", file);
@@ -98,12 +145,17 @@ public interface FileProcess {
             // Read through every line in text file
             while(s.hasNextLine()) {
                 line = s.nextLine();
-                lineCounter++;
 
+                // Check if border line
+                if (line.equals("#-------------------------")) {}
                 // // Check if row number index meet file pointer
-                if ((lineNo-1) == lineCounter) {  
+                else if (line.split(" - ")[1].equals(idNo)) {
+                    for (int  i = 0; i < dataLength; i++) {
+                        s.nextLine();
+                    }
                     continue;
                 }
+
                 System.out.println(line);
                 // Check if empty line in text file
                 fileLine.add(line);
@@ -111,7 +163,7 @@ public interface FileProcess {
              s.close();
         } 
         catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "New Issue at text files weh");
+            JOptionPane.showMessageDialog(null, "New Issue at text files weh " + e);
         }
         
         // Rewrite into file
@@ -125,10 +177,69 @@ public interface FileProcess {
             }
             
             pw.close();
+            JOptionPane.showMessageDialog(null, "Delete success");
         } 
         catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error in writing file: " + e);
         }
     }
 
+    
+    // Add prefix into raw data to add into text file
+    default String[] addPrefix(String[] oldData, String fileNames) {
+        String[] newLineArray = new String[oldData.length];
+        if (fileNames.equals("admin.txt")) {
+            newLineArray[0] = "ID - " + oldData[0];
+            newLineArray[1] = "Username - " + oldData[1];
+            newLineArray[2] = "Name - " + oldData[2];
+            newLineArray[3] = "Password - " + oldData[3];
+            
+        }
+        else if (fileNames.equals("booking.txt")) {
+            newLineArray[0] = "Rent ID - " + oldData[0];
+            newLineArray[1] = "User ID - " + oldData[1];
+            newLineArray[2] = "Car ID - " + oldData[2];
+            newLineArray[3] = "Start Date - " + oldData[3];
+            newLineArray[4] = "End Date - " + oldData[4];
+            newLineArray[5] = "Total Cost - RM" + oldData[5];
+        }
+        else if (fileNames.equals("cars.txt")) {
+            newLineArray[0] = "Car ID - " + oldData[0];
+            newLineArray[1] = "Car Brand - " + oldData[1];
+            newLineArray[2] = "Car Model - " + oldData[2];
+            newLineArray[3] = "Year Made - " + oldData[3];
+            newLineArray[4] = "Gear - " + oldData[4];
+            newLineArray[5] = "Cost per Hour - RM" + oldData[5];
+            newLineArray[6] = "Cost per Day - RM" + oldData[6]; 
+            newLineArray[7] = "Cost per Week - RM" + oldData[7]; 
+            newLineArray[8] = "Mileage - RM" + oldData[8]; 
+            newLineArray[9] = "Location - RM" + oldData[9]; 
+            newLineArray[10] = "Available Status - RM" + oldData[10]; 
+        }
+        else if (fileNames.equals("payment.txt")) {
+            newLineArray[0] = "Payment ID - " + oldData[0];
+            newLineArray[1] = "Rent ID - " + oldData[1];
+            newLineArray[2] = "Payment Method - " + oldData[2];
+            newLineArray[3] = "Date - " + oldData[3];
+            newLineArray[4] = "Time - " + oldData[4];   
+        }
+        else if (fileNames.equals("user.txt")) {
+            newLineArray[0] = "User ID - " + oldData[0];
+            newLineArray[1] = "Username - " + oldData[1];
+            newLineArray[2] = "Password - " + oldData[2];
+            newLineArray[3] = "Phone Number - " + oldData[3];
+            newLineArray[4] = "Email - " + oldData[4]; 
+        }
+        else if (fileNames.equals("test.txt")) {
+            newLineArray[0] = "ID - " + oldData[0];
+            newLineArray[1] = "Username - " + oldData[1];
+            newLineArray[2] = "Name - " + oldData[2];
+            newLineArray[3] = "Password - " + oldData[3];
+        }
+        else {
+            JOptionPane.showMessageDialog(null, "Error in locating file.");
+            return null;
+        }
+        return newLineArray;
+    }
 }
