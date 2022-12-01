@@ -7,15 +7,15 @@ public class Member extends User{
 
     // Constructor
     public Member() {
-        setId(null);
-        setName(null);
-        setPass(null);
+        super(null, null, null);
+        setPhoneNo(null);
+        setEmail(null);
     }
 
-    public Member(String tmpId, String tmpName, String tmpPass) {
-        setId(tmpId);
-        setName(tmpName);
-        setPass(tmpPass);
+    public Member(String tmpId, String tmpName, String tmpPass, String tmpPhoneNo, String tmpEmail) {
+        super(tmpId, tmpName, tmpPass);
+        phoneNo = tmpPhoneNo;
+        email = tmpEmail;
     }
 
     // Phone Number

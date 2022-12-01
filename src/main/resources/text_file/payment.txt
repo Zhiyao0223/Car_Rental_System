@@ -1,5 +1,5 @@
-PaymentID - P1
-RentID - R1
+Payment ID - P1
+Rent ID - R1
 Method - Card
 Date - 12/11/2022
 Time - 12.02pm
