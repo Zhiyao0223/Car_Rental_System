@@ -92,7 +92,7 @@ public class Log {
 
         // Append into log file
         try {
-            PrintWriter pw = new PrintWriter(new FileOutputStream(new File("src/main/resources/text_file/test.txt"), true));
+            PrintWriter pw = new PrintWriter(new FileOutputStream(new File("src/main/resources/text_file/log.txt"), true));
             pw.append(logString);
             pw.append("\n");
 

@@ -1,5 +1,7 @@
 package car_rental;
 
+import java.util.List;
+
 /**
  *
  * @author USER
@@ -63,8 +65,18 @@ public class LoginPage extends javax.swing.JFrame implements ValidateProcess, Fi
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        String[] tmp = new String[] {"A02", "admin", "3", "a"};
-        deleteFile("A02", 4, "test.txt");
+//        String[] tmp = new String[] {"A02", "admin", "3", "a"};
+//        deleteFile("A02", 4, "test.txt");
+
+        List<String[]> tmp = readFile("test.txt");
+
+//        System.out.println(tmp.get(0)[1]);
+        for (String[] tmps : tmp) {
+            for (String line : tmps) {
+                System.out.println(line);
+            }
+            System.out.println();
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

@@ -245,11 +245,12 @@ public class StaffMainPage extends javax.swing.JFrame implements ValidateProcess
     }//GEN-LAST:event_reportButtonActionPerformed
 
     private void profileButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_profileButtonActionPerformed
-        // TODO add your handling code here:
+        new StaffProfilePage().setVisible(true);
+        setVisible(false);
     }//GEN-LAST:event_profileButtonActionPerformed
 
     private void carButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_carButtonActionPerformed
-        new StaffCarInfoPage().setVisible(true);
+        new StaffCarInfoPage(admin).setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_carButtonActionPerformed
 

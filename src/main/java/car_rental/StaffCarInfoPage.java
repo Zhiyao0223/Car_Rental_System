@@ -1,19 +1,34 @@
 package car_rental;
 
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author USER
  */
 public class StaffCarInfoPage extends javax.swing.JFrame implements ValidateProcess, FileProcess {
-
+    Admin admin;
     /**
      * Creates new form staffCarInfo
      */
-    public StaffCarInfoPage() {
+    public StaffCarInfoPage(Admin tmpAdmin) {
         initComponents();
         
         // Set GUI middle of screen
         this.setLocationRelativeTo(null);
+        
+        // Set Variable
+        admin = tmpAdmin;
+        
+        // Intialise table
+        resetTable();
+        
     }
 
     @SuppressWarnings("unchecked")
@@ -22,14 +37,14 @@ public class StaffCarInfoPage extends javax.swing.JFrame implements ValidateProc
 
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        backButton = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         searchBar = new javax.swing.JTextField();
         editButton = new javax.swing.JButton();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        carTable = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
@@ -65,15 +80,15 @@ public class StaffCarInfoPage extends javax.swing.JFrame implements ValidateProc
 
         jPanel2.setBackground(new java.awt.Color(102, 153, 255));
 
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("< Back");
-        jButton1.setBorderPainted(false);
-        jButton1.setContentAreaFilled(false);
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        backButton.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        backButton.setForeground(new java.awt.Color(255, 255, 255));
+        backButton.setText("< Back");
+        backButton.setBorderPainted(false);
+        backButton.setContentAreaFilled(false);
+        backButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        backButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                backButtonActionPerformed(evt);
             }
         });
 
@@ -87,7 +102,7 @@ public class StaffCarInfoPage extends javax.swing.JFrame implements ValidateProc
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(23, 23, 23)
-                .addComponent(jButton1)
+                .addComponent(backButton)
                 .addGap(430, 430, 430)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -98,7 +113,7 @@ public class StaffCarInfoPage extends javax.swing.JFrame implements ValidateProc
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(32, 32, 32)
-                        .addComponent(jButton1))
+                        .addComponent(backButton))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(72, 72, 72)
                         .addComponent(jLabel2)))
@@ -127,7 +142,7 @@ public class StaffCarInfoPage extends javax.swing.JFrame implements ValidateProc
             }
         });
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        carTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -150,7 +165,7 @@ public class StaffCarInfoPage extends javax.swing.JFrame implements ValidateProc
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane2.setViewportView(jTable2);
+        jScrollPane2.setViewportView(carTable);
 
         jTabbedPane1.addTab("Table", jScrollPane2);
 
@@ -419,9 +434,9 @@ public class StaffCarInfoPage extends javax.swing.JFrame implements ValidateProc
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
+        new StaffMainPage(admin).setVisible(true);
+    }//GEN-LAST:event_backButtonActionPerformed
 
     private void searchBarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBarActionPerformed
         // TODO add your handling code here:
@@ -483,14 +498,15 @@ public class StaffCarInfoPage extends javax.swing.JFrame implements ValidateProc
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> availableStatus;
+    private javax.swing.JButton backButton;
     private javax.swing.JTextField brandField;
     private javax.swing.JTextField carIDField;
+    private javax.swing.JTable carTable;
     private javax.swing.JTextField costDayField;
     private javax.swing.JTextField costHourField;
     private javax.swing.JTextField costWeekField;
     private javax.swing.JButton editButton;
     private javax.swing.JTextField gearField;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
@@ -513,7 +529,6 @@ public class StaffCarInfoPage extends javax.swing.JFrame implements ValidateProc
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTable2;
     private javax.swing.JTextField locationField;
     private javax.swing.JTextField mileageField;
     private javax.swing.JTextField modelField;
@@ -521,4 +536,66 @@ public class StaffCarInfoPage extends javax.swing.JFrame implements ValidateProc
     private javax.swing.JTextField searchBar;
     private javax.swing.JTextField yearField;
     // End of variables declaration//GEN-END:variables
+
+    
+    // Initialise table content
+    private void resetTable() {
+        // Initialise variable
+        int arrayMaxSize = 11;
+        int lineCounter = 0;
+        
+        String line = null;
+        String fileName = "src/main/resources/text_file/cars.txt";
+        String[] header = {"Car ID", "Brand", "Model", "Year", "Gear", "Cost (Hour)", "Cost (Day)", "Cost(Week)", "Mileage", "Location", "Status"};
+        
+        List<String[]> lineArray = new ArrayList<String[]>();
+        String[] tmpArray = new String[arrayMaxSize];
+        
+        File scanFile = new File(fileName);
+        
+        searchBar.setText("");
+          
+        // Insert data into table
+//        carTable.setModel(new DefaultTableModel());
+        DefaultTableModel model = (DefaultTableModel)carTable.getModel();
+        
+        try {
+            Scanner s = new Scanner(scanFile);
+            
+            while (s.hasNextLine()) {
+                line = s.nextLine();
+
+                
+                // Check if border line
+                if (line.equals("#-------------------------")) continue;
+                
+                // Check for ID row as it cannot be modified
+                if (line.contains("Available Status")) {
+                    System.out.println("yeet");
+                    
+                    tmpArray[lineCounter] = line;
+                    lineArray.add(tmpArray);
+                    
+                    // Reset variable to default value
+                    tmpArray = new String[arrayMaxSize];
+                    lineCounter = 0;
+                } 
+                else {
+                    tmpArray[lineCounter] = line;
+    
+                    System.out.println(tmpArray[lineCounter]);
+                    
+                    lineCounter += 1;
+                }
+
+            }
+        } catch(Exception e) {
+            JOptionPane.showMessageDialog(null, "Aww new bug : " + e);
+        }
+        
+        // Append line array from 
+        for (String[] loopArray : lineArray) {
+            model.addRow(loopArray);
+        }
+    }
 }

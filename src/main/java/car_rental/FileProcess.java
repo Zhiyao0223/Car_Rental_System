@@ -11,24 +11,65 @@ import javax.swing.JOptionPane;
 
 public interface FileProcess {
     // Read file
-    default List<String> readFile(String file) {
+    default List<String[]> readFile(String file) {
         // Initialise variable
-        List<String> fileLine = new ArrayList<String>();
+        List<String[]> fileLine = new ArrayList<String[]>();
+
         String line = null;
+        int arrayMaxSize = -1;
+        
 
         // Initialise file path
         String path = String.format("src/main/resources/text_file/%s", file);
 
+        // Count total line in file
+        try {
+            File scanFiles = new File(path);
+            Scanner scan = new Scanner(scanFiles);
+            
+            // Loop until border line to check data range
+            while(scan.hasNextLine()) {
+                line = scan.nextLine();
+                arrayMaxSize += 1;
+                
+                // Check if border line
+                if (line.equals("#-------------------------")) break;   
+            }
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error: " + e);
+        }
+//        System.out.println("Max size " + arrayMaxSize);
+        
+        // Initialise array to store car data
+        String[] tmpArray = new String[arrayMaxSize];
+        
         // Read file line by line
         try {
             File readFiles = new File(path);
             Scanner s = new Scanner(readFiles);
-
+            
+            int lineCounter = -1;
+            
             while (s.hasNextLine()) {
                 line = s.nextLine();
+                lineCounter += 1;
 
                 // Check if empty line in text file
-                if (!line.isEmpty()) fileLine.add(line);
+                if (!line.isEmpty() && lineCounter == arrayMaxSize) {
+                    
+                    fileLine.add(tmpArray);
+                    
+                    lineCounter = -1;
+                    tmpArray = new String[arrayMaxSize];
+                    continue;
+                }
+                
+                // Check if border line
+                if (line.equals("#-------------------------")) continue;
+                
+                tmpArray[lineCounter] = line;
+//                System.out.println(tmpArray[lineCounter]);
             }
             s.close();
         }
@@ -77,8 +118,6 @@ public interface FileProcess {
         
         // Add prefix
         String[] newData = addPrefix(newLine, file);
-//        System.out.println(newData[1]);
-//        System.out.println(newData.length);
 
         try {
             File files = new File(path);

@@ -5,16 +5,12 @@ public class Admin extends User{
     
     // Constructor
     public Admin() {
-        setId(null);
-        setName(null);
-        setPass(null);
+        super(null, null, null);
         setUsername(null);
     }
 
     public Admin(String tmpId, String tmpUsername, String tmpName, String tmpPass) {
-        setId(tmpId);
-        setName(tmpName);
-        setPass(tmpPass);
+        super(tmpId, tmpPass, tmpName);
         setUsername(tmpUsername);
     }
     
