@@ -30,4 +30,19 @@ public interface ValidateProcess {
         return true;
     }
     
+    
+    // Check year
+    default boolean checkYear(String tmp) {
+        try {
+            Integer.parseInt(tmp);
+            
+            if (tmp.length() != 4) return false;
+            if (tmp.indexOf(0) == 2 | tmp.indexOf(0) == 1) return false;
+        } catch(Exception e) {
+            System.out.println(e);
+            return false;
+        }
+        return true;
+    }
+    
 }
