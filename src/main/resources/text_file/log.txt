@@ -35,3 +35,5 @@
 [2022-12-01 11:54:28 PM SGT] Ali edit an existing data in cars.txt.
 [2022-12-01 11:55:50 PM SGT] Ali edit an existing data in cars.txt.
 [2022-12-01 11:56:14 PM SGT] Ali edit an existing data in cars.txt.
+[2022-12-02 01:40:02 AM SGT] Ali login.
+[2022-12-02 01:40:05 AM SGT] Ali login.
