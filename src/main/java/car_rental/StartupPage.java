@@ -130,8 +130,6 @@ public class StartupPage extends javax.swing.JFrame {
  
     }//GEN-LAST:event_progressBarAncestorMoved
 
-
-    //</editor-fold>
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
