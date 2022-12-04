@@ -70,7 +70,6 @@ public class StaffCarInfoPage extends javax.swing.JFrame implements ValidateProc
         carIDField = new javax.swing.JTextField();
         brandField = new javax.swing.JTextField();
         yearField = new javax.swing.JTextField();
-        gearField = new javax.swing.JTextField();
         availableStatus = new javax.swing.JComboBox<>();
         mileageField = new javax.swing.JTextField();
         costDayField = new javax.swing.JTextField();
@@ -81,6 +80,7 @@ public class StaffCarInfoPage extends javax.swing.JFrame implements ValidateProc
         mostNextBtn = new javax.swing.JButton();
         mostBackBtn = new javax.swing.JButton();
         backBtn = new javax.swing.JButton();
+        gearField = new javax.swing.JComboBox<>();
         removeButton = new javax.swing.JButton();
         addCarBtn = new javax.swing.JButton();
 
@@ -243,10 +243,6 @@ public class StaffCarInfoPage extends javax.swing.JFrame implements ValidateProc
         yearField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         yearField.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        gearField.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        gearField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        gearField.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
         availableStatus.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         availableStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "True", "False" }));
         availableStatus.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -312,6 +308,9 @@ public class StaffCarInfoPage extends javax.swing.JFrame implements ValidateProc
             }
         });
 
+        gearField.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        gearField.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Automatic", "Manual" }));
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -351,10 +350,7 @@ public class StaffCarInfoPage extends javax.swing.JFrame implements ValidateProc
                                 .addComponent(mostNextBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(jPanel3Layout.createSequentialGroup()
-                                        .addComponent(gearField, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(155, 155, 155)
-                                        .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jLabel15)
                                     .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                                             .addComponent(modelField, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -365,10 +361,13 @@ public class StaffCarInfoPage extends javax.swing.JFrame implements ValidateProc
                                             .addGap(156, 156, 156)
                                             .addComponent(jLabel12))
                                         .addGroup(jPanel3Layout.createSequentialGroup()
-                                            .addComponent(yearField, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                .addComponent(gearField, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(yearField, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addComponent(jLabel15))
+                                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(jLabel14, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(jLabel17, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                                 .addGap(0, 0, Short.MAX_VALUE)))))
                 .addContainerGap(153, Short.MAX_VALUE))
         );
@@ -402,12 +401,13 @@ public class StaffCarInfoPage extends javax.swing.JFrame implements ValidateProc
                     .addComponent(jLabel14)
                     .addComponent(costWeekField, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(32, 32, 32)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(gearField, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel17)
-                    .addComponent(mileageField, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 31, Short.MAX_VALUE)
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel9)
+                        .addComponent(jLabel17)
+                        .addComponent(mileageField, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel16)
                     .addComponent(availableStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -432,6 +432,12 @@ public class StaffCarInfoPage extends javax.swing.JFrame implements ValidateProc
         addCarBtn.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         addCarBtn.setText("Add Car");
         addCarBtn.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(102, 204, 255), null, null));
+        addCarBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        addCarBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addCarBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -467,7 +473,7 @@ public class StaffCarInfoPage extends javax.swing.JFrame implements ValidateProc
                     .addComponent(searchBar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(addCarBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 16, Short.MAX_VALUE)
-                .addComponent(tabPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 487, Short.MAX_VALUE)
+                .addComponent(tabPanel)
                 .addGap(22, 22, 22)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(editButton, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -501,7 +507,7 @@ public class StaffCarInfoPage extends javax.swing.JFrame implements ValidateProc
             tabPanel.setSelectedIndex(1);
             
             // Get file data
-            List <String[]> lineArray = readFile("test.txt");
+            List <String[]> lineArray = readFile("cars.txt");
             
             // Set value in list tab
             setListTab(lineArray, carTable.getSelectedRow());
@@ -524,7 +530,7 @@ public class StaffCarInfoPage extends javax.swing.JFrame implements ValidateProc
                 return;
             }
 
-            boolean editStatus = editFile(newData, "test.txt");
+            boolean editStatus = editFile(newData, "cars.txt");
 
             if (editStatus) {
                 // Add edit record into log file
@@ -583,7 +589,7 @@ public class StaffCarInfoPage extends javax.swing.JFrame implements ValidateProc
                 deletedCarID = carIDField.getText();
             }
 
-            boolean deleteStatus = deleteFile(deletedCarID, carTable.getColumnCount(), "test.txt");
+            boolean deleteStatus = deleteFile(deletedCarID, carTable.getColumnCount(), "cars.txt");
 
             if (deleteStatus) {
                 // Add edit record into log file
@@ -621,12 +627,12 @@ public class StaffCarInfoPage extends javax.swing.JFrame implements ValidateProc
         }
         
         listPointer = 0;
-        List <String[]> lineArray = readFile("test.txt");
+        List <String[]> lineArray = readFile("cars.txt");
         setListTab(lineArray, 0);
     }//GEN-LAST:event_mostBackBtnActionPerformed
 
     private void mostNextBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostNextBtnActionPerformed
-        List <String[]> lineArray = readFile("test.txt");
+        List <String[]> lineArray = readFile("cars.txt");
         
         if (listPointer == lineArray.size()-1) {
             JOptionPane.showMessageDialog(null, "Last data lorrr");
@@ -638,7 +644,7 @@ public class StaffCarInfoPage extends javax.swing.JFrame implements ValidateProc
     }//GEN-LAST:event_mostNextBtnActionPerformed
 
     private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
-        List <String[]> lineArray = readFile("test.txt");
+        List <String[]> lineArray = readFile("cars.txt");
         
         if (listPointer == 0) {
             JOptionPane.showMessageDialog(null, "Eh this is first data already weh");
@@ -650,7 +656,7 @@ public class StaffCarInfoPage extends javax.swing.JFrame implements ValidateProc
     }//GEN-LAST:event_backBtnActionPerformed
 
     private void nextBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextBtnActionPerformed
-        List <String[]> lineArray = readFile("test.txt");
+        List <String[]> lineArray = readFile("cars.txt");
         
         if (listPointer == lineArray.size()-1) {
             JOptionPane.showMessageDialog(null, "Last data lorrr");
@@ -672,6 +678,11 @@ public class StaffCarInfoPage extends javax.swing.JFrame implements ValidateProc
         }
     }//GEN-LAST:event_searchBarKeyReleased
 
+    private void addCarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addCarBtnActionPerformed
+        new StaffAddCarPage(admin).setVisible(true);
+        setVisible(false);
+    }//GEN-LAST:event_addCarBtnActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addCarBtn;
@@ -685,7 +696,7 @@ public class StaffCarInfoPage extends javax.swing.JFrame implements ValidateProc
     private javax.swing.JTextField costHourField;
     private javax.swing.JTextField costWeekField;
     private javax.swing.JButton editButton;
-    private javax.swing.JTextField gearField;
+    private javax.swing.JComboBox<String> gearField;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -723,7 +734,7 @@ public class StaffCarInfoPage extends javax.swing.JFrame implements ValidateProc
         DefaultTableModel model = (DefaultTableModel)carTable.getModel();
         
         // Get file data
-        List <String[]> lineArray = readFile("test.txt");
+        List <String[]> lineArray = readFile("cars.txt");
 
         // Set header
         model.setColumnIdentifiers(header);
@@ -746,7 +757,7 @@ public class StaffCarInfoPage extends javax.swing.JFrame implements ValidateProc
         brandField.setText(firstData[1]);
         modelField.setText(firstData[2]);
         yearField.setText(firstData[3]);
-        gearField.setText(firstData[4]);
+        gearField.setSelectedItem(firstData[4]);
         costHourField.setText(firstData[5].substring(2));
         costDayField.setText(firstData[6].substring(2));
         costWeekField.setText(firstData[7].substring(2));
@@ -763,7 +774,7 @@ public class StaffCarInfoPage extends javax.swing.JFrame implements ValidateProc
             brandField.getText(),
             modelField.getText(),
             yearField.getText(),
-            gearField.getText(),
+            gearField.getSelectedItem().toString(),
             costHourField.getText(),
             costDayField.getText(),
             costWeekField.getText(),

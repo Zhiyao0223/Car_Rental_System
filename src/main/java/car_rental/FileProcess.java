@@ -283,17 +283,12 @@ public interface FileProcess {
             newLineArray[4] = "Email - " + oldData[4]; 
         }
         else if (fileNames.equals("test.txt")) {
-            newLineArray[0] = "Car ID - " + oldData[0];
-            newLineArray[1] = "Car Brand - " + oldData[1];
-            newLineArray[2] = "Car Model - " + oldData[2];
-            newLineArray[3] = "Year Made - " + oldData[3];
-            newLineArray[4] = "Gear - " + oldData[4];
-            newLineArray[5] = "Cost per Hour - RM" + oldData[5];
-            newLineArray[6] = "Cost per Day - RM" + oldData[6]; 
-            newLineArray[7] = "Cost per Week - RM" + oldData[7]; 
-            newLineArray[8] = "Mileage - " + oldData[8]; 
-            newLineArray[9] = "Location - " + oldData[9]; 
-            newLineArray[10] = "Available Status - " + oldData[10]; 
+            newLineArray[0] = "Rent ID - " + oldData[0];
+            newLineArray[1] = "User ID - " + oldData[1];
+            newLineArray[2] = "Car ID - " + oldData[2];
+            newLineArray[3] = "Start Date - " + oldData[3];
+            newLineArray[4] = "End Date - " + oldData[4];
+            newLineArray[5] = "Total Cost - RM" + oldData[5];
         }
         else {
             JOptionPane.showMessageDialog(null, "Error in locating file.");

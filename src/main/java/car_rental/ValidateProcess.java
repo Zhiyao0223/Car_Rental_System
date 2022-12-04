@@ -1,5 +1,9 @@
 package car_rental;
 
+import java.util.Date;
+import java.util.List;
+import javax.swing.JOptionPane;
+
 public interface ValidateProcess {
     // Check blank input
     default boolean checkBlank(String tmp) {
@@ -14,7 +18,7 @@ public interface ValidateProcess {
     }
 
     
-    // Check Email
+    // Check Email Format
     default boolean checkEmail(String tmp) {
         return tmp.contains("@") && tmp.contains(".com");
     }
@@ -25,13 +29,14 @@ public interface ValidateProcess {
         try {
             Long.valueOf(tmp);
         } catch (Exception e){
+            System.out.println(e);
             return false;
         }
         return true;
     }
     
     
-    // Check year
+    // Check year format
     default boolean checkYear(String tmp) {
         try {
             Integer.parseInt(tmp);
@@ -42,6 +47,42 @@ public interface ValidateProcess {
             System.out.println(e);
             return false;
         }
+        return true;
+    }
+    
+    
+    // Compare date
+    default boolean checkDate(Date startDate, Date endDate) {
+        // Check if end date bigger than start date
+        int dateValidateNo = endDate.compareTo(startDate);
+        
+        // Smaller
+        if (dateValidateNo < 0) {
+            JOptionPane.showMessageDialog(null, "End date must bigger than start date");
+        }
+        
+        return (dateValidateNo >= 0);
+    }
+    
+    
+    // Check if car available on selected date
+    default boolean checkAvailableStatus(List <String[]> lineArray, int indexNo, String carID, Date startDates, Date endDates) {
+        // Check index
+        int lineCounter = 0;
+
+        // Loop over all car rows
+        for (String[] lines: lineArray) {
+            // Find selected car
+            if (lines[2].equals(carID)) {
+                Date fileStartDate = new Date(lines[3]);
+                Date fileEndDate = new Date(lines[4]);
+                
+                // Start date between other rent time
+                
+                // 
+            }
+        }
+        
         return true;
     }
     
