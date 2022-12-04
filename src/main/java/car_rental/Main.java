@@ -7,7 +7,8 @@ package car_rental;
 public class Main {
 
     public static void main(String[] args) {
-        new LoginPage().setVisible(true);
-//        new StaffMainPage(new Admin("A04", "admin123", "Ali", "123")).setVisible(true);
+        
+        Member member = new Member("010110123456", "Ali", "1234", "1234567890", "ali@gmaid.com");
+        new CustHomepage(member).setVisible(true);
     }
 }

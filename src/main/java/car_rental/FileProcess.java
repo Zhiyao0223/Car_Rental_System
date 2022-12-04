@@ -11,6 +11,7 @@ import javax.swing.JOptionPane;
 
 public interface FileProcess {
     // Read file
+    // Usage: readFile(filename);
     default List<String[]> readFile(String file) {
         // Initialise variable
         List<String[]> fileLine = new ArrayList<String[]>();
@@ -39,7 +40,6 @@ public interface FileProcess {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error: " + e);
         }
-//        System.out.println("Max size " + arrayMaxSize);
         
         // Initialise array to store car data
         String[] tmpArray = new String[arrayMaxSize];
@@ -55,8 +55,9 @@ public interface FileProcess {
                 line = s.nextLine();
                 lineCounter += 1;
 
+                if (line.isEmpty()) break;
                 // Check if empty line in text file
-                if (!line.isEmpty() && lineCounter == arrayMaxSize) {
+                if (lineCounter == arrayMaxSize) {
                     
                     fileLine.add(tmpArray);
                     
@@ -68,8 +69,7 @@ public interface FileProcess {
                 // Check if border line
                 if (line.equals("#-------------------------")) continue;
                 
-                tmpArray[lineCounter] = line;
-//                System.out.println(tmpArray[lineCounter]);
+                tmpArray[lineCounter] = line.split(" - ")[1];
             }
             s.close();
         }
@@ -82,7 +82,8 @@ public interface FileProcess {
 
     
     // Add data into file
-    default void appendFile(String[] lineData, String file) {
+    // Usage: appendFile(new row data, filename);
+    default boolean appendFile(String[] lineData, String file) {
         // Add prefix to line to append into file
         String[] newLineArray = addPrefix(lineData, file);
         
@@ -100,16 +101,18 @@ public interface FileProcess {
             }
             pw.append("#-------------------------\n");
             pw.close();
-
-            JOptionPane.showMessageDialog(null, "Update Success!");
         } catch(Exception e) {
             JOptionPane.showMessageDialog(null, "Error: " + e);
+            return false;
         }
+        
+        return true;
     }
 
     
     // Edit data in file
-    default void editFile(String[] newLine, String file) {
+    // Usage: editFile(updated row data, filename);
+    default boolean editFile(String[] newLine, String file) {
         // Declare empty list to store lines in file
         List<String> fileLines = new ArrayList<String>();
         
@@ -127,12 +130,14 @@ public interface FileProcess {
             while (s.hasNextLine()) {
                 tmpLine = s.nextLine();
                 
+                // Check empty line
+                if (tmpLine.isEmpty()) break;
+                
                 // Check if border line
                 if (tmpLine.equals("#-------------------------")) {}
                 // Check for ID row as it cannot be modified
                 else if (tmpLine.split(" - ")[1].equals(newLine[0])) {
                     for (String tmp : newData) {
-                        System.out.println(tmp);
                         fileLines.add(tmp);
                         tmpLine = s.nextLine();
                     }
@@ -144,6 +149,7 @@ public interface FileProcess {
             }
         } catch(Exception e) {
             JOptionPane.showMessageDialog(null, "Errorrr " + e);
+            return false;
         }
         
         
@@ -159,16 +165,19 @@ public interface FileProcess {
             }
 
             pw.close();
-            JOptionPane.showMessageDialog(null, "Edit success!");
         }
         catch(Exception e) {
             JOptionPane.showMessageDialog(null, "Error: " + e);
+            return false;
         }
+        
+        return true;
     }
 
     
     // Delete data from file
-    default void deleteFile(String idNo, int dataLength, String file) {
+    // Usage: deleteFile(data ID, data size, filename);
+    default boolean deleteFile(String idNo, int dataLength, String file) {
         // Initialise variable
         List<String> fileLine = new ArrayList<String>();
         String line = null;
@@ -186,6 +195,8 @@ public interface FileProcess {
                 line = s.nextLine();
 
                 // Check if border line
+                if (line.isEmpty()) break;
+                
                 if (line.equals("#-------------------------")) {}
                 // // Check if row number index meet file pointer
                 else if (line.split(" - ")[1].equals(idNo)) {
@@ -195,7 +206,6 @@ public interface FileProcess {
                     continue;
                 }
 
-                System.out.println(line);
                 // Check if empty line in text file
                 fileLine.add(line);
             }
@@ -203,6 +213,7 @@ public interface FileProcess {
         } 
         catch (Exception e) {
             JOptionPane.showMessageDialog(null, "New Issue at text files weh " + e);
+            return false;
         }
         
         // Rewrite into file
@@ -216,11 +227,13 @@ public interface FileProcess {
             }
             
             pw.close();
-            JOptionPane.showMessageDialog(null, "Delete success");
         } 
         catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error in writing file: " + e);
+            return false;
         }
+        
+        return true;
     }
 
     
@@ -251,9 +264,9 @@ public interface FileProcess {
             newLineArray[5] = "Cost per Hour - RM" + oldData[5];
             newLineArray[6] = "Cost per Day - RM" + oldData[6]; 
             newLineArray[7] = "Cost per Week - RM" + oldData[7]; 
-            newLineArray[8] = "Mileage - RM" + oldData[8]; 
-            newLineArray[9] = "Location - RM" + oldData[9]; 
-            newLineArray[10] = "Available Status - RM" + oldData[10]; 
+            newLineArray[8] = "Mileage - " + oldData[8]; 
+            newLineArray[9] = "Location - " + oldData[9]; 
+            newLineArray[10] = "Available Status - " + oldData[10]; 
         }
         else if (fileNames.equals("payment.txt")) {
             newLineArray[0] = "Payment ID - " + oldData[0];
@@ -270,10 +283,12 @@ public interface FileProcess {
             newLineArray[4] = "Email - " + oldData[4]; 
         }
         else if (fileNames.equals("test.txt")) {
-            newLineArray[0] = "ID - " + oldData[0];
-            newLineArray[1] = "Username - " + oldData[1];
-            newLineArray[2] = "Name - " + oldData[2];
-            newLineArray[3] = "Password - " + oldData[3];
+            newLineArray[0] = "Rent ID - " + oldData[0];
+            newLineArray[1] = "User ID - " + oldData[1];
+            newLineArray[2] = "Car ID - " + oldData[2];
+            newLineArray[3] = "Start Date - " + oldData[3];
+            newLineArray[4] = "End Date - " + oldData[4];
+            newLineArray[5] = "Total Cost - RM" + oldData[5];
         }
         else {
             JOptionPane.showMessageDialog(null, "Error in locating file.");

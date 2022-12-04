@@ -230,7 +230,7 @@ public class StaffMainPage extends javax.swing.JFrame implements ValidateProcess
     }//GEN-LAST:event_paymentButtonActionPerformed
 
     private void rentButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rentButtonActionPerformed
-        new StaffRentInfoPage().setVisible(true);
+        new StaffRentInfoPage(admin).setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_rentButtonActionPerformed
 

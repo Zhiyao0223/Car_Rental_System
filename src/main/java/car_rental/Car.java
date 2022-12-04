@@ -8,14 +8,14 @@ public class Car {
     private String gear;
     private String location;
 
-    private int year;
+    private String year;
 
-    private double costHour;
-    private double costDay;
-    private double costWeek;
-    private double mileage;
+    private String costHour;
+    private String costDay;
+    private String costWeek;
+    private String mileage;
 
-    private Boolean status;
+    private String status;
 
     // Constructor
     public Car() {
@@ -24,15 +24,15 @@ public class Car {
         this.model = null;
         this.gear = null;
         this.location = null;
-        this.year = 0;
-        this.costDay = 0;
-        this.costHour = 0;
-        this.costWeek = 0;
-        this.mileage = 0;
-        this.status = false;
+        this.year = "0";
+        this.costDay = "0";
+        this.costHour = "0";
+        this.costWeek = "0";
+        this.mileage = "0";
+        this.status = "false";
     }
 
-    public Car(String tmpId, String tmpBrand, String tmpModel, String tmpGear, String tmpLocation, int tmpYear, double tmpCostHour, double tmpCostDay, double tmpCostWeek, double tmpMileage, boolean tmpStatus) {
+    public Car(String tmpId, String tmpBrand, String tmpModel, String tmpYear, String tmpGear, String tmpCostHour, String tmpCostDay, String tmpCostWeek, String tmpMileage, String tmpLocation, String tmpStatus) {
         this.id = tmpId;
         this.brand = tmpBrand;
         this.model = tmpModel;
@@ -92,56 +92,56 @@ public class Car {
     }
 
     // Year
-    public int getYear() {
+    public String getYear() {
         return this.year;
     }
 
-    public void setYear(int tmpYear) {
+    public void setYear(String tmpYear) {
         this.year = tmpYear;
     }
 
     // Cost per Hour
-    public double getCostHour() {
+    public String getCostHour() {
         return this.costHour;
     }
 
-    public void setId(double tmpCostHour) {
+    public void setCostHour(String tmpCostHour) {
         this.costHour = tmpCostHour;
     }
 
     // Cost per Day
-    public double getCostDay() {
+    public String getCostDay() {
         return this.costDay;
     }
 
-    public void setCostDay(double tmpCostDay) {
+    public void setCostDay(String tmpCostDay) {
         this.costDay = tmpCostDay;
     }
 
     // Cost per Week
-    public double getCostWeek() {
+    public String getCostWeek() {
         return this.costWeek;
     }
 
-    public void setCostWeek(double tmpCostWeek) {
+    public void setCostWeek(String tmpCostWeek) {
         this.costWeek = tmpCostWeek;
     }
 
     // Cost per Week
-    public double getMileage() {
+    public String getMileage() {
         return this.mileage;
     }
 
-    public void setMileage(double tmpMileage) {
+    public void setMileage(String tmpMileage) {
         this.mileage = tmpMileage;
     }
 
     // Available Status
-    public Boolean getStatus() {
+    public String getStatus() {
         return this.status;
     }
 
-    public void setStatus(Boolean tmpStatus) {
+    public void setStatus(String tmpStatus) {
         this.status = tmpStatus;
     }
 

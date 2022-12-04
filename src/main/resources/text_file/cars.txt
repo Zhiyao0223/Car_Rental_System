@@ -1,4 +1,4 @@
-Car ID - 0001
+Car ID - C1
 Car Brand - BMW
 Car Model - X5
 Year made - 2017
@@ -9,31 +9,32 @@ Cost per week - RM5500
 Mileage - 55000
 Location - Bukit Jalil
 Available status - False
-# ------------------------------------
-Car ID - 0002
+#-------------------------
+Car ID - C2
 Car Brand - Proton
 Car Model - Perdana
 Year made - 2016
 Gear - Manual
+Cost per hour - RM15
 Cost per day - RM240
 Cost per week - RM1680
 Mileage - 34500
 Location - Sungai Besi
 Available status - True
-# ------------------------------------
-Car ID - 0003
+#-------------------------
+Car ID - C3
 Car Brand - Perodua
 Car Model - Saga
 Year made - 2017
 Gear - Manual
-Cost per hour -RM11
+Cost per hour - RM11
 Cost per day - RM240
 Cost per week - RM1400
 Mileage - 20000
 Location - Sungai Besi
 Available status - True
-# ------------------------------------
-Car ID - 0004
+#-------------------------
+Car ID - C4
 Car Brand - Volkswagen
 Car Model - Tiguan
 Year made - 2017
@@ -44,8 +45,8 @@ Cost per week - RM1800
 Mileage - 35000
 Location - Bukit Jalil
 Available status - True
-# ------------------------------------
-Car ID - 0005
+#-------------------------
+Car ID - C5
 Car Brand - Honda
 Car Model - City
 Year made - 2019
@@ -56,8 +57,8 @@ Cost per week - RM1800
 Mileage - 18000
 Location - Bukit Jalil
 Available status - True
-# ------------------------------------
-Car ID - 0006
+#-------------------------
+Car ID - C6
 Car Brand - Honda
 Car Model - Civic
 Year made - 2015
@@ -68,4 +69,4 @@ Cost per week - RM2000
 Mileage - 29000
 Location - Bukit Jalil
 Available status - True
-# ------------------------------------
+#-------------------------

@@ -13,7 +13,18 @@ import javax.swing.JOptionPane;
 
 public class test implements FileProcess {
     public static void main(String[] args) {
-        String test = "Status - True";
-        System.out.println(test.split(" - ")[1]);
+        List<String[]> test = new ArrayList<String[]>();
+        test.add(new String[] {"1", "2", "3", "4"});
+        test.add(new String[] {"a", "b", "c", "d"});
+        
+        System.out.println(test.size());
+        
+        for (String[] tmp1 : test) {
+            for (String tmpLine : tmp1) {
+                System.out.println(tmpLine);
+            }
+            System.out.println();
+        }
+        
     }
 }

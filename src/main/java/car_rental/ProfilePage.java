@@ -1,5 +1,7 @@
 package car_rental;
 
+import java.util.List;
+
 /**
  *
  * @author acer
@@ -9,19 +11,35 @@ public class ProfilePage extends javax.swing.JFrame implements ValidateProcess, 
     /**
      * Creates new form Profile
      */
-    public ProfilePage() {
+   Member customer;
+   
+    public ProfilePage(Member cus) {
+        customer = cus;
         initComponents();
+        cus_profile();
         
-        // Set GUI middle of screen
+        //Set GUI middle of screen
         this.setLocationRelativeTo(null);
     }
     
-    public void data(String ID ,String cus_name ,String password,String phone_no,String email_cus ){
+    public void cus_profile(){
+            String ID = customer.getId();
+            String cus_name = customer.getName();
+            String password = customer.getPass();
+            String phone_no = customer.getPhoneNo();
+            String email_cus = customer.getEmail();
+                       
             username.setText(cus_name);
             pass.setText(password);
             phone.setText(phone_no);
             email.setText(email_cus);
+            
+            customer = new Member(ID, cus_name, password, phone_no, email_cus);
     }
+    
+    
+   
+   
          
 
     @SuppressWarnings("unchecked")
@@ -82,9 +100,14 @@ public class ProfilePage extends javax.swing.JFrame implements ValidateProcess, 
 
         jButton1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jButton1.setText("Back");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jButton2.setText("Save");
+        jButton2.setText("Edit");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -161,8 +184,8 @@ public class ProfilePage extends javax.swing.JFrame implements ValidateProcess, 
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        CustHomepage home = new CustHomepage();
-        home.setVisible(true);
+        ProfileEditPage edit = new ProfileEditPage(customer);
+        edit.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -173,6 +196,12 @@ public class ProfilePage extends javax.swing.JFrame implements ValidateProcess, 
     private void passActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_passActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        CustHomepage home = new CustHomepage(customer);
+        home.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
