@@ -79,6 +79,11 @@ public class StaffRentInfoPage extends javax.swing.JFrame implements ValidatePro
         searchBar = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -421,12 +426,12 @@ public class StaffRentInfoPage extends javax.swing.JFrame implements ValidatePro
         }
         
         listPointer = 0;
-        List <String[]> lineArray = readFile("test.txt");
+        List <String[]> lineArray = readFile("booking.txt");
         setListTab(lineArray, 0);
     }//GEN-LAST:event_mostBackBtnActionPerformed
 
     private void mostNextBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostNextBtnActionPerformed
-        List <String[]> lineArray = readFile("test.txt");
+        List <String[]> lineArray = readFile("booking.txt");
         
         if (listPointer == lineArray.size()-1) {
             JOptionPane.showMessageDialog(null, "Last data lorrr");
@@ -438,7 +443,7 @@ public class StaffRentInfoPage extends javax.swing.JFrame implements ValidatePro
     }//GEN-LAST:event_mostNextBtnActionPerformed
 
     private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
-        List <String[]> lineArray = readFile("test.txt");
+        List <String[]> lineArray = readFile("booking.txt");
         
         if (listPointer == 0) {
             JOptionPane.showMessageDialog(null, "Eh this is first data already weh");
@@ -450,7 +455,7 @@ public class StaffRentInfoPage extends javax.swing.JFrame implements ValidatePro
     }//GEN-LAST:event_backBtnActionPerformed
 
     private void nextBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextBtnActionPerformed
-        List <String[]> lineArray = readFile("test.txt");
+        List <String[]> lineArray = readFile("booking.txt");
         
         if (listPointer == lineArray.size()-1) {
             JOptionPane.showMessageDialog(null, "Last data lorrr");
@@ -474,7 +479,7 @@ public class StaffRentInfoPage extends javax.swing.JFrame implements ValidatePro
 
     private void editButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editButtonActionPerformed
         // Get file data
-        List <String[]> lineArray = readFile("test.txt");        
+        List <String[]> lineArray = readFile("booking.txt");        
 
         // Check tab
         if (tabPanel.getSelectedIndex() == 0) {
@@ -506,15 +511,15 @@ public class StaffRentInfoPage extends javax.swing.JFrame implements ValidatePro
                 JOptionPane.showMessageDialog(null, "Invalid data format. Please double check ya");
                 return;
             }
-            else if (!checkDate(new Date(newData[3]), new Date(newData[4]))) {
+            else if (!checkDate(newData[3], newData[4])) {
                 return;
             }
-            else if (!checkAvailableStatus(lineArray, listPointer ,newData[2], new Date(newData[3]), new Date(newData[4]))) {
+            else if (!checkAvailableStatus(lineArray, listPointer , newData[2], newData[3], newData[4])) {
                 return;
             }
             
 
-            boolean editStatus = editFile(newData, "test.txt");
+            boolean editStatus = editFile(newData, "booking.txt");
 
             if (editStatus) {
                 // Add edit record into log file
@@ -533,6 +538,11 @@ public class StaffRentInfoPage extends javax.swing.JFrame implements ValidatePro
             }
         }
     }//GEN-LAST:event_editButtonActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        // Add login record into log file
+        new Log(admin, null).writeLog(2);
+    }//GEN-LAST:event_formWindowClosing
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -573,7 +583,7 @@ public class StaffRentInfoPage extends javax.swing.JFrame implements ValidatePro
         DefaultTableModel model = (DefaultTableModel)rentTable.getModel();
         
         // Get file data
-        List <String[]> lineArray = readFile("test.txt");
+        List <String[]> lineArray = readFile("booking.txt");
 
         // Set header
         model.setColumnIdentifiers(header);

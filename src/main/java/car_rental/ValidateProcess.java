@@ -1,7 +1,11 @@
 package car_rental;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 public interface ValidateProcess {
@@ -52,9 +56,22 @@ public interface ValidateProcess {
     
     
     // Compare date
-    default boolean checkDate(Date startDate, Date endDate) {
+    default boolean checkDate(String startDates, String endDates) {
+        // Convert date
+        Date startDate, endDate;
+        
+        try {
+            startDate = new SimpleDateFormat("dd/MM/yyyy").parse(startDates);
+            endDate = new SimpleDateFormat("dd/MM/yyyy").parse(endDates);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+            return false;
+        }
+        
         // Check if end date bigger than start date
         int dateValidateNo = endDate.compareTo(startDate);
+        
+        System.out.println(endDate + " " + startDate);
         
         // Smaller
         if (dateValidateNo < 0) {
@@ -66,21 +83,52 @@ public interface ValidateProcess {
     
     
     // Check if car available on selected date
-    default boolean checkAvailableStatus(List <String[]> lineArray, int indexNo, String carID, Date startDates, Date endDates) {
+    default boolean checkAvailableStatus(List <String[]> lineArray, int indexNo, String carID, String startDates, String endDates) {
         // Check index
         int lineCounter = 0;
+        
+        // Convert string to date
+        Date startDate, endDate, fileStartDate, fileEndDate;
+        
+        try {
+            startDate = new SimpleDateFormat("dd/MM/yyyy").parse(startDates);
+            endDate = new SimpleDateFormat("dd/MM/yyyy").parse(endDates);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+            return false;
+        }
 
         // Loop over all car rows
         for (String[] lines: lineArray) {
             // Find selected car
             if (lines[2].equals(carID)) {
-                Date fileStartDate = new Date(lines[3]);
-                Date fileEndDate = new Date(lines[4]);
+                // Dont check for same row
+                if (lineCounter == indexNo) {
+                    continue;
+                }
                 
-                // Start date between other rent time
+                // Convert date in file
+                try {
+                    fileStartDate = new SimpleDateFormat("dd/MM/yyyy").parse(lines[3]);
+                    fileEndDate = new SimpleDateFormat("dd/MM/yyyy").parse(lines[4]);
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, e);
+                    return false;
+                }
                 
-                // 
+                // Start date or end date between other rent time
+                if ((startDate.compareTo(fileStartDate) >= 0 && startDate.compareTo(fileEndDate) <= 0) &&
+                        endDate.compareTo(fileStartDate) >= 0 && endDate.compareTo(fileEndDate) <= 0) {
+                    JOptionPane.showMessageDialog(null, "Car is not available at that moment");
+                    return false;
+                }
+                // Earlier start date but later end date
+                else if (startDate.compareTo(fileStartDate) <= 0 && endDate.compareTo(fileEndDate) >= 0) {
+                    JOptionPane.showMessageDialog(null, "Car is not available at that moment");
+                    return false;
+                }
             }
+            lineCounter++;
         }
         
         return true;

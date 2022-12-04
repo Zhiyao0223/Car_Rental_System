@@ -159,7 +159,7 @@ public interface FileProcess {
             PrintWriter pw = new PrintWriter(path);
             
             for (String tmpLines : fileLines) {
-                System.out.println(tmpLines);
+//                System.out.println(tmpLines);
                 pw.append(tmpLines);
                 pw.append("\n"); 
             }
@@ -296,4 +296,5 @@ public interface FileProcess {
         }
         return newLineArray;
     }
+    
 }

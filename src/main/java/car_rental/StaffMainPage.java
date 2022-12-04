@@ -5,17 +5,12 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author USER
- */
+
 public class StaffMainPage extends javax.swing.JFrame implements ValidateProcess, FileProcess{
     // Declare variable
     Admin admin;
     
-    /**
-     * Creates new form test
-     */
+    // Constructor
     public StaffMainPage(Admin admins) {
         initComponents();
         
@@ -49,6 +44,11 @@ public class StaffMainPage extends javax.swing.JFrame implements ValidateProcess
         carButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(102, 153, 255));
 
@@ -225,7 +225,7 @@ public class StaffMainPage extends javax.swing.JFrame implements ValidateProcess
     }// </editor-fold>//GEN-END:initComponents
 
     private void paymentButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_paymentButtonActionPerformed
-        new StaffPaymentInfoPage().setVisible(true);
+        new StaffPaymentInfoPage(admin).setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_paymentButtonActionPerformed
 
@@ -235,17 +235,17 @@ public class StaffMainPage extends javax.swing.JFrame implements ValidateProcess
     }//GEN-LAST:event_rentButtonActionPerformed
 
     private void custButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_custButtonActionPerformed
-        new StaffCustInfoPage().setVisible(true);
+        new StaffCustInfoPage(admin).setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_custButtonActionPerformed
 
     private void reportButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reportButtonActionPerformed
-        new StaffReportPage().setVisible(true);
+        new StaffReportPage(admin).setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_reportButtonActionPerformed
 
     private void profileButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_profileButtonActionPerformed
-        new StaffProfilePage().setVisible(true);
+        new StaffProfilePage(admin).setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_profileButtonActionPerformed
 
@@ -259,43 +259,11 @@ public class StaffMainPage extends javax.swing.JFrame implements ValidateProcess
         setVisible(false);
     }//GEN-LAST:event_logoutButtonActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-//    public static void main(String args[]) {
-//        /* Set the Nimbus look and feel */
-//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-//         */
-//        try {
-//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-//                if ("Nimbus".equals(info.getName())) {
-//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-//                    break;
-//                }
-//            }
-//        } catch (ClassNotFoundException ex) {
-//            java.util.logging.Logger.getLogger(StaffMainPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (InstantiationException ex) {
-//            java.util.logging.Logger.getLogger(StaffMainPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (IllegalAccessException ex) {
-//            java.util.logging.Logger.getLogger(StaffMainPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-//            java.util.logging.Logger.getLogger(StaffMainPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        }
-//        //</editor-fold>
-//        //</editor-fold>
-//        //</editor-fold>
-//        //</editor-fold>
-//
-//        /* Create and display the form */
-//        java.awt.EventQueue.invokeLater(new Runnable() {
-//            public void run() {
-//                new StaffMainPage().setVisible(true);
-//            }
-//        });
-//    }
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        // Add login record into log file
+        new Log(admin, null).writeLog(2);
+    }//GEN-LAST:event_formWindowClosing
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton carButton;
@@ -311,21 +279,23 @@ public class StaffMainPage extends javax.swing.JFrame implements ValidateProcess
     private javax.swing.JButton reportButton;
     // End of variables declaration//GEN-END:variables
 
+    
+    // Set greeting and name
     private void setGreeting(Admin admin) {
         // Initialise variable
         Date date = new Date();
         int output = 0;
-        
+
         //Format date to hour field only
         DateFormat df = new SimpleDateFormat("HH");
-        
+
         try{
            //Change the format of date
            output = Integer.valueOf(df.format(date));
         } catch(Exception e){
             JOptionPane.showMessageDialog(null, "Error : " + e);
         }
-        
+
         if (output >= 17) {
             greetingField.setText("Good Evening, " + admin.getName());
         }
@@ -335,5 +305,5 @@ public class StaffMainPage extends javax.swing.JFrame implements ValidateProcess
         else {
             greetingField.setText("Good Morning, " + admin.getName());
         }
-   }
+    }    
 }
