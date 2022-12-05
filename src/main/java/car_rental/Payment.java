@@ -9,7 +9,8 @@ public class Payment extends PrintError{
     private String paymentId;
     private Booking booking;
     private String paymentMethod;
-    private Date date;
+    private String date;
+    private String time;
 
 
     // Constructor
@@ -20,11 +21,12 @@ public class Payment extends PrintError{
         this.date = null;
     }
 
-    public Payment(String tmpPaymentId, Booking tmpBooking, String tmpPaymentMethod, Date tmpDate) {
+    public Payment(String tmpPaymentId, Booking tmpBooking, String tmpPaymentMethod, String tmpDate, String tmpTime) {
         this.paymentId = tmpPaymentId;
         this.booking = tmpBooking;
         this.paymentMethod = tmpPaymentMethod;
         this.date = tmpDate;
+        this.time = tmpTime;
     }
 
 
@@ -56,18 +58,27 @@ public class Payment extends PrintError{
     }
 
     // Date
-    public Date getDate() {
+    public String getDate() {
         return this.date;
     }
 
-    public void setDate(Date tmpDate) {
+    public void setDate(String tmpDate) {
         this.date = tmpDate;
+    }
+    
+    // Date
+    public String getTime() {
+        return this.time;
+    }
+
+    public void setTime(String tmpTime) {
+        this.time = tmpTime;
     }
 
     
     // Extra Function
     public void printError(int errorNo) {
-        if (errorNo == 1) JOptionPane.showMessageDialog(null, "Error 1");
-        else JOptionPane.showMessageDialog(null, "Unknown Error");
+        if (errorNo == 1) JOptionPane.showMessageDialog(null, "Error: Payment cannot be found");
+        else JOptionPane.showMessageDialog(null, "Unknown error occur");
     }
 }

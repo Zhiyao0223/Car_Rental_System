@@ -12,11 +12,11 @@ import javax.swing.JOptionPane;
  */
 public class ProfileEditPage extends javax.swing.JFrame implements ValidateProcess, FileProcess {
 
-     Member customer;
+     Customer customer;
     /**
      * Creates new form ProfileEditPage
      */
-    public ProfileEditPage(Member cus) {
+    public ProfileEditPage(Customer cus) {
         customer = cus;
         initComponents();
         viewCus();
@@ -186,7 +186,7 @@ public class ProfileEditPage extends javax.swing.JFrame implements ValidateProce
             
             String[] profile = new String[] {id, cus_name,password, phone_no, email_cus};
             editFile(profile, "user.txt");
-                customer = new Member(id, cus_name, password, phone_no, email_cus);
+                customer = new Customer(id, cus_name, password, phone_no, email_cus);
         CustHomepage home = new CustHomepage(customer);
         home.setVisible(true);
         this.dispose();

@@ -33,6 +33,7 @@ public class StaffAddCarPage extends javax.swing.JFrame implements FileProcess, 
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
+        backButton1 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
@@ -58,8 +59,14 @@ public class StaffAddCarPage extends javax.swing.JFrame implements FileProcess, 
         clearBtn = new javax.swing.JButton();
         saveBtn = new javax.swing.JButton();
         gearField = new javax.swing.JComboBox<>();
+        backButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         jPanel2.setBackground(new java.awt.Color(102, 153, 255));
 
@@ -67,19 +74,39 @@ public class StaffAddCarPage extends javax.swing.JFrame implements FileProcess, 
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Add Car");
 
+        backButton1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        backButton1.setForeground(new java.awt.Color(255, 255, 255));
+        backButton1.setText("< Back");
+        backButton1.setBorder(null);
+        backButton1.setBorderPainted(false);
+        backButton1.setContentAreaFilled(false);
+        backButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        backButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(517, 517, 517)
-                .addComponent(jLabel2)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(517, 517, 517)
+                        .addComponent(jLabel2))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addComponent(backButton1)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(71, 71, 71)
+                .addGap(25, 25, 25)
+                .addComponent(backButton1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel2)
                 .addContainerGap(72, Short.MAX_VALUE))
         );
@@ -307,15 +334,38 @@ public class StaffAddCarPage extends javax.swing.JFrame implements FileProcess, 
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
+        backButton.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        backButton.setForeground(new java.awt.Color(255, 255, 255));
+        backButton.setText("< Back");
+        backButton.setBorder(null);
+        backButton.setBorderPainted(false);
+        backButton.setContentAreaFilled(false);
+        backButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        backButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(561, 561, 561)
+                    .addComponent(backButton)
+                    .addContainerGap(562, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(310, 310, 310)
+                    .addComponent(backButton)
+                    .addContainerGap(311, Short.MAX_VALUE)))
         );
 
         pack();
@@ -372,9 +422,26 @@ public class StaffAddCarPage extends javax.swing.JFrame implements FileProcess, 
         }
     }//GEN-LAST:event_saveBtnActionPerformed
 
+    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
+        new StaffMainPage(admin).setVisible(true);
+        setVisible(false);
+    }//GEN-LAST:event_backButtonActionPerformed
+
+    private void backButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButton1ActionPerformed
+        new StaffCarInfoPage(admin).setVisible(true);
+        setVisible(false);
+    }//GEN-LAST:event_backButton1ActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        // Add login record into log file
+        new Log(admin, null).writeLog(2);
+    }//GEN-LAST:event_formWindowClosing
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> availableStatus;
+    private javax.swing.JButton backButton;
+    private javax.swing.JButton backButton1;
     private javax.swing.JTextField brandField;
     private javax.swing.JTextField carIDField;
     private javax.swing.JButton clearBtn;

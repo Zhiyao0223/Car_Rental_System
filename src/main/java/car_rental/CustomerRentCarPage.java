@@ -14,10 +14,10 @@ public class CustomerRentCarPage extends javax.swing.JFrame implements FileProce
     /**
      * Creates new form customer_rent_car_page
      */
-     Member customer;
+     Customer customer;
      
      
-    public CustomerRentCarPage(Member cus) {
+    public CustomerRentCarPage(Customer cus) {
         initComponents();
         customer = cus;
         

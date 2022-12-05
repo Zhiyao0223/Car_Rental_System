@@ -9,19 +9,18 @@ import javax.swing.JPanel;
  * @author acer
  */
 public class CustHomepage extends javax.swing.JFrame implements ValidateProcess, FileProcess {
-    Member customer;
-    
-    /**
-     * Creates new form home_page_customer
-     */
-    public CustHomepage(Member cus) {
+    Customer customer;
+
+    public CustHomepage(Customer cust) {
         initComponents();
-        customer = cus;
+        this.customer = cust;
         cus_name();
       
         
         // Set GUI middle of screen
         this.setLocationRelativeTo(null);
+        
+        this.customer = cust;
     }
     
     public void cus_name(){

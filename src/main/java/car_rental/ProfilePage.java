@@ -11,9 +11,9 @@ public class ProfilePage extends javax.swing.JFrame implements ValidateProcess, 
     /**
      * Creates new form Profile
      */
-   Member customer;
+   Customer customer;
    
-    public ProfilePage(Member cus) {
+    public ProfilePage(Customer cus) {
         customer = cus;
         initComponents();
         cus_profile();
@@ -34,7 +34,7 @@ public class ProfilePage extends javax.swing.JFrame implements ValidateProcess, 
             phone.setText(phone_no);
             email.setText(email_cus);
             
-            customer = new Member(ID, cus_name, password, phone_no, email_cus);
+            customer = new Customer(ID, cus_name, password, phone_no, email_cus);
     }
     
     

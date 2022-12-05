@@ -15,14 +15,14 @@ import java.util.List;
  */
 public class CusPayment extends javax.swing.JFrame implements FileProcess, ValidateProcess{
 
-    Member customer;
+    Customer customer;
     Car car;
     String[] carDetails;
     Payment pay;
     Booking book; 
     
     
-    public CusPayment(Member cus, Car car) {
+    public CusPayment(Customer cus, Car car) {
         
         customer = cus;
         this.car = car;
@@ -408,9 +408,9 @@ public class CusPayment extends javax.swing.JFrame implements FileProcess, Valid
                             .addComponent(jLabel18)
                             .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel17)
-                            .addComponent(duration, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(duration, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel17))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(startDateLabel)

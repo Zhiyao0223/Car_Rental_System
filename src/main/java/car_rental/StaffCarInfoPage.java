@@ -85,6 +85,11 @@ public class StaffCarInfoPage extends javax.swing.JFrame implements ValidateProc
         addCarBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -682,6 +687,11 @@ public class StaffCarInfoPage extends javax.swing.JFrame implements ValidateProc
         new StaffAddCarPage(admin).setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_addCarBtnActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        // Add login record into log file
+        new Log(admin, null).writeLog(2);
+    }//GEN-LAST:event_formWindowClosing
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -1,30 +1,47 @@
 car_rental\StaffRentInfoPage$1.class
 car_rental\StaffCarInfoPage$4.class
+<<<<<<< HEAD
 car_rental\ReceiptPage$3.class
+=======
+car_rental\StaffRentInfoPage$10.class
+car_rental\TestPage$2.class
+car_rental\ReceiptPage$3.class
+car_rental\StaffReportDetailPage.class
+car_rental\LoginPage$7.class
+>>>>>>> b4974b87baba72c6984d4f7dc969aac9b116c1ba
 car_rental\test.class
 car_rental\CustHomepage$6.class
-car_rental\CustomerRentCarPage$3.class
 car_rental\Admin.class
 car_rental\StaffMainPage$1.class
+<<<<<<< HEAD
 car_rental\CusPayment$1.class
 car_rental\CustHomepage.class
 car_rental\StaffCustInfoPage.class
 car_rental\ProfileEditPage$4.class
+=======
+car_rental\LoginPage$4.class
+car_rental\CustHomepage.class
+car_rental\StaffCustInfoPage$9.class
+car_rental\StaffCustInfoPage.class
+>>>>>>> b4974b87baba72c6984d4f7dc969aac9b116c1ba
 car_rental\StaffCarInfoPage$7.class
 car_rental\CustHomepage$3.class
 car_rental\LoginPage$1.class
 car_rental\StartupPage$1.class
 car_rental\StaffCustInfoPage$1.class
 car_rental\StaffMainPage$4.class
-car_rental\CustomerRentCarPage$6.class
 car_rental\User.class
 car_rental\ReceiptPage.class
 car_rental\Booking.class
 car_rental\ProfilePage$2.class
 car_rental\CusPayment$14.class
 car_rental\StaffMainPage$7.class
+<<<<<<< HEAD
 car_rental\CusPayment$9.class
 car_rental\ProfileEditPage$1.class
+=======
+car_rental\StaffPaymentInfoPage$8.class
+>>>>>>> b4974b87baba72c6984d4f7dc969aac9b116c1ba
 car_rental\StaffReportPage$4.class
 car_rental\SignUpPage.class
 car_rental\StaffRentInfoPage$9.class
@@ -33,21 +50,32 @@ car_rental\StaffCarInfoPage$1.class
 car_rental\StaffAddCarPage.class
 car_rental\StaffPaymentInfoPage$5.class
 car_rental\StaffReportPage$1.class
+<<<<<<< HEAD
 car_rental\CusPayment$15.class
+=======
+car_rental\StaffPaymentInfoPage$9.class
+car_rental\LoginPage$2.class
+>>>>>>> b4974b87baba72c6984d4f7dc969aac9b116c1ba
 car_rental\ProfilePage$1.class
-car_rental\CustomerRentCarPage$5.class
 car_rental\StaffRentInfoPage$6.class
 car_rental\StaffCarInfoPage$9.class
 car_rental\Payment.class
+car_rental\StaffCustInfoPage$7.class
 car_rental\StaffPaymentInfoPage$2.class
 car_rental\HistoryPage.class
 car_rental\StaffCarInfoPage$10.class
 car_rental\StaffMainPage$6.class
 car_rental\StaffProfilePage$1.class
 car_rental\CustHomepage$5.class
+car_rental\StaffAddCarPage$3.class
 car_rental\StaffCarInfoPage$2.class
 car_rental\CusPayment$3.class
 car_rental\TestPage$1.class
+<<<<<<< HEAD
+=======
+car_rental\StaffReportPage$10.class
+car_rental\StaffCustInfoPage$6.class
+>>>>>>> b4974b87baba72c6984d4f7dc969aac9b116c1ba
 car_rental\StaffRentInfoPage$7.class
 car_rental\StaffPaymentInfoPage$3.class
 car_rental\ProfileEditPage.class
@@ -56,19 +84,33 @@ car_rental\StaffProfilePage$2.class
 car_rental\TestPage.class
 car_rental\StaffMainPage$5.class
 car_rental\StaffReportPage$3.class
+<<<<<<< HEAD
 car_rental\CusPayment$4.class
+=======
+car_rental\StaffReportPage$9.class
+>>>>>>> b4974b87baba72c6984d4f7dc969aac9b116c1ba
 car_rental\StaffCarInfoPage$11.class
 car_rental\Car.class
 car_rental\CustHomepage$4.class
 car_rental\StaffAddCarPage$2.class
+<<<<<<< HEAD
 car_rental\CusPayment$8.class
+=======
+>>>>>>> b4974b87baba72c6984d4f7dc969aac9b116c1ba
 car_rental\StaffProfilePage$3.class
 car_rental\StaffCustInfoPage$5.class
 car_rental\StaffPaymentInfoPage$4.class
 car_rental\StaffAddCarPage$1.class
+<<<<<<< HEAD
 car_rental\ProfilePage$3.class
 car_rental\CusPayment$13.class
 car_rental\StaffRentInfoPage$8.class
+=======
+car_rental\StaffLogFilePage.class
+car_rental\ProfilePage$3.class
+car_rental\StaffRentInfoPage$8.class
+car_rental\StaffPaymentInfoPage$7.class
+>>>>>>> b4974b87baba72c6984d4f7dc969aac9b116c1ba
 car_rental\StaffReportPage.class
 car_rental\PrintError.class
 car_rental\CusPayment$5.class
@@ -77,11 +119,19 @@ car_rental\StaffReportPage$2.class
 car_rental\LoginPage.class
 car_rental\StaffReportPage$5.class
 car_rental\StaffPaymentInfoPage$1.class
+car_rental\StaffCarInfoPage$12.class
 car_rental\StaffRentInfoPage$5.class
 car_rental\Main.class
+<<<<<<< HEAD
 car_rental\CusPayment$2.class
+=======
+car_rental\CustProfileEditPage$3.class
+car_rental\LoginPage$3.class
+>>>>>>> b4974b87baba72c6984d4f7dc969aac9b116c1ba
 car_rental\StaffRentInfoPage$2.class
+car_rental\StaffReportPage$8.class
 car_rental\CustHomepage$2.class
+<<<<<<< HEAD
 car_rental\CustomerRentCarPage$4.class
 car_rental\ProfileEditPage$5.class
 car_rental\StaffCarInfoPage$8.class
@@ -90,6 +140,14 @@ car_rental\StaffMainPage$3.class
 car_rental\StaffProfilePage$6.class
 car_rental\CustHomepage$11.class
 car_rental\CusPayment$10.class
+=======
+car_rental\StaffCarInfoPage$8.class
+car_rental\StaffCustInfoPage$2.class
+car_rental\StaffAddCarPage$4.class
+car_rental\StaffCustInfoPage$8.class
+car_rental\StaffMainPage$3.class
+car_rental\StaffLogFilePage$1.class
+>>>>>>> b4974b87baba72c6984d4f7dc969aac9b116c1ba
 car_rental\ReceiptPage$2.class
 car_rental\Log.class
 car_rental\StaffCarInfoPage.class
@@ -97,9 +155,16 @@ car_rental\CustHomepage$1.class
 car_rental\CustomerRentCarPage.class
 car_rental\ProfileEditPage$2.class
 car_rental\ProfilePage.class
+<<<<<<< HEAD
 car_rental\FileProcess.class
 car_rental\CusPayment$6.class
 car_rental\StaffProfilePage$5.class
+=======
+car_rental\CustProfileEditPage$2.class
+car_rental\FileProcess.class
+car_rental\Customer.class
+car_rental\StaffReportPage$7.class
+>>>>>>> b4974b87baba72c6984d4f7dc969aac9b116c1ba
 car_rental\StaffCustInfoPage$3.class
 car_rental\StaffRentInfoPage$3.class
 car_rental\CustomerRentCarPage$1.class
@@ -110,22 +175,37 @@ car_rental\StaffProfilePage$4.class
 car_rental\CusPayment$11.class
 car_rental\StaffMainPage.class
 car_rental\CustHomepage$8.class
+car_rental\LoginPage$6.class
 car_rental\StaffRentInfoPage.class
 car_rental\StaffReportPage$6.class
 car_rental\CustHomepage$7.class
+<<<<<<< HEAD
 car_rental\CusPayment$7.class
+=======
+>>>>>>> b4974b87baba72c6984d4f7dc969aac9b116c1ba
 car_rental\StartupPage$2.class
-car_rental\Member.class
 car_rental\StartupPage.class
 car_rental\StaffCustInfoPage$4.class
 car_rental\ValidateProcess.class
 car_rental\StaffMainPage$2.class
+<<<<<<< HEAD
 car_rental\CusPayment$12.class
 car_rental\StaffProfilePage.class
 car_rental\StaffRentInfoPage$4.class
 car_rental\CustHomepage$10.class
 car_rental\ProfilePage$4.class
 car_rental\CusPayment.class
+=======
+car_rental\StaffProfilePage.class
+car_rental\StaffRentInfoPage$4.class
+car_rental\LoginPage$5.class
+car_rental\StaffAddCarPage$5.class
+car_rental\CustProfileEditPage$1.class
+>>>>>>> b4974b87baba72c6984d4f7dc969aac9b116c1ba
 car_rental\CustomerRentCarPage$2.class
 car_rental\ProfileEditPage$3.class
 car_rental\StaffCarInfoPage$6.class
+<<<<<<< HEAD
+=======
+car_rental\StaffMainPage$8.class
+>>>>>>> b4974b87baba72c6984d4f7dc969aac9b116c1ba

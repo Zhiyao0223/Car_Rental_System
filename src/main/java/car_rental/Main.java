@@ -6,9 +6,8 @@ package car_rental;
  */
 public class Main {
 
-    public static void main(String[] args) {
-        
-        Member member = new Member("010110123456", "Ali", "1234", "1234567890", "ali@gmaid.com");
+    public static void main(String[] args) { 
+        Customer member = new Customer("010110123456", "Ali", "1234", "1234567890", "ali@gmaid.com");
         new CustHomepage(member).setVisible(true);
     }
 }
