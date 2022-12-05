@@ -161,9 +161,9 @@ public class ProfilePage extends javax.swing.JFrame implements ValidateProcess, 
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        CustHomepage home = new CustHomepage();
-        home.setVisible(true);
-        this.dispose();
+//        CustHomepage home = new CustHomepage();
+//        home.setVisible(true);
+//        this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void usernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameActionPerformed

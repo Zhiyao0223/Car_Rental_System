@@ -380,7 +380,7 @@ public class StaffPaymentInfoPage extends javax.swing.JFrame implements Validate
         String[] selectedData = lineArray.get(listPointer);
         
         // Pass paymentId into receipt page
-        new ReceiptPage(selectedData[0]);
+//        new ReceiptPage(selectedData[0]);
     }//GEN-LAST:event_viewButtonActionPerformed
 
     private void mostPrevBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostPrevBtnActionPerformed

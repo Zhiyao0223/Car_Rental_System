@@ -1,18 +1,18 @@
 package car_rental;
 
-public class Member extends User{
+public class Customer extends User{
     // Variable
     private String phoneNo;
     private String email;
 
     // Constructor
-    public Member() {
+    public Customer() {
         super(null, null, null);
         setPhoneNo(null);
         setEmail(null);
     }
 
-    public Member(String tmpId, String tmpName, String tmpPass, String tmpPhoneNo, String tmpEmail) {
+    public Customer(String tmpId, String tmpName, String tmpPass, String tmpPhoneNo, String tmpEmail) {
         super(tmpId, tmpName, tmpPass);
         phoneNo = tmpPhoneNo;
         email = tmpEmail;

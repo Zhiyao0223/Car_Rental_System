@@ -9,15 +9,17 @@ import javax.swing.JPanel;
  * @author acer
  */
 public class CustHomepage extends javax.swing.JFrame implements ValidateProcess, FileProcess {
-
+    Customer cust;
     /**
      * Creates new form home_page_customer
      */
-    public CustHomepage() {
+    public CustHomepage(Customer cust) {
         initComponents();
         
         // Set GUI middle of screen
         this.setLocationRelativeTo(null);
+        
+        this.cust = cust;
     }
     
     @SuppressWarnings("unchecked")
