@@ -1,13 +1,19 @@
 package car_rental;
 
+import java.io.File;
+import java.util.HashSet;
 import java.util.List;
+import javax.swing.JFileChooser;
 import javax.swing.RowFilter;
+import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 
 
 public class StaffReportPage extends javax.swing.JFrame implements ValidateProcess, FileProcess {
     Admin admin;
+    int currentTab;
 
     public StaffReportPage(Admin admin) {
         initComponents();
@@ -15,9 +21,21 @@ public class StaffReportPage extends javax.swing.JFrame implements ValidateProce
         // Set GUI middle of screen
         this.setLocationRelativeTo(null);
         
+        // Initialise variable
         this.admin = admin;
+        currentTab = -1;
         
         resetTable();
+    
+        // Set table value at center at active tab
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment( SwingConstants.CENTER );
+    
+        adminTable.setDefaultRenderer(String.class, centerRenderer);
+        bookingTable.setDefaultRenderer(String.class, centerRenderer);
+        carTable.setDefaultRenderer(String.class, centerRenderer);
+        paymentTable.setDefaultRenderer(String.class, centerRenderer);
+        userTable.setDefaultRenderer(String.class, centerRenderer);
     }
 
     @SuppressWarnings("unchecked")
@@ -42,6 +60,7 @@ public class StaffReportPage extends javax.swing.JFrame implements ValidateProce
         paymentTable = new javax.swing.JTable();
         jScrollPane6 = new javax.swing.JScrollPane();
         userTable = new javax.swing.JTable();
+        downloadBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -109,32 +128,37 @@ public class StaffReportPage extends javax.swing.JFrame implements ValidateProce
 
         reportBtn.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         reportBtn.setText("Generate Report");
-        reportBtn.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        reportBtn.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        reportBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         reportBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 reportBtnActionPerformed(evt);
             }
         });
 
+        tabs.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         tabs.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 tabsStateChanged(evt);
             }
         });
 
+        jScrollPane2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
+        adminTable.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         adminTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Car ID", "Car Brand", "Car Model", "Year Made", "Gear", "Cost per hour", "Cost per day", "Cost per week", "Mileage", "Location", "Available Status"
+                "Admin ID", "Username", "Name", "Password"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.String.class, java.lang.Boolean.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false, false, false
+                false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -145,23 +169,26 @@ public class StaffReportPage extends javax.swing.JFrame implements ValidateProce
                 return canEdit [columnIndex];
             }
         });
+        adminTable.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jScrollPane2.setViewportView(adminTable);
 
         tabs.addTab("Admin", jScrollPane2);
+
+        jScrollPane3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         bookingTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Car ID", "Car Brand", "Car Model", "Year Made", "Gear", "Cost per hour", "Cost per day", "Cost per week", "Mileage", "Location", "Available Status"
+                "Rent ID", "User ID", "Car ID", "Start Date", "End Date", "Total Cost"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.String.class, java.lang.Boolean.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false, false, false
+                false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -172,9 +199,12 @@ public class StaffReportPage extends javax.swing.JFrame implements ValidateProce
                 return canEdit [columnIndex];
             }
         });
+        bookingTable.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jScrollPane3.setViewportView(bookingTable);
 
         tabs.addTab("Booking", jScrollPane3);
+
+        jScrollPane4.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         carTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -185,7 +215,7 @@ public class StaffReportPage extends javax.swing.JFrame implements ValidateProce
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.String.class, java.lang.Boolean.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false, false, false, false, false, false, false, false
@@ -199,23 +229,26 @@ public class StaffReportPage extends javax.swing.JFrame implements ValidateProce
                 return canEdit [columnIndex];
             }
         });
+        carTable.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jScrollPane4.setViewportView(carTable);
 
         tabs.addTab("Cars", jScrollPane4);
+
+        jScrollPane5.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         paymentTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Car ID", "Car Brand", "Car Model", "Year Made", "Gear", "Cost per hour", "Cost per day", "Cost per week", "Mileage", "Location", "Available Status"
+                "Payment ID", "Rent ID", "Method", "Date", "Time"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.String.class, java.lang.Boolean.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false, false, false
+                false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -226,23 +259,26 @@ public class StaffReportPage extends javax.swing.JFrame implements ValidateProce
                 return canEdit [columnIndex];
             }
         });
+        paymentTable.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jScrollPane5.setViewportView(paymentTable);
 
         tabs.addTab("Payment", jScrollPane5);
+
+        jScrollPane6.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         userTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Car ID", "Car Brand", "Car Model", "Year Made", "Gear", "Cost per hour", "Cost per day", "Cost per week", "Mileage", "Location", "Available Status"
+                "User ID", "Username", "Password", "Phone Number", "Email"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.String.class, java.lang.Boolean.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false, false, false
+                false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -253,9 +289,20 @@ public class StaffReportPage extends javax.swing.JFrame implements ValidateProce
                 return canEdit [columnIndex];
             }
         });
+        userTable.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jScrollPane6.setViewportView(userTable);
 
         tabs.addTab("User", jScrollPane6);
+
+        downloadBtn.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        downloadBtn.setText("Download Report");
+        downloadBtn.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        downloadBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        downloadBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                downloadBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -274,8 +321,10 @@ public class StaffReportPage extends javax.swing.JFrame implements ValidateProce
                             .addGap(26, 26, 26)
                             .addComponent(tabs, javax.swing.GroupLayout.PREFERRED_SIZE, 1377, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(598, 598, 598)
-                        .addComponent(reportBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(440, 440, 440)
+                        .addComponent(reportBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(220, 220, 220)
+                        .addComponent(downloadBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(29, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -288,9 +337,11 @@ public class StaffReportPage extends javax.swing.JFrame implements ValidateProce
                     .addComponent(searchBar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(22, 22, 22)
                 .addComponent(tabs, javax.swing.GroupLayout.DEFAULT_SIZE, 491, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(reportBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(16, 16, 16))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(reportBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(downloadBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(11, 11, 11))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -313,7 +364,8 @@ public class StaffReportPage extends javax.swing.JFrame implements ValidateProce
     }//GEN-LAST:event_backBtnActionPerformed
 
     private void reportBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reportBtnActionPerformed
-        // TODO add your handling code here:
+        new StaffReportDetailPage(admin).setVisible(true);
+        setVisible(false);
     }//GEN-LAST:event_reportBtnActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
@@ -333,7 +385,16 @@ public class StaffReportPage extends javax.swing.JFrame implements ValidateProce
 
     private void tabsStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_tabsStateChanged
         resetTable();
+        currentTab = tabs.getSelectedIndex();
+        filter("");
     }//GEN-LAST:event_tabsStateChanged
+
+    private void downloadBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_downloadBtnActionPerformed
+       JFileChooser fc = new JFileChooser();
+       fc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+       fc.showSaveDialog(this);
+       File file = fc.getSelectedFile(); 
+    }//GEN-LAST:event_downloadBtnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -341,6 +402,7 @@ public class StaffReportPage extends javax.swing.JFrame implements ValidateProce
     private javax.swing.JButton backBtn;
     private javax.swing.JTable bookingTable;
     private javax.swing.JTable carTable;
+    private javax.swing.JButton downloadBtn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
@@ -360,7 +422,13 @@ public class StaffReportPage extends javax.swing.JFrame implements ValidateProce
     
     // Filter table
     private void filter(String query) {  
-        DefaultTableModel model = getModel();
+        DefaultTableModel model = getModel(-1);
+        
+        // Check if just switch tab, if is reset previous tab filter
+        if (tabs.getSelectedIndex() != currentTab) {
+            model = getModel(currentTab);
+            query = null;
+        }
         
         TableRowSorter <DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(model);
         
@@ -386,10 +454,11 @@ public class StaffReportPage extends javax.swing.JFrame implements ValidateProce
     
     
     // Get model
-    private DefaultTableModel getModel() {
-        System.out.println("eww");        
+    private DefaultTableModel getModel(int index) {      
+        if (index == -1) index = tabs.getSelectedIndex();
+
         // Check active tabs
-        switch (tabs.getSelectedIndex()) {
+        switch (index) {
             case 0:
                 return (DefaultTableModel) adminTable.getModel();
             case 1:
@@ -401,18 +470,23 @@ public class StaffReportPage extends javax.swing.JFrame implements ValidateProce
             default:
                 return (DefaultTableModel) userTable.getModel();
         }
-        
     }
     
     
     // Initialise table content
     private void resetTable() {
+        // Check if just create frame
+        if (currentTab == -1) {
+            currentTab = 0;
+        }
+        
         // Reset search bar
         searchBar.setText("");
         
         // Initialise header and get table model
         String[] header;  
-        DefaultTableModel model = getModel();
+        DefaultTableModel model = getModel(-1);
+        model.setRowCount(0);
         
         // Check active tabs
         String path = null;

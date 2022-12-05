@@ -134,4 +134,26 @@ public interface ValidateProcess {
         return true;
     }
     
+    
+    // Check card
+    default boolean checkCard(String tmpCardNo, String tmpCvc, String tmpExpiryDate) {
+        // Check expiry date
+        if (tmpExpiryDate.contains("/")) {
+            if (tmpExpiryDate.length() != 5) return false;
+            else if (!(checkInt(tmpExpiryDate.split("/")[0]) && checkInt(tmpExpiryDate.split("/")[1]))) return false;
+        } 
+        else {
+            return false;
+        }
+        
+        // Check card no and cvc
+        if (!checkInt(tmpCardNo)) return false;
+        else if (tmpCvc.length() != 3) return false;
+        
+        
+        return true;
+    }
+    
+    
+    
 }

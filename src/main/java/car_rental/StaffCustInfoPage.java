@@ -21,6 +21,8 @@ public class StaffCustInfoPage extends javax.swing.JFrame implements ValidatePro
         // Set variable
         admin = tmpAdmin;
         listPointer = 0;
+        
+        resetTable();
     }
 
     @SuppressWarnings("unchecked")
@@ -359,12 +361,12 @@ public class StaffCustInfoPage extends javax.swing.JFrame implements ValidatePro
         }
         
         listPointer = 0;
-        List <String[]> lineArray = readFile("cars.txt");
+        List <String[]> lineArray = readFile("user.txt");
         setListTab(lineArray, 0);
     }//GEN-LAST:event_mostBackBtnActionPerformed
 
     private void mostNextBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostNextBtnActionPerformed
-        List <String[]> lineArray = readFile("cars.txt");
+        List <String[]> lineArray = readFile("user.txt");
         
         if (listPointer == lineArray.size()-1) {
             JOptionPane.showMessageDialog(null, "Last data lorrr");
@@ -376,7 +378,7 @@ public class StaffCustInfoPage extends javax.swing.JFrame implements ValidatePro
     }//GEN-LAST:event_mostNextBtnActionPerformed
 
     private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
-        List <String[]> lineArray = readFile("cars.txt");
+        List <String[]> lineArray = readFile("user.txt");
         
         if (listPointer == 0) {
             JOptionPane.showMessageDialog(null, "Eh this is first data already weh");
@@ -388,7 +390,7 @@ public class StaffCustInfoPage extends javax.swing.JFrame implements ValidatePro
     }//GEN-LAST:event_backBtnActionPerformed
 
     private void nextBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextBtnActionPerformed
-        List <String[]> lineArray = readFile("cars.txt");
+        List <String[]> lineArray = readFile("user.txt");
         
         if (listPointer == lineArray.size()-1) {
             JOptionPane.showMessageDialog(null, "Last data lorrr");

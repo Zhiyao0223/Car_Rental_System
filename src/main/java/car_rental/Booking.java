@@ -9,7 +9,7 @@ public class Booking extends PrintError {
     private String rentId;
     private User user;
     private Car car;
-    private Date date;
+    private String date;
 
 
     // Constructor
@@ -20,7 +20,7 @@ public class Booking extends PrintError {
         this.date = null;
     }
 
-    public Booking(String tmpRentId, User tmpUser, Car tmpCar, Date tmpDate) {
+    public Booking(String tmpRentId, User tmpUser, Car tmpCar, String tmpDate) {
         this.rentId = tmpRentId;
         this.user = tmpUser;
         this.car = tmpCar;
@@ -56,11 +56,11 @@ public class Booking extends PrintError {
     }
 
     // Date
-    public Date getDate() {
+    public String getDate() {
         return this.date;
     }
 
-    public void setDate(Date tmpDate) {
+    public void setDate(String tmpDate) {
         this.date = tmpDate;
     }
 
