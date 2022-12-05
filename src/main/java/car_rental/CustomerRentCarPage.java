@@ -334,8 +334,8 @@ public class CustomerRentCarPage extends javax.swing.JFrame implements FileProce
         
         
         
-        CusPayment pay = new CusPayment(customer, carDetails);
-        pay.setVisible(true);
+        CusPayment paypage = new CusPayment(customer, carDetails);
+        paypage.setVisible(true);
         this.dispose(); 
     }//GEN-LAST:event_jButton1ActionPerformed
 
