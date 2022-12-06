@@ -15,7 +15,7 @@ public class CustomerRentCarPage extends javax.swing.JFrame implements FileProce
      * Creates new form customer_rent_car_page
      */
      Customer customer;
-     
+     Car car;
      
     public CustomerRentCarPage(Customer cus) {
         initComponents();
@@ -87,7 +87,7 @@ public class CustomerRentCarPage extends javax.swing.JFrame implements FileProce
 
             },
             new String [] {
-                "ID", "Car Brand", "Car Model", "Year made", "Gear", "Cost per hour", "Cost per day", "Cost per hour", "Mileage", "Location", "Available status"
+                "ID", "Car Brand", "Car Model", "Year made", "Gear", "Cost per hour", "Cost per day", "Cost per week", "Mileage", "Location", "Available status"
             }
         ) {
             Class[] types = new Class [] {
@@ -155,6 +155,7 @@ public class CustomerRentCarPage extends javax.swing.JFrame implements FileProce
         location.setEditable(false);
 
         jButton1.setText("Book Now!");
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -331,9 +332,7 @@ public class CustomerRentCarPage extends javax.swing.JFrame implements FileProce
                                     mileage.getText(),
                                     location.getText(),
                                     status.getText());
-        
-        
-        
+        System.out.println(carDetails.getCostWeek());
         CusPayment paypage = new CusPayment(customer, carDetails);
         paypage.setVisible(true);
         this.dispose(); 

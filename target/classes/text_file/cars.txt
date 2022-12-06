@@ -13,26 +13,26 @@ Available status - False
 Car ID - C2
 Car Brand - Proton
 Car Model - Perdana
-Year made - 2016
+Year Made - 2020
 Gear - Manual
-Cost per hour - RM15
-Cost per day - RM240
-Cost per week - RM1680
+Cost per Hour - RM15
+Cost per Day - RM240
+Cost per Week - RM1680
 Mileage - 34500
 Location - Sungai Besi
-Available status - True
+Available Status - False
 #-------------------------
 Car ID - C3
 Car Brand - Perodua
 Car Model - Saga
-Year made - 2017
-Gear - Manual
-Cost per hour - RM11
-Cost per day - RM240
-Cost per week - RM1400
+Year Made - 2017
+Gear - 2017
+Cost per Hour - RM11
+Cost per Day - RM240
+Cost per Week - RM1400
 Mileage - 20000
 Location - Sungai Besi
-Available status - True
+Available Status - False
 #-------------------------
 Car ID - C4
 Car Brand - Volkswagen

@@ -4,10 +4,18 @@
  */
 package car_rental;
 
+import static java.nio.file.Files.lines;
 import java.text.DecimalFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -18,18 +26,22 @@ public class CusPayment extends javax.swing.JFrame implements FileProcess, Valid
 
     Customer customer;
     Car car;
-    String[] carDetails;
     Payment pay;
     Booking book; 
     
+    String[] carDetails;
+    Boolean startup;
     
-    public CusPayment(Customer cus, Car car) {
+    public CusPayment(Customer cus, Car tmpCar) {
         
         customer = cus;
-        this.car = car;
-        
+        this.car = tmpCar;
+        startup = false;
     
         initComponents();
+        
+        // Set GUI middle of screen
+        this.setLocationRelativeTo(null);
         
         setLabel();
         hideDateField();
@@ -87,6 +99,17 @@ public class CusPayment extends javax.swing.JFrame implements FileProcess, Valid
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
+        startDate.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                startDateMouseClicked(evt);
+            }
+        });
+        startDate.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                startDatePropertyChange(evt);
+            }
+        });
+
         jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel10.setText("RM");
 
@@ -104,7 +127,7 @@ public class CusPayment extends javax.swing.JFrame implements FileProcess, Valid
             }
         });
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Hour", "Day", "Week", " " }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Hour", "Day", "Week" }));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox1ActionPerformed(evt);
@@ -213,6 +236,9 @@ public class CusPayment extends javax.swing.JFrame implements FileProcess, Valid
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel8.setText("MM/YY");
+
+        endDate.setBackground(new java.awt.Color(255, 255, 255));
+        endDate.setEnabled(false);
 
         carddate.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         carddate.addActionListener(new java.awt.event.ActionListener() {
@@ -510,6 +536,8 @@ public class CusPayment extends javax.swing.JFrame implements FileProcess, Valid
             endDate.setVisible(true);
             endDateLabel.setVisible(true);
         }
+        duration.setText("");
+        total.setText("0.00");
       
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
@@ -557,7 +585,7 @@ public class CusPayment extends javax.swing.JFrame implements FileProcess, Valid
         // Format date field
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
-        String bookid = book.getRentId();
+        String bookid = getNewRentId();
         String userid = customer.getId();
         String carid = car.getId();
         
@@ -617,6 +645,17 @@ public class CusPayment extends javax.swing.JFrame implements FileProcess, Valid
            
         JOptionPane.showMessageDialog(null, "Payment success!!");    
         
+        String[] cardetails = new String[] {car.getId(),car.getBrand(), car.getModel(), car.getYear(), car.getYear(), car.getCostHour().substring(2), 
+            car.getCostDay().substring(2), car.getCostWeek().substring(2), car.getMileage(), car.getLocation(), "False"};
+        
+        String status = "False";
+        editFile(cardetails, "cars.txt");
+        status =  car.getStatus();
+        
+        
+        car = new Car(car.getId(),car.getBrand(), car.getModel(), car.getYear(), car.getYear(), car.getCostHour(), 
+            car.getCostDay(), car.getCostWeek(), car.getMileage(), car.getLocation(), car.getStatus());
+        
         ReceiptPage receipt = new ReceiptPage(customer, book);
         receipt.setVisible(true);
         this.dispose(); 
@@ -653,17 +692,103 @@ public class CusPayment extends javax.swing.JFrame implements FileProcess, Valid
         double day = Double.valueOf(costDay.getText().substring(2));
         double week = Double.valueOf(costWeek.getText().substring(2));
 
-        if (select == "Hour"){
+        if ("Hour".equals(select)){
             total.setText(String.valueOf(df.format(durations * hour)));
             
         }
-        else if (select == "Day"){
+        else if ("Day".equals(select)){
             total.setText(String.valueOf(df.format(durations * day)));
         }
-        else if (select == "Week"){
+        else if ("Week".equals(select)){
+            System.out.println(String.valueOf(durations * week));
             total.setText(String.valueOf(df.format(durations * week)));
         }
+        
+        // Check if start date is filled
+        if (startDate.getDate() != null) {
+            Long durationss = Long.valueOf(duration.getText());
+            System.out.println(String.valueOf(durationss * 7));
+            if (jComboBox1.getSelectedItem().toString().equals("Week")) durationss *= 7; 
+            
+            String startDates = new SimpleDateFormat("dd/MM/yyyy").format(startDate.getDate());
+     
+            LocalDate newDate = LocalDate.now();
+            try {
+                String[] tmpArray = startDates.split("/");
+                newDate = LocalDate.of(Integer.valueOf(tmpArray[2]), Integer.valueOf(tmpArray[1]), Integer.valueOf(tmpArray[0])).plusDays(Long.valueOf(durationss));
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(null, ex);
+            }
+            
+            try {
+                String tmpDate = newDate.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+                String[] tmpArray = tmpDate.split("/");
+                tmpDate = String.format("%s/%s/%s", tmpArray[0], tmpArray[1], tmpArray[2]);
+                
+                endDate.setDate(new SimpleDateFormat("dd/MM/yyyy").parse(tmpDate));
+            } catch (ParseException ex) {
+                Logger.getLogger(CusPayment.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }//GEN-LAST:event_durationKeyReleased
+
+    private void startDatePropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_startDatePropertyChange
+        if (!"date".equals(evt.getPropertyName())) {
+            return;
+        }
+        else if (startup == false) {
+            if (endDate.getDate() == null) {
+//                endDate.setDate(new Date());  
+//            } else {
+                startup = true;
+                return;
+            }
+        }
+        
+        String startDates = new SimpleDateFormat("dd/MM/yyyy").format(startDate.getDate());
+        String endDates = new SimpleDateFormat("dd/MM/yyyy").format(endDate.getDate());
+        
+        if (!(checkBlank(startDates) && checkBlank(endDates))) {
+            JOptionPane.showMessageDialog(null, "Date cannot be empty");
+            return;
+        }
+        
+        if (!checkAvailableStatus(readFile("booking.txt"), -1, car.getId() , startDates, endDates)){
+            startDate.setDate(null);
+            endDate.setDate(null);
+            return;
+        }
+
+        if (checkBlank(duration.getText())) {
+            Long durations = Long.valueOf(duration.getText());
+            if (jComboBox1.getSelectedItem().toString().equals("Week")) durations *= 7;       
+            
+            String startDatess = new SimpleDateFormat("dd/MM/yyyy").format(startDate.getDate());
+     
+            LocalDate newDate = LocalDate.now();
+            try {
+                String[] tmpArray = startDatess.split("/");
+                newDate = LocalDate.of(Integer.valueOf(tmpArray[2]), Integer.valueOf(tmpArray[1]), Integer.valueOf(tmpArray[0])).plusDays(Long.valueOf(durations));
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(null, ex);
+            }
+            
+            try {
+                String tmpDate = newDate.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+                String[] tmpArray = tmpDate.split("/");
+                tmpDate = String.format("%s/%s/%s", tmpArray[0], tmpArray[1], tmpArray[2]);
+                
+                endDate.setDate(new SimpleDateFormat("dd/MM/yyyy").parse(tmpDate));
+            } catch (ParseException ex) {
+                Logger.getLogger(CusPayment.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+    }//GEN-LAST:event_startDatePropertyChange
+
+    private void startDateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_startDateMouseClicked
+
+    }//GEN-LAST:event_startDateMouseClicked
 
 
     
@@ -720,6 +845,8 @@ public class CusPayment extends javax.swing.JFrame implements FileProcess, Valid
     private void setLabel() {
         String newId = getNewRentId();
         
+        System.out.println(car.getCostDay() + " " + car.getCostWeek());
+        
         // Set label
         rentId.setText(newId);
         brand.setText(car.getBrand());
@@ -728,6 +855,9 @@ public class CusPayment extends javax.swing.JFrame implements FileProcess, Valid
         costHour.setText(car.getCostHour());
         costDay.setText(car.getCostDay());
         costWeek.setText(car.getCostWeek());
+        
+//        startDate.setDate(new Date());
+//        endDate.setDate(new Date());
     }
     
     

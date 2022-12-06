@@ -96,6 +96,11 @@ public class CustHomepage extends javax.swing.JFrame implements ValidateProcess,
 
         History.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         History.setText("History");
+        History.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                HistoryActionPerformed(evt);
+            }
+        });
 
         Logout.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         Logout.setText("Logout");
@@ -376,8 +381,8 @@ public class CustHomepage extends javax.swing.JFrame implements ValidateProcess,
     }//GEN-LAST:event_rentMouseClicked
 
     private void historyMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_historyMouseClicked
-        HistoryPage h = new HistoryPage();
-        h.setVisible(true);
+        HistoryPage history = new HistoryPage(customer);
+        history.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_historyMouseClicked
 
@@ -391,6 +396,12 @@ public class CustHomepage extends javax.swing.JFrame implements ValidateProcess,
         rent.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_RentActionPerformed
+
+    private void HistoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HistoryActionPerformed
+        HistoryPage history = new HistoryPage(customer);
+        history.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_HistoryActionPerformed
 
     /**
      * @param args the command line arguments
