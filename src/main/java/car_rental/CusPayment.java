@@ -8,6 +8,7 @@ import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -31,7 +32,6 @@ public class CusPayment extends javax.swing.JFrame implements FileProcess, Valid
         initComponents();
         
         setLabel();
-        setBooking();
         hideDateField();
             
     }
@@ -51,7 +51,7 @@ public class CusPayment extends javax.swing.JFrame implements FileProcess, Valid
         duration = new javax.swing.JTextField();
         jTextField1 = new javax.swing.JTextField();
         jLabel18 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        cvv = new javax.swing.JTextField();
         jSeparator3 = new javax.swing.JSeparator();
         rentId = new javax.swing.JTextField();
         model = new javax.swing.JTextField();
@@ -67,11 +67,11 @@ public class CusPayment extends javax.swing.JFrame implements FileProcess, Valid
         startDateLabel = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        cardnum = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         endDate = new com.toedter.calendar.JDateChooser();
-        jTextField4 = new javax.swing.JTextField();
+        carddate = new javax.swing.JTextField();
         endDateLabel = new javax.swing.JLabel();
         year = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
@@ -93,9 +93,11 @@ public class CusPayment extends javax.swing.JFrame implements FileProcess, Valid
         jLabel17.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel17.setText("Duration:");
 
-        jButton3.setBackground(new java.awt.Color(153, 153, 153));
+        jButton3.setBackground(new java.awt.Color(153, 204, 255));
         jButton3.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jButton3.setText("Back");
+        jButton3.setBorderPainted(false);
+        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -130,10 +132,10 @@ public class CusPayment extends javax.swing.JFrame implements FileProcess, Valid
         jLabel18.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel18.setText("Type:");
 
-        jTextField2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        cvv.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        cvv.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                cvvActionPerformed(evt);
             }
         });
 
@@ -199,10 +201,10 @@ public class CusPayment extends javax.swing.JFrame implements FileProcess, Valid
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel5.setText("Name:");
 
-        jTextField3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+        cardnum.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        cardnum.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
+                cardnumActionPerformed(evt);
             }
         });
 
@@ -212,10 +214,10 @@ public class CusPayment extends javax.swing.JFrame implements FileProcess, Valid
         jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel8.setText("MM/YY");
 
-        jTextField4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jTextField4.addActionListener(new java.awt.event.ActionListener() {
+        carddate.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        carddate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField4ActionPerformed(evt);
+                carddateActionPerformed(evt);
             }
         });
 
@@ -236,6 +238,8 @@ public class CusPayment extends javax.swing.JFrame implements FileProcess, Valid
         jButton1.setBackground(new java.awt.Color(102, 255, 102));
         jButton1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jButton1.setText("Submit Payment");
+        jButton1.setBorderPainted(false);
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -312,14 +316,14 @@ public class CusPayment extends javax.swing.JFrame implements FileProcess, Valid
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel6)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(cardnum, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(135, 135, 135)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel7)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(cvv, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(114, 114, 114)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(carddate, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel8)))
                     .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 1062, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
@@ -441,9 +445,9 @@ public class CusPayment extends javax.swing.JFrame implements FileProcess, Valid
                             .addComponent(jLabel8))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(cardnum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cvv, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(carddate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(79, 79, 79))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jButton3)
@@ -486,7 +490,9 @@ public class CusPayment extends javax.swing.JFrame implements FileProcess, Valid
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
+        CustomerRentCarPage rent = new CustomerRentCarPage(customer);
+        rent.setVisible(true);
+        this.dispose();      
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
@@ -515,9 +521,9 @@ public class CusPayment extends javax.swing.JFrame implements FileProcess, Valid
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void cvvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cvvActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_cvvActionPerformed
 
     private void rentIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rentIdActionPerformed
         // TODO add your handling code here:
@@ -535,13 +541,13 @@ public class CusPayment extends javax.swing.JFrame implements FileProcess, Valid
         // TODO add your handling code here:
     }//GEN-LAST:event_costDayActionPerformed
 
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+    private void cardnumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cardnumActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
+    }//GEN-LAST:event_cardnumActionPerformed
 
-    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
+    private void carddateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_carddateActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField4ActionPerformed
+    }//GEN-LAST:event_carddateActionPerformed
 
     private void yearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_yearActionPerformed
         // TODO add your handling code here:
@@ -550,30 +556,71 @@ public class CusPayment extends javax.swing.JFrame implements FileProcess, Valid
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // Format date field
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-        
+
         String bookid = book.getRentId();
         String userid = customer.getId();
         String carid = car.getId();
-        String startdate = sdf.format(startDate.getDate());
-        String endtdate = sdf.format(endDate.getDate());
-        String price = total.getText();
-
-
-        String[] bookingDetails = new String[] {bookid, userid,carid, startdate, endtdate, price};
-            appendFile(bookingDetails, "booking.txt");
-            setLabel();
+        
+        String startdate = sdf.format(new Date());
+        String endtdate = sdf.format(new Date());
+        if (!jComboBox1.getSelectedItem().toString().equals("Hour")){
+            try {
+                startdate = sdf.format(startDate.getDate());
+            } catch(Exception e) {
+                JOptionPane.showMessageDialog(null, "Date cannot be empty");
+                return;
+            }        
             
-        //            if(!checkPhoneNo(phone_no)){
-            //               JOptionPane.showMessageDialog(null, "Phone number must be 10 or 11 numbers");
-            //               return;
-            //            }else if(!checkEmail(email_cus)){
-            //                JOptionPane.showMessageDialog(null, "Wrong email format");
-            //               return;
-            //            }
-        //
-        //            String[] profile = new String[] {payid, bookid,name, };
-        //            appendFile(profile, "payment.txt");
-        //                customer = new Member(id, cus_name, password, phone_no, email_cus);
+            endtdate = sdf.format(endDate.getDate());
+        }
+        
+        
+        String price = total.getText();
+        String cardno = cardnum.getText();
+        String cardcvv = cvv.getText();
+        String datecard = carddate.getText();
+        String paymentid = getNewPaymentId();
+
+
+
+        if (!checkCard(cardno, cardcvv, datecard)){
+            JOptionPane.showMessageDialog(null, "Card number is in a wrong format!");
+               return;
+        }else if(!checkBlank(duration.getText())){
+            JOptionPane.showMessageDialog(null, "Please enter a duration");
+        }else if (!checkBlank(cardno)){
+            JOptionPane.showMessageDialog(null, "Please enter card number");
+           return;
+        }else if (!checkBlank(cardcvv)){
+            JOptionPane.showMessageDialog(null, "Please enter cvv");
+           return;
+        }else if (!checkBlank(datecard)){
+            JOptionPane.showMessageDialog(null, "Please enter card date");
+           return;
+        }else if (!checkInt(duration.getText())){
+            JOptionPane.showMessageDialog(null, "Please enter numbers");
+           return;
+        }
+        
+       
+        book = new Booking(bookid, customer, car, startdate, endtdate, price);
+        
+        
+        String[] bookingDetails = new String[] {bookid, userid,carid, startdate, endtdate, price};
+        appendFile(bookingDetails, "booking.txt");
+            
+        SimpleDateFormat date = new SimpleDateFormat("dd/mm/yyyy");
+        String method = "card";
+        
+        String[] paymentDetails = new String[] {paymentid, bookid,method, date.format(new Date()), new SimpleDateFormat("hh:mm aa").format(new Date()) };
+        appendFile(paymentDetails, "payment.txt");
+           
+        JOptionPane.showMessageDialog(null, "Payment success!!");    
+        
+        ReceiptPage receipt = new ReceiptPage(customer, book);
+        receipt.setVisible(true);
+        this.dispose(); 
+       
     }//GEN-LAST:event_jButton1ActionPerformed
 
     
@@ -628,9 +675,12 @@ public class CusPayment extends javax.swing.JFrame implements FileProcess, Valid
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField brand;
+    private javax.swing.JTextField carddate;
+    private javax.swing.JTextField cardnum;
     private javax.swing.JTextField costDay;
     private javax.swing.JTextField costHour;
     private javax.swing.JTextField costWeek;
+    private javax.swing.JTextField cvv;
     private javax.swing.JTextField duration;
     private com.toedter.calendar.JDateChooser endDate;
     private javax.swing.JLabel endDateLabel;
@@ -659,9 +709,6 @@ public class CusPayment extends javax.swing.JFrame implements FileProcess, Valid
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField model;
     private javax.swing.JTextField rentId;
     private com.toedter.calendar.JDateChooser startDate;
@@ -682,12 +729,6 @@ public class CusPayment extends javax.swing.JFrame implements FileProcess, Valid
         costDay.setText(car.getCostDay());
         costWeek.setText(car.getCostWeek());
     }
-
-    private void setBooking() {
-        String todayDate = new SimpleDateFormat("dd/mm/yyyy").format(new Date());
-        
-        book = new Booking(getNewRentId(), customer, car, todayDate);
-    }
     
     
     private String getNewRentId() {
@@ -697,6 +738,15 @@ public class CusPayment extends javax.swing.JFrame implements FileProcess, Valid
         String newId = "R" + length;
         
         return newId;
+    }
+    
+    private String getNewPaymentId() {
+        // Count id
+        List <String[]> dataLength = readFile("payment.txt");
+        int length = Integer.valueOf(dataLength.get(dataLength.size()-1)[0].substring(1)) + 1;
+        String newpaymentId = "P" + length;
+        
+        return newpaymentId;
     }
 
     private void hideDateField() {

@@ -1,5 +1,13 @@
 Payment ID - P1
 Rent ID - R1
+Payment Method - card
 Date - 12/11/2022
 Time - 12:02 PM
+#-------------------------
+
+Payment ID - P2
+Rent ID - R7
+Payment Method - card
+Date - 06/18/2022
+Time - 03:18 PM
 #-------------------------
