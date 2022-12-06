@@ -32,7 +32,8 @@ public class Car {
         this.status = "false";
     }
 
-    public Car(String tmpId, String tmpBrand, String tmpModel, String tmpGear, String tmpLocation, String tmpYear, String tmpCostHour, String tmpCostDay, String tmpCostWeek, String tmpMileage, String tmpStatus) {
+
+    public Car(String tmpId, String tmpBrand, String tmpModel, String tmpYear, String tmpGear, String tmpCostHour, String tmpCostDay, String tmpCostWeek, String tmpMileage, String tmpLocation, String tmpStatus) {
         this.id = tmpId;
         this.brand = tmpBrand;
         this.model = tmpModel;
