@@ -2,70 +2,37 @@ package car_rental;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
 
-/**
- *
- * @author acer
- */
+
 public class ReceiptPage extends javax.swing.JFrame implements ValidateProcess, FileProcess {
-
-    /**
-     * Creates new form Receipt
-     */
     Customer customer;
     Booking book;
     Car car;
+    boolean adminMode;
     
-    public ReceiptPage(Customer cus, Booking book) {
+    public ReceiptPage(Customer cus, Booking book, boolean adminMode) {
         initComponents();
         
         customer = cus;
         this.car = car;
         this.book = book;
+        this.adminMode = adminMode;
         
-        cus_profileReceipt();
-        cus_bookingReceipt();
+        
+        if (adminMode) {
+            jButton1.setVisible(false);
+            adminSetup();
+        } else {
+            jButton1.setVisible(true);
+            
+            cus_profileReceipt();
+            cus_bookingReceipt();  
+        }
+
+        
         // Set GUI middle of screen
         this.setLocationRelativeTo(null);
         
-    }
-
-    public void cus_profileReceipt(){
-            String ID = customer.getId();
-            String cus_name = customer.getName();
-            String password = customer.getPass();
-            String phone_no = customer.getPhoneNo();
-            String email_cus = customer.getEmail();
-                       
-            name.setText(cus_name);
-            phone.setText(phone_no);
-            email.setText(email_cus);
-            
-            customer = new Customer(ID, cus_name, password, phone_no, email_cus);
-    }
-    
-     public void cus_bookingReceipt(){
-            String carID1 = book.getCar().getId();
-            String cusID = book.getUser().getId();
-            String car_name1 = book.getCar().getBrand();
-            String startDate = book.getStartDate();
-            String endtDate = book.getEndDate();
-            String price1 = book.getTotalCost();
-                       
-            carID.setText(carID1);
-            car_name.setText(car_name1);
-            start_date.setText(startDate);
-            end_date.setText(endtDate);
-            price.setText(price1);
-            total.setText(price1);
-            
-            SimpleDateFormat date = new SimpleDateFormat("dd/MM/yyyy");
-            Rent_date.setText( date.format(new Date()));
-            
-           
-            
-
     }
     
     
@@ -179,11 +146,6 @@ public class ReceiptPage extends javax.swing.JFrame implements ValidateProcess, 
         end_date.setEditable(false);
         end_date.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         end_date.setBorder(null);
-        end_date.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                end_dateActionPerformed(evt);
-            }
-        });
 
         start_date.setEditable(false);
         start_date.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -194,16 +156,11 @@ public class ReceiptPage extends javax.swing.JFrame implements ValidateProcess, 
         price.setBorder(null);
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel2.setText("Rent date:");
+        jLabel2.setText("Generated date:");
 
         Rent_date.setEditable(false);
         Rent_date.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         Rent_date.setBorder(null);
-        Rent_date.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Rent_dateActionPerformed(evt);
-            }
-        });
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel1.setText("This computer generated invoice no signature required. ");
@@ -298,7 +255,7 @@ public class ReceiptPage extends javax.swing.JFrame implements ValidateProcess, 
                                         .addComponent(Room_Lb, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(81, 81, 81)
                                         .addComponent(car_name)))))))
-                .addGap(73, 117, Short.MAX_VALUE))
+                .addGap(73, 113, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -378,15 +335,6 @@ public class ReceiptPage extends javax.swing.JFrame implements ValidateProcess, 
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void end_dateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_end_dateActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_end_dateActionPerformed
-
-    private void Rent_dateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Rent_dateActionPerformed
-    
-        
-    }//GEN-LAST:event_Rent_dateActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel CheckOut_Lb;
@@ -419,4 +367,47 @@ public class ReceiptPage extends javax.swing.JFrame implements ValidateProcess, 
     private javax.swing.JTextField start_date;
     private javax.swing.JTextField total;
     // End of variables declaration//GEN-END:variables
+    
+    
+    public void cus_profileReceipt(){
+        String ID = customer.getId();
+        String cus_name = customer.getName();
+        String password = customer.getPass();
+        String phone_no = customer.getPhoneNo();
+        String email_cus = customer.getEmail();
+
+        name.setText(cus_name);
+        phone.setText(phone_no);
+        email.setText(email_cus);
+
+        customer = new Customer(ID, cus_name, password, phone_no, email_cus);
+    }
+    
+     public void cus_bookingReceipt(){
+        String carID1 = book.getCar().getId();
+        String cusID = book.getUser().getId();
+        String car_name1 = book.getCar().getBrand() + " " + book.getCar().getModel();
+        String startDate = book.getStartDate();
+        String endtDate = book.getEndDate();
+        String price1 = book.getTotalCost();
+
+        carID.setText(carID1);
+        car_name.setText(car_name1);
+        start_date.setText(startDate);
+        end_date.setText(endtDate);
+        price.setText(price1);
+        total.setText(price1.substring(2));
+
+        SimpleDateFormat date = new SimpleDateFormat("dd/MM/yyyy");
+        Rent_date.setText( date.format(new Date()));
+    }
+
+    private void adminSetup() {
+        name.setText(book.getUser().getName());
+        phone.setText(book.getUser().getPhoneNo());
+        email.setText(book.getUser().getEmail());
+        carID.setText(book.getCar().getId());
+        
+        cus_bookingReceipt();
+    }
 }

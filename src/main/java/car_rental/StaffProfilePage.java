@@ -1,18 +1,12 @@
 package car_rental;
 
-import java.util.List;
-import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author USER
- */
+import javax.swing.JOptionPane;
+
+
 public class StaffProfilePage extends javax.swing.JFrame implements FileProcess, ValidateProcess {
     Admin admin;
-    /**
-     * Creates new form StaffAddCarPage
-     */
+
     public StaffProfilePage(Admin tmpAdmin) {
         initComponents();
         

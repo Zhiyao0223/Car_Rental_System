@@ -1,6 +1,5 @@
 package car_rental;
 
-import java.util.Date;
 
 import javax.swing.JOptionPane;
 

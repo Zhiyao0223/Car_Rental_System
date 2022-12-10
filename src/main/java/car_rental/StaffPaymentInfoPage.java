@@ -8,7 +8,6 @@ import javax.swing.table.TableRowSorter;
 
 
 public class StaffPaymentInfoPage extends javax.swing.JFrame implements ValidateProcess, FileProcess {
-    Payment selectedPayment;
     Admin admin;
     int listPointer;
 
@@ -377,10 +376,43 @@ public class StaffPaymentInfoPage extends javax.swing.JFrame implements Validate
         
         // Get payment id
         List <String[]> lineArray = readFile("payment.txt");
+        List <String[]> bookArray = readFile("booking.txt");
+        List <String[]> carArray = readFile("cars.txt");
+        List <String[]> userArray = readFile("user.txt");
+        
+        // Get selected row to generate receipt
         String[] selectedData = lineArray.get(listPointer);
         
+        // Initialise Array to store booking and customer detail
+        String[] bookLineArray = new String[] {};
+        Booking book = new Booking();
+        Customer cust = new Customer();
+        Car car = new Car();
+        
+        // Loop over booking to find data
+        for (String[] lines : bookArray) {
+            if (lines[0].equals(selectedData[1])) {
+                bookLineArray = lines;
+                break;
+            }
+        }
+        
+        // Loop over customer to find data
+        for (String[] lines : userArray) {
+            if (lines[0].equals(bookLineArray[1])) cust = new Customer(lines[0], lines[1], lines[2], lines[3], lines[4]);
+        }
+        
+        // Loop over car to find data
+        for (String[] lines : carArray) {
+            if (lines[0].equals(bookLineArray[2])) car = new Car(lines[0], lines[1], lines[2], lines[3], lines[4], lines[5], lines[6], lines[7], lines[8], lines[9], lines[10]);
+        }
+        
+        // Initialise booking class
+        book = new Booking(bookLineArray[0], cust, car, bookLineArray[3], bookLineArray[4], bookLineArray[5]);
+        
         // Pass paymentId into receipt page
-//        new ReceiptPage(selectedData[0]);
+        new ReceiptPage(cust, book, true).setVisible(true);
+        
     }//GEN-LAST:event_viewButtonActionPerformed
 
     private void mostPrevBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostPrevBtnActionPerformed

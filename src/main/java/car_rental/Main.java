@@ -1,13 +1,17 @@
 package car_rental;
 
 /**
- *
- * @author USER
+ * OODJ Assignment
+ * Completion Data : Dec 2022
+ * 
+ * @author Ng Zhi Yao TP060722
+ * @author Lee Khoon Fang TP060677
  */
-public class Main {
 
+
+public class Main {
     public static void main(String[] args) { 
-        Customer member = new Customer("010110123456", "Ali", "1234", "1234567890", "ali@gmaid.com");
-        new CustHomepage(member).setVisible(true);
+        new StartupPage().setVisible(true);
+//        new LoginPage().setVisible(true);
     }
 }

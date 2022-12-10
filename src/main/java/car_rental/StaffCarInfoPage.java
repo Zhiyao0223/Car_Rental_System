@@ -1,26 +1,18 @@
 package car_rental;
 
-import java.io.File;
-import java.io.PrintWriter;
-import java.util.ArrayList;
+
 import java.util.List;
-import java.util.Scanner;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 
-/**
- *
- * @author USER
- */
+
 public class StaffCarInfoPage extends javax.swing.JFrame implements ValidateProcess, FileProcess {
     Admin admin;
     int listPointer;
-    /**
-     * Creates new form staffCarInfo
-     */
+
     public StaffCarInfoPage(Admin tmpAdmin) {
         initComponents();
         
@@ -550,8 +542,7 @@ public class StaffCarInfoPage extends javax.swing.JFrame implements ValidateProc
                 resetTable();
                 
                 // Switch back table view
-                tabPanel.setSelectedIndex(0);
-                
+                tabPanel.setSelectedIndex(0);    
             }
         }
     }//GEN-LAST:event_editButtonActionPerformed
@@ -612,7 +603,7 @@ public class StaffCarInfoPage extends javax.swing.JFrame implements ValidateProc
     }//GEN-LAST:event_removeButtonActionPerformed
 
     private void tabPanelStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_tabPanelStateChanged
-        // Cjecl
+        // Check active tab
         if (tabPanel.getSelectedIndex() == 1) {
             searchText.setVisible(false);
             searchBar.setVisible(false);
@@ -774,7 +765,6 @@ public class StaffCarInfoPage extends javax.swing.JFrame implements ValidateProc
         mileageField.setText(firstData[8]);
         locationField.setText(firstData[9]);
         availableStatus.getModel().setSelectedItem(firstData[10]);
-        
     }
     
     // Get list value

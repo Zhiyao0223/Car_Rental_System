@@ -5,18 +5,10 @@ import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 
-/**
- *
- * @author acer
- */
-public class CustomerRentCarPage extends javax.swing.JFrame implements FileProcess, ValidateProcess{
 
-    /**
-     * Creates new form customer_rent_car_page
-     */
-     Customer customer;
-     Car car;
-     
+public class CustomerRentCarPage extends javax.swing.JFrame implements FileProcess, ValidateProcess{
+    Customer customer;
+    
     public CustomerRentCarPage(Customer cus) {
         initComponents();
         customer = cus;
@@ -25,8 +17,6 @@ public class CustomerRentCarPage extends javax.swing.JFrame implements FileProce
         this.setLocationRelativeTo(null);
         
         viewcarAvaliable();
-        
-    
     }
 
     @SuppressWarnings("unchecked")
@@ -70,6 +60,7 @@ public class CustomerRentCarPage extends javax.swing.JFrame implements FileProce
         jLabel1.setText("Rent A Car");
 
         jButton10.setText("Back");
+        jButton10.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton10.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton10ActionPerformed(evt);
@@ -144,11 +135,6 @@ public class CustomerRentCarPage extends javax.swing.JFrame implements FileProce
         jLabel18.setText("Mileage");
 
         status.setEditable(false);
-        status.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                statusActionPerformed(evt);
-            }
-        });
 
         jLabel19.setText("Location");
 
@@ -308,10 +294,6 @@ public class CustomerRentCarPage extends javax.swing.JFrame implements FileProce
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void statusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_statusActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_statusActionPerformed
-
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
         CustHomepage home = new CustHomepage(customer);
         home.setVisible(true);
@@ -319,8 +301,6 @@ public class CustomerRentCarPage extends javax.swing.JFrame implements FileProce
     }//GEN-LAST:event_jButton10ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
-        
         Car carDetails = new Car(idField.getText(),
                                     brand.getText(),
                                     model1.getText(),
@@ -403,7 +383,7 @@ public class CustomerRentCarPage extends javax.swing.JFrame implements FileProce
     // End of variables declaration//GEN-END:variables
 
     private void viewcarAvaliable() {
-                // Initialise header and get table model
+        // Initialise header and get table model
         String[] header = {"Car ID", "Brand", "Model", "Year", "Gear", "Cost (Hour)", "Cost (Day)", "Cost(Week)", "Mileage", "Location", "Status"};  
         DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
         
@@ -417,7 +397,5 @@ public class CustomerRentCarPage extends javax.swing.JFrame implements FileProce
         for (String[] loopArray : lineArray) {
             model.addRow(loopArray);
         }
-        
-        
     }
 }

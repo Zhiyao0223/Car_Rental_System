@@ -1,5 +1,6 @@
 package car_rental;
 
+
 public class Customer extends User{
     // Variable
     private String phoneNo;

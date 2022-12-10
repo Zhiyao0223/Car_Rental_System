@@ -16,7 +16,6 @@ public class LoginPage extends javax.swing.JFrame implements ValidateProcess, Fi
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        usernameField1 = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
@@ -27,15 +26,6 @@ public class LoginPage extends javax.swing.JFrame implements ValidateProcess, Fi
         jLabel2 = new javax.swing.JLabel();
         signUp = new javax.swing.JLabel();
         passField = new javax.swing.JPasswordField();
-
-        usernameField1.setForeground(new java.awt.Color(153, 153, 153));
-        usernameField1.setText("Enter username....");
-        usernameField1.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
-        usernameField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                usernameField1ActionPerformed(evt);
-            }
-        });
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -86,11 +76,6 @@ public class LoginPage extends javax.swing.JFrame implements ValidateProcess, Fi
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 nameFieldFocusLost(evt);
-            }
-        });
-        nameField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nameFieldActionPerformed(evt);
             }
         });
 
@@ -185,14 +170,6 @@ public class LoginPage extends javax.swing.JFrame implements ValidateProcess, Fi
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void usernameField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_usernameField1ActionPerformed
-
-    private void nameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_nameFieldActionPerformed
-
     private void signUpMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_signUpMouseClicked
         new SignUpPage().setVisible(true);
         setVisible(false);
@@ -274,6 +251,5 @@ public class LoginPage extends javax.swing.JFrame implements ValidateProcess, Fi
     private javax.swing.JTextField nameField;
     private javax.swing.JPasswordField passField;
     private javax.swing.JLabel signUp;
-    private javax.swing.JTextField usernameField1;
     // End of variables declaration//GEN-END:variables
 }

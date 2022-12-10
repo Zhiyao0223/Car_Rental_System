@@ -91,9 +91,6 @@ public interface FileProcess {
         String path = String.format("src/main/resources/text_file/%s", file);
 
         try {
-//            File delete = new File(path);
-//            delete.delete();
-
             PrintWriter pw = new PrintWriter(new FileOutputStream(path, true));
             for (String lines :newLineArray) {
                 pw.append(lines);
@@ -205,7 +202,6 @@ public interface FileProcess {
                     }
                     continue;
                 }
-
                 // Check if empty line in text file
                 fileLine.add(line);
             }

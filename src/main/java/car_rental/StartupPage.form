@@ -85,9 +85,6 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JProgressBar" name="progressBar">
-          <Events>
-            <EventHandler event="ancestorMoved" listener="javax.swing.event.AncestorListener" parameters="javax.swing.event.AncestorEvent" handler="progressBarAncestorMoved"/>
-          </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="progressBar.setValue(0);&#xa;progressBar.setStringPainted(true);"/>
           </AuxValues>

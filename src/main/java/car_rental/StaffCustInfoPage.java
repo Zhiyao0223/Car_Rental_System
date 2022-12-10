@@ -33,7 +33,7 @@ public class StaffCustInfoPage extends javax.swing.JFrame implements ValidatePro
         jPanel2 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        searchText = new javax.swing.JLabel();
         searchBar = new javax.swing.JTextField();
         viewBtn = new javax.swing.JButton();
         jTabbedPane1 = new javax.swing.JTabbedPane();
@@ -106,8 +106,8 @@ public class StaffCustInfoPage extends javax.swing.JFrame implements ValidatePro
                 .addContainerGap(72, Short.MAX_VALUE))
         );
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel1.setText("Search : ");
+        searchText.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        searchText.setText("Search : ");
 
         searchBar.setFont(new java.awt.Font("Segoe UI", 2, 18)); // NOI18N
         searchBar.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
@@ -125,6 +125,12 @@ public class StaffCustInfoPage extends javax.swing.JFrame implements ValidatePro
         viewBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 viewBtnActionPerformed(evt);
+            }
+        });
+
+        jTabbedPane1.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jTabbedPane1StateChanged(evt);
             }
         });
 
@@ -308,7 +314,7 @@ public class StaffCustInfoPage extends javax.swing.JFrame implements ValidatePro
                         .addGap(26, 26, 26)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel1)
+                                .addComponent(searchText)
                                 .addGap(42, 42, 42)
                                 .addComponent(searchBar, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1377, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -323,7 +329,7 @@ public class StaffCustInfoPage extends javax.swing.JFrame implements ValidatePro
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
+                    .addComponent(searchText)
                     .addComponent(searchBar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jTabbedPane1)
@@ -347,11 +353,23 @@ public class StaffCustInfoPage extends javax.swing.JFrame implements ValidatePro
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        new StaffMainPage(admin).setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void viewBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewBtnActionPerformed
-        // TODO add your handling code here:
+        // Check tab
+        if (jTabbedPane1.getSelectedIndex() == 0) {
+            // Switch to list tab for edit
+            jTabbedPane1.setSelectedIndex(1);
+            
+            // Get file data
+            List <String[]> lineArray = readFile("user.txt");
+            
+            // Set value in list tab
+            setListTab(lineArray, custTable.getSelectedRow());
+            listPointer = custTable.getSelectedRow();
+            return;
+        }
     }//GEN-LAST:event_viewBtnActionPerformed
 
     private void mostBackBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostBackBtnActionPerformed
@@ -419,6 +437,22 @@ public class StaffCustInfoPage extends javax.swing.JFrame implements ValidatePro
         new Log(admin, null).writeLog(2);
     }//GEN-LAST:event_formWindowClosing
 
+    private void jTabbedPane1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jTabbedPane1StateChanged
+        // Check active tab
+        if (jTabbedPane1.getSelectedIndex() == 1) {
+            searchText.setVisible(false);
+            searchBar.setVisible(false);
+            viewBtn.setVisible(false);
+        }
+        else {
+            searchText.setVisible(true);
+            searchBar.setVisible(true);
+            viewBtn.setVisible(true);
+            
+            searchBar.setText("");
+        }
+    }//GEN-LAST:event_jTabbedPane1StateChanged
+
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -426,7 +460,6 @@ public class StaffCustInfoPage extends javax.swing.JFrame implements ValidatePro
     private javax.swing.JTable custTable;
     private javax.swing.JTextField email;
     private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
@@ -444,6 +477,7 @@ public class StaffCustInfoPage extends javax.swing.JFrame implements ValidatePro
     private javax.swing.JTextField password;
     private javax.swing.JTextField phoneNumber;
     private javax.swing.JTextField searchBar;
+    private javax.swing.JLabel searchText;
     private javax.swing.JTextField userId;
     private javax.swing.JTextField username;
     private javax.swing.JButton viewBtn;
@@ -471,8 +505,7 @@ public class StaffCustInfoPage extends javax.swing.JFrame implements ValidatePro
         tr.setRowFilter(RowFilter.regexFilter(query));
     }
     
-    
-    
+
     // Initialise table content
     private void resetTable() {
         // Initialise header and get table model

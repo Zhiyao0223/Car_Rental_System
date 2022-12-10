@@ -1,12 +1,7 @@
 package car_rental;
 
 
-import java.awt.Graphics2D;
-import java.io.File;
-import java.io.FileOutputStream;
 import java.util.List;
-import javax.swing.JFileChooser;
-import javax.swing.JPanel;
 import javax.swing.RowFilter;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -65,11 +60,6 @@ public class StaffReportPage extends javax.swing.JFrame implements ValidateProce
         userTable = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowClosing(java.awt.event.WindowEvent evt) {
-                formWindowClosing(evt);
-            }
-        });
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -355,10 +345,6 @@ public class StaffReportPage extends javax.swing.JFrame implements ValidateProce
         new StaffReportDetailPage(admin).setVisible(true);
     }//GEN-LAST:event_reportBtnActionPerformed
 
-    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
-        // TODO add your handling code here:
-    }//GEN-LAST:event_formWindowClosing
-
     private void searchBarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchBarKeyReleased
         // Check if empty search bar
         if (searchBar.getText().trim().length() == 0) {
@@ -427,7 +413,6 @@ public class StaffReportPage extends javax.swing.JFrame implements ValidateProce
             default:
                 userTable.setRowSorter(tr);
         }
-        
         tr.setRowFilter(RowFilter.regexFilter(query));
     }
     
@@ -490,7 +475,6 @@ public class StaffReportPage extends javax.swing.JFrame implements ValidateProce
                 path = "user.txt";
                 header = new String[] {"User ID", "Username", "Password", "Phone No", "Email"};
         }
-        
         // Get file data
         List <String[]> lineArray = readFile(path);
 

@@ -1,32 +1,20 @@
 package car_rental;
 
-import java.io.File;
-import java.io.PrintWriter;
-import java.text.DateFormat;
-import java.text.ParseException;
+
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Scanner;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 
-/**
- *
- * @author USER
- */
+
 public class StaffRentInfoPage extends javax.swing.JFrame implements ValidateProcess, FileProcess {
     Admin admin;
     int listPointer;
-    /**
-     * Creates new form staffCarInfo
-     */
+
     public StaffRentInfoPage(Admin tmpAdmin) {
         initComponents();
         
@@ -406,7 +394,7 @@ public class StaffRentInfoPage extends javax.swing.JFrame implements ValidatePro
     }//GEN-LAST:event_backButtonActionPerformed
 
     private void tabPanelStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_tabPanelStateChanged
-        // Cjecl
+        // Check active panel
         if (tabPanel.getSelectedIndex() == 1) {
             searchText.setVisible(false);
             searchBar.setVisible(false);
@@ -590,7 +578,6 @@ public class StaffRentInfoPage extends javax.swing.JFrame implements ValidatePro
 
         // Append line array into table
         for (String[] loopArray : lineArray) {
-            System.out.println(loopArray[3]);
             model.addRow(loopArray);
         }
         

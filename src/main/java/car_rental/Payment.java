@@ -1,8 +1,8 @@
 package car_rental;
 
-import java.util.Date;
 
 import javax.swing.JOptionPane;
+
 
 public class Payment extends PrintError{
     // Variable
@@ -11,7 +11,6 @@ public class Payment extends PrintError{
     private String paymentMethod;
     private String date;
     private String time;
-
 
     // Constructor
     public Payment() {
@@ -75,7 +74,6 @@ public class Payment extends PrintError{
         this.time = tmpTime;
     }
 
-    
     // Extra Function
     public void printError(int errorNo) {
         if (errorNo == 1) JOptionPane.showMessageDialog(null, "Error: Payment cannot be found");

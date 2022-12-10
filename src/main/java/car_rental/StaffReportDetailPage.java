@@ -3,14 +3,9 @@ package car_rental;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Graphics2D;
-import java.io.File;
-import java.io.FileOutputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
-import javax.swing.JFileChooser;
-import javax.swing.JPanel;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;

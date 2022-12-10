@@ -3,11 +3,7 @@ package car_rental;
 import car_rental.ProfilePage;
 import car_rental.CustomerRentCarPage;
 import car_rental.HistoryPage;
-import javax.swing.JPanel;
-/**
- *
- * @author acer
- */
+
 public class CustHomepage extends javax.swing.JFrame implements ValidateProcess, FileProcess {
     Customer customer;
 
@@ -15,7 +11,6 @@ public class CustHomepage extends javax.swing.JFrame implements ValidateProcess,
         initComponents();
         this.customer = cust;
         cus_name();
-      
         
         // Set GUI middle of screen
         this.setLocationRelativeTo(null);
@@ -23,13 +18,6 @@ public class CustHomepage extends javax.swing.JFrame implements ValidateProcess,
         this.customer = cust;
     }
     
-    public void cus_name(){
-    String cus_name = customer.getName();
-        jTextField3.setText(cus_name);
-}
-    public CustHomepage(Car car) {
-        initComponents();
-    }
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -71,14 +59,10 @@ public class CustHomepage extends javax.swing.JFrame implements ValidateProcess,
         Welcome.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         Welcome.setText("Welcome, ");
         Welcome.setBorder(null);
-        Welcome.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                WelcomeActionPerformed(evt);
-            }
-        });
 
         Profile.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         Profile.setText("Profile");
+        Profile.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Profile.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ProfileActionPerformed(evt);
@@ -87,6 +71,7 @@ public class CustHomepage extends javax.swing.JFrame implements ValidateProcess,
 
         Rent.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         Rent.setText("Rent a car");
+        Rent.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Rent.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 RentActionPerformed(evt);
@@ -95,6 +80,7 @@ public class CustHomepage extends javax.swing.JFrame implements ValidateProcess,
 
         History.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         History.setText("History");
+        History.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         History.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 HistoryActionPerformed(evt);
@@ -103,6 +89,7 @@ public class CustHomepage extends javax.swing.JFrame implements ValidateProcess,
 
         Logout.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         Logout.setText("Logout");
+        Logout.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Logout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 LogoutActionPerformed(evt);
@@ -113,21 +100,12 @@ public class CustHomepage extends javax.swing.JFrame implements ValidateProcess,
         jTextField3.setBackground(new java.awt.Color(102, 191, 176));
         jTextField3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jTextField3.setBorder(null);
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jSeparator1)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(137, 137, 137)
-                .addComponent(Logout)
-                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -152,6 +130,10 @@ public class CustHomepage extends javax.swing.JFrame implements ValidateProcess,
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(135, 135, 135))))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(136, 136, 136)
+                .addComponent(Logout)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -174,10 +156,11 @@ public class CustHomepage extends javax.swing.JFrame implements ValidateProcess,
                 .addComponent(History, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(Logout)
-                .addGap(41, 41, 41))
+                .addGap(40, 40, 40))
         );
 
         profile.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        profile.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         profile.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 profileMouseClicked(evt);
@@ -186,15 +169,11 @@ public class CustHomepage extends javax.swing.JFrame implements ValidateProcess,
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/profile-user.png"))); // NOI18N
 
+        jTextField1.setEditable(false);
         jTextField1.setBackground(new java.awt.Color(240, 240, 240));
         jTextField1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jTextField1.setText("Profile");
         jTextField1.setBorder(null);
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout profileLayout = new javax.swing.GroupLayout(profile);
         profile.setLayout(profileLayout);
@@ -216,10 +195,11 @@ public class CustHomepage extends javax.swing.JFrame implements ValidateProcess,
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(48, 48, 48)
                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(74, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         history.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        history.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         history.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 historyMouseClicked(evt);
@@ -227,16 +207,17 @@ public class CustHomepage extends javax.swing.JFrame implements ValidateProcess,
         });
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/history.png"))); // NOI18N
+        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel4MouseClicked(evt);
+            }
+        });
 
+        jTextField2.setEditable(false);
         jTextField2.setBackground(new java.awt.Color(240, 240, 240));
         jTextField2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jTextField2.setText("History");
         jTextField2.setBorder(null);
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout historyLayout = new javax.swing.GroupLayout(history);
         history.setLayout(historyLayout);
@@ -247,7 +228,7 @@ public class CustHomepage extends javax.swing.JFrame implements ValidateProcess,
                 .addComponent(jLabel4)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, historyLayout.createSequentialGroup()
-                .addContainerGap(61, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(69, 69, 69))
         );
@@ -262,6 +243,7 @@ public class CustHomepage extends javax.swing.JFrame implements ValidateProcess,
         );
 
         rent.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        rent.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         rent.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 rentMouseClicked(evt);
@@ -270,15 +252,11 @@ public class CustHomepage extends javax.swing.JFrame implements ValidateProcess,
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/car.png"))); // NOI18N
 
+        jTextField4.setEditable(false);
         jTextField4.setBackground(new java.awt.Color(240, 240, 240));
         jTextField4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jTextField4.setText("Rent a car");
         jTextField4.setBorder(null);
-        jTextField4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField4ActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout rentLayout = new javax.swing.GroupLayout(rent);
         rent.setLayout(rentLayout);
@@ -310,12 +288,11 @@ public class CustHomepage extends javax.swing.JFrame implements ValidateProcess,
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(167, 167, 167)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(history, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(profile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(110, 110, 110)
-                        .addComponent(rent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(profile, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(history, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(110, 110, 110)
+                .addComponent(rent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(89, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -323,9 +300,9 @@ public class CustHomepage extends javax.swing.JFrame implements ValidateProcess,
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addGap(70, 70, 70)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(profile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(rent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(rent, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(profile, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 117, Short.MAX_VALUE)
                 .addComponent(history, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(59, 59, 59))
@@ -345,22 +322,6 @@ public class CustHomepage extends javax.swing.JFrame implements ValidateProcess,
         this.dispose();
     }//GEN-LAST:event_ProfileActionPerformed
 
-    private void WelcomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_WelcomeActionPerformed
-        
-    }//GEN-LAST:event_WelcomeActionPerformed
-
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
-
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
-
-    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField4ActionPerformed
-
     private void profileMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_profileMouseClicked
         ProfilePage pr = new ProfilePage(customer);
         pr.setVisible(true);
@@ -379,11 +340,6 @@ public class CustHomepage extends javax.swing.JFrame implements ValidateProcess,
         this.dispose();
     }//GEN-LAST:event_historyMouseClicked
 
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
-        
-
-    }//GEN-LAST:event_jTextField3ActionPerformed
-
     private void RentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RentActionPerformed
         CustomerRentCarPage rent = new CustomerRentCarPage(customer);
         rent.setVisible(true);
@@ -391,48 +347,15 @@ public class CustHomepage extends javax.swing.JFrame implements ValidateProcess,
     }//GEN-LAST:event_RentActionPerformed
 
     private void HistoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HistoryActionPerformed
-        HistoryPage history = new HistoryPage(customer);
-        history.setVisible(true);
-        this.dispose();
+        new HistoryPage(customer).setVisible(true);
+        setVisible(false);
     }//GEN-LAST:event_HistoryActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-//    public static void main(String args[]) {
-//        /* Set the Nimbus look and feel */
-//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-//         */
-//        try {
-//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-//                if ("Nimbus".equals(info.getName())) {
-//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-//                    break;
-//                }
-//            }
-//        } catch (ClassNotFoundException ex) {
-//            java.util.logging.Logger.getLogger(CustHomepage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (InstantiationException ex) {
-//            java.util.logging.Logger.getLogger(CustHomepage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (IllegalAccessException ex) {
-//            java.util.logging.Logger.getLogger(CustHomepage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-//            java.util.logging.Logger.getLogger(CustHomepage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        }
-//        //</editor-fold>
-//        //</editor-fold>
-//        //</editor-fold>
-//        //</editor-fold>
-//
-//        /* Create and display the form */
-//        java.awt.EventQueue.invokeLater(new Runnable() {
-//            public void run() {
-//                new CustHomepage().setVisible(true);
-//            }
-//        });
-//    }
+    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
+        new HistoryPage(customer).setVisible(true);
+        setVisible(false);
+    }//GEN-LAST:event_jLabel4MouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton History;
@@ -455,4 +378,10 @@ public class CustHomepage extends javax.swing.JFrame implements ValidateProcess,
     private javax.swing.JPanel profile;
     private javax.swing.JPanel rent;
     // End of variables declaration//GEN-END:variables
+
+    
+    public void cus_name(){
+        String cus_name = customer.getName();
+        jTextField3.setText(cus_name);
+    }
 }

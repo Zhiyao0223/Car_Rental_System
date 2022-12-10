@@ -165,6 +165,4 @@ public interface ValidateProcess {
     default boolean checkIc(String tmpIc) {
         return ((tmpIc.length() == 12) && (checkInt(tmpIc)));
     }
-    
-    
 }

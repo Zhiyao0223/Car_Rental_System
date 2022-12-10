@@ -1,39 +1,26 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package car_rental;
 
-import static java.nio.file.Files.lines;
+
 import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author acer
- */
-public class CusPayment extends javax.swing.JFrame implements FileProcess, ValidateProcess{
 
+public class CusPayment extends javax.swing.JFrame implements FileProcess, ValidateProcess{
     Customer customer;
     Car car;
-    Payment pay;
     Booking book; 
     
-    String[] carDetails;
     Boolean startup;
     
     public CusPayment(Customer cus, Car tmpCar) {
-        
         customer = cus;
         this.car = tmpCar;
         startup = false;
@@ -44,8 +31,7 @@ public class CusPayment extends javax.swing.JFrame implements FileProcess, Valid
         this.setLocationRelativeTo(null);
         
         setLabel();
-        hideDateField();
-            
+        hideDateField();     
     }
 
 
@@ -99,11 +85,6 @@ public class CusPayment extends javax.swing.JFrame implements FileProcess, Valid
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
-        startDate.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                startDateMouseClicked(evt);
-            }
-        });
         startDate.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
                 startDatePropertyChange(evt);
@@ -134,11 +115,6 @@ public class CusPayment extends javax.swing.JFrame implements FileProcess, Valid
             }
         });
 
-        duration.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                durationActionPerformed(evt);
-            }
-        });
         duration.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 durationKeyReleased(evt);
@@ -146,59 +122,29 @@ public class CusPayment extends javax.swing.JFrame implements FileProcess, Valid
         });
 
         jTextField1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
-            }
-        });
 
         jLabel18.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel18.setText("Type:");
 
         cvv.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        cvv.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cvvActionPerformed(evt);
-            }
-        });
 
         rentId.setEditable(false);
         rentId.setBackground(new java.awt.Color(255, 255, 255));
-        rentId.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rentIdActionPerformed(evt);
-            }
-        });
 
         model.setEditable(false);
         model.setBackground(new java.awt.Color(255, 255, 255));
-        model.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                modelActionPerformed(evt);
-            }
-        });
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel2.setText("Rent ID: ");
 
         brand.setEditable(false);
         brand.setBackground(new java.awt.Color(255, 255, 255));
-        brand.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                brandActionPerformed(evt);
-            }
-        });
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel3.setText("Car Brand: ");
 
         costDay.setEditable(false);
         costDay.setBackground(new java.awt.Color(255, 255, 255));
-        costDay.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                costDayActionPerformed(evt);
-            }
-        });
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel4.setText("Car Model: ");
@@ -225,11 +171,6 @@ public class CusPayment extends javax.swing.JFrame implements FileProcess, Valid
         jLabel5.setText("Name:");
 
         cardnum.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        cardnum.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cardnumActionPerformed(evt);
-            }
-        });
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel6.setText("Card Number:");
@@ -241,22 +182,12 @@ public class CusPayment extends javax.swing.JFrame implements FileProcess, Valid
         endDate.setEnabled(false);
 
         carddate.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        carddate.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                carddateActionPerformed(evt);
-            }
-        });
 
         endDateLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         endDateLabel.setText("End date:");
 
         year.setEditable(false);
         year.setBackground(new java.awt.Color(255, 255, 255));
-        year.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                yearActionPerformed(evt);
-            }
-        });
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel9.setText("Total:");
@@ -274,30 +205,15 @@ public class CusPayment extends javax.swing.JFrame implements FileProcess, Valid
 
         costWeek.setEditable(false);
         costWeek.setBackground(new java.awt.Color(255, 255, 255));
-        costWeek.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                costWeekActionPerformed(evt);
-            }
-        });
 
         costHour.setEditable(false);
         costHour.setBackground(new java.awt.Color(255, 255, 255));
-        costHour.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                costHourActionPerformed(evt);
-            }
-        });
 
         total.setEditable(false);
         total.setBackground(new java.awt.Color(255, 255, 255));
         total.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         total.setText("0.00");
         total.setBorder(null);
-        total.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                totalActionPerformed(evt);
-            }
-        });
 
         jPanel3.setBackground(new java.awt.Color(255, 153, 153));
 
@@ -541,46 +457,6 @@ public class CusPayment extends javax.swing.JFrame implements FileProcess, Valid
       
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
-    private void durationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_durationActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_durationActionPerformed
-
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
-
-    private void cvvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cvvActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cvvActionPerformed
-
-    private void rentIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rentIdActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_rentIdActionPerformed
-
-    private void modelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modelActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_modelActionPerformed
-
-    private void brandActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_brandActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_brandActionPerformed
-
-    private void costDayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_costDayActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_costDayActionPerformed
-
-    private void cardnumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cardnumActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cardnumActionPerformed
-
-    private void carddateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_carddateActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_carddateActionPerformed
-
-    private void yearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_yearActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_yearActionPerformed
-
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // Format date field
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
@@ -602,14 +478,11 @@ public class CusPayment extends javax.swing.JFrame implements FileProcess, Valid
             endtdate = sdf.format(endDate.getDate());
         }
         
-        
         String price = total.getText();
         String cardno = cardnum.getText();
         String cardcvv = cvv.getText();
         String datecard = carddate.getText();
         String paymentid = getNewPaymentId();
-
-
 
         if (!checkCard(cardno, cardcvv, datecard)){
             JOptionPane.showMessageDialog(null, "Card number is in a wrong format!");
@@ -630,51 +503,35 @@ public class CusPayment extends javax.swing.JFrame implements FileProcess, Valid
            return;
         }
         
-       
         book = new Booking(bookid, customer, car, startdate, endtdate, price);
-        
         
         String[] bookingDetails = new String[] {bookid, userid,carid, startdate, endtdate, price};
         appendFile(bookingDetails, "booking.txt");
             
         SimpleDateFormat date = new SimpleDateFormat("dd/mm/yyyy");
-        String method = "card";
+        String method = "Card";
         
-        String[] paymentDetails = new String[] {paymentid, bookid,method, date.format(new Date()), new SimpleDateFormat("hh:mm aa").format(new Date()) };
+        String[] paymentDetails = new String[] {paymentid, bookid, method, date.format(new Date()), new SimpleDateFormat("hh:mm aa").format(new Date())};
         appendFile(paymentDetails, "payment.txt");
            
         JOptionPane.showMessageDialog(null, "Payment success!!");    
         
         String[] cardetails = new String[] {car.getId(),car.getBrand(), car.getModel(), car.getYear(), car.getYear(), car.getCostHour().substring(2), 
-            car.getCostDay().substring(2), car.getCostWeek().substring(2), car.getMileage(), car.getLocation(), "False"};
+                                            car.getCostDay().substring(2), car.getCostWeek().substring(2), car.getMileage(), car.getLocation(), "False"};
         
         String status = "False";
         editFile(cardetails, "cars.txt");
         status =  car.getStatus();
         
-        
         car = new Car(car.getId(),car.getBrand(), car.getModel(), car.getYear(), car.getYear(), car.getCostHour(), 
             car.getCostDay(), car.getCostWeek(), car.getMileage(), car.getLocation(), car.getStatus());
         
-        ReceiptPage receipt = new ReceiptPage(customer, book);
+        ReceiptPage receipt = new ReceiptPage(customer, book, false);
         receipt.setVisible(true);
-        this.dispose(); 
-       
+        this.dispose();      
     }//GEN-LAST:event_jButton1ActionPerformed
 
     
-    private void costWeekActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_costWeekActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_costWeekActionPerformed
-
-    private void costHourActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_costHourActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_costHourActionPerformed
-
-    private void totalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_totalActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_totalActionPerformed
-
     private void durationKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_durationKeyReleased
         DecimalFormat df = new DecimalFormat("0.00");
         
@@ -738,8 +595,6 @@ public class CusPayment extends javax.swing.JFrame implements FileProcess, Valid
         }
         else if (startup == false) {
             if (endDate.getDate() == null) {
-//                endDate.setDate(new Date());  
-//            } else {
                 startup = true;
                 return;
             }
@@ -786,12 +641,6 @@ public class CusPayment extends javax.swing.JFrame implements FileProcess, Valid
         
     }//GEN-LAST:event_startDatePropertyChange
 
-    private void startDateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_startDateMouseClicked
-
-    }//GEN-LAST:event_startDateMouseClicked
-
-
-    
     // Print into file
     private String[] getDateFormat() {
         return new SimpleDateFormat("dd/MM/yyyy,hh:mm aa").format(new Date()).split(",");        
@@ -855,9 +704,6 @@ public class CusPayment extends javax.swing.JFrame implements FileProcess, Valid
         costHour.setText(car.getCostHour());
         costDay.setText(car.getCostDay());
         costWeek.setText(car.getCostWeek());
-        
-//        startDate.setDate(new Date());
-//        endDate.setDate(new Date());
     }
     
     
@@ -886,9 +732,6 @@ public class CusPayment extends javax.swing.JFrame implements FileProcess, Valid
         endDate.setVisible(false);
         endDateLabel.setVisible(false);
     }
-
-
-  
 }
 
 

@@ -6,16 +6,11 @@ import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 
-/**
- *
- * @author acer
- */
+
 public class HistoryPage extends javax.swing.JFrame implements ValidateProcess, FileProcess {
     Customer customer;
     Booking book; 
-    /**
-     * Creates new form history
-     */
+
     public HistoryPage(Customer cus) {
         initComponents();
         
@@ -27,7 +22,6 @@ public class HistoryPage extends javax.swing.JFrame implements ValidateProcess, 
     }
 
     
-
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -51,22 +45,13 @@ public class HistoryPage extends javax.swing.JFrame implements ValidateProcess, 
                 "Rent ID", "Car ID", "Start Date", "End Date", "Price", "Book date"
             }
         ));
-        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTable1MouseClicked(evt);
-            }
-        });
-        jTable1.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                jTable1KeyPressed(evt);
-            }
-        });
         jScrollPane1.setViewportView(jTable1);
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel2.setText("History");
 
         jButton1.setText("Back");
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -80,7 +65,8 @@ public class HistoryPage extends javax.swing.JFrame implements ValidateProcess, 
             }
         });
 
-        jButton2.setText("Genearte receipt");
+        jButton2.setText("Generate Receipt");
+        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -140,15 +126,6 @@ public class HistoryPage extends javax.swing.JFrame implements ValidateProcess, 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTable1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTable1KeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTable1KeyPressed
-
-    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
-        DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
-
-    }//GEN-LAST:event_jTable1MouseClicked
-
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         String searchString = jTextField1.getText();
         search(searchString);
@@ -175,9 +152,8 @@ public class HistoryPage extends javax.swing.JFrame implements ValidateProcess, 
         
         book = new Booking(bookArray[0], customer, car, bookArray[3], bookArray[4], bookArray[5]);
         
-        ReceiptPage rp = new ReceiptPage(customer, book);
-        rp.setVisible(true);
-        this.dispose();
+        new ReceiptPage(customer, book, false).setVisible(true);
+        setVisible(false);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -191,12 +167,10 @@ public class HistoryPage extends javax.swing.JFrame implements ValidateProcess, 
         TableRowSorter<DefaultTableModel> trs = new TableRowSorter<>(model);
         jTable1.setRowSorter(trs);
         trs.setRowFilter(RowFilter.regexFilter(str));
-    }
-        
-    
-        
+    }  
+          
     private void viewHistory() {
-                // Initialise header and get table model
+        // Initialise header and get table model
         String[] header = {"Rent ID", "Car ID", "Start Date", "End Date", "Price", "Book date"};  
         DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
         String[] history = new String[]{};
@@ -211,7 +185,6 @@ public class HistoryPage extends javax.swing.JFrame implements ValidateProcess, 
             if (line[1].equals(customer.getId())) filterBooking.add(line);
         }
         
-
         // Set header
         model.setColumnIdentifiers(header);
 
@@ -223,26 +196,14 @@ public class HistoryPage extends javax.swing.JFrame implements ValidateProcess, 
             for(String[] p : payment){
                 String payrentID = p[1];
                 if(rentID.equals(payrentID)){
-                    String date = p[3];
                     history = new String[] {book[0], book[2], book[3], book[4], book[5], p[3]};  
                     model.addRow(history);
                     break;
                 }
-            }
-            
-            
-            
-
+            }       
         }
-        
-        
     }
     
-    private void receipt() {
-        String[] header = {"Rent ID", "Car ID", "Start Date", "End Date", "Price", "bookDate"};  
-        DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
-        
-    }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

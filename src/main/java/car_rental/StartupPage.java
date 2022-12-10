@@ -2,13 +2,9 @@ package car_rental;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JOptionPane;
+
 
 public class StartupPage extends javax.swing.JFrame {
-
-    /**
-     * Creates new form startupPage
-     */
     public StartupPage() {
         initComponents();
         
@@ -33,24 +29,6 @@ public class StartupPage extends javax.swing.JFrame {
         });
         
         t.start();
-        
-    }
-    
-    private void iterate() {
-        // Initialise variable
-        int i = 0;
-        
-        // Loop until 100 percent
-        while(i <= 100){    
-            progressBar.setValue(i);
-            
-            i=i+5;    
-            try{
-                Thread.sleep(150);
-            } catch(Exception e){
-                JOptionPane.showMessageDialog(null, "Error: " + e);
-            }
-        }    
     }
 
     @SuppressWarnings("unchecked")
@@ -69,16 +47,6 @@ public class StartupPage extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 2, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(51, 51, 255));
         jLabel1.setText("Car Rental System");
-
-        progressBar.addAncestorListener(new javax.swing.event.AncestorListener() {
-            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
-            }
-            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
-                progressBarAncestorMoved(evt);
-            }
-            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
-            }
-        });
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/icons8-car-rental-90.png"))); // NOI18N
 
@@ -124,11 +92,6 @@ public class StartupPage extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void progressBarAncestorMoved(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_progressBarAncestorMoved
-        // TODO add your handling code here:
- 
-    }//GEN-LAST:event_progressBarAncestorMoved
 
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
