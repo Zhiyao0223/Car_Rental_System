@@ -89,3 +89,10 @@ Start Date - 08/12/2022
 End Date - 15/12/2022
 Total Cost - RM1400.00
 #-------------------------
+Rent ID - R14
+User ID - 010110123456
+Car ID - C4
+Start Date - 15/12/2022
+End Date - 17/12/2022
+Total Cost - RM600.00
+#-------------------------

@@ -37,14 +37,14 @@ Available Status - False
 Car ID - C4
 Car Brand - Volkswagen
 Car Model - Tiguan
-Year made - 2017
-Gear - Automatic
-Cost per hour - RM25
-Cost per day - RM300
-Cost per week - RM1800
+Year Made - 2017
+Gear - 2017
+Cost per Hour - RM25
+Cost per Day - RM300
+Cost per Week - RM1800
 Mileage - 35000
 Location - Bukit Jalil
-Available status - True
+Available Status - False
 #-------------------------
 Car ID - C5
 Car Brand - Honda

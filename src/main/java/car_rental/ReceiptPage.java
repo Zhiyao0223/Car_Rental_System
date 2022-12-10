@@ -60,7 +60,7 @@ public class ReceiptPage extends javax.swing.JFrame implements ValidateProcess, 
             price.setText(price1);
             total.setText(price1);
             
-            SimpleDateFormat date = new SimpleDateFormat("dd/mm/yyyy");
+            SimpleDateFormat date = new SimpleDateFormat("dd/MM/yyyy");
             Rent_date.setText( date.format(new Date()));
             
            

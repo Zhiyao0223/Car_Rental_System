@@ -4,7 +4,6 @@ Payment Method - card
 Date - 12/11/2022
 Time - 12:02 PM
 #-------------------------
-
 Payment ID - P2
 Rent ID - R7
 Payment Method - card
@@ -46,4 +45,10 @@ Rent ID - R13
 Payment Method - card
 Date - 07/35/2022
 Time - 02:35 AM
+#-------------------------
+Payment ID - P2
+Rent ID - R14
+Payment Method - card
+Date - 10/59/2022
+Time - 07:59 PM
 #-------------------------
