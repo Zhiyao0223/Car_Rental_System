@@ -1,5 +1,54 @@
 Payment ID - P1
 Rent ID - R1
+Payment Method - card
 Date - 12/11/2022
 Time - 12:02 PM
+#-------------------------
+Payment ID - P2
+Rent ID - R7
+Payment Method - card
+Date - 06/18/2022
+Time - 03:18 PM
+#-------------------------
+Payment ID - P2
+Rent ID - R8
+Payment Method - card
+Date - 06/48/2022
+Time - 10:48 PM
+#-------------------------
+Payment ID - P2
+Rent ID - R9
+Payment Method - card
+Date - 06/53/2022
+Time - 10:53 PM
+#-------------------------
+Payment ID - P2
+Rent ID - R10
+Payment Method - card
+Date - 06/02/2022
+Time - 11:02 PM
+#-------------------------
+Payment ID - P2
+Rent ID - R11
+Payment Method - card
+Date - 06/03/2022
+Time - 11:03 PM
+#-------------------------
+Payment ID - P2
+Rent ID - R12
+Payment Method - card
+Date - 07/00/2022
+Time - 02:00 AM
+#-------------------------
+Payment ID - P2
+Rent ID - R13
+Payment Method - card
+Date - 07/35/2022
+Time - 02:35 AM
+#-------------------------
+Payment ID - P2
+Rent ID - R14
+Payment Method - card
+Date - 10/59/2022
+Time - 07:59 PM
 #-------------------------
