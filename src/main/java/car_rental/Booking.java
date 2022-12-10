@@ -7,9 +7,11 @@ import javax.swing.JOptionPane;
 public class Booking extends PrintError {
     // Variable
     private String rentId;
-    private User user;
+    private Customer user;
     private Car car;
-    private String date;
+    private String startDate;
+    private String endDate;
+    private String totalCost;
 
 
     // Constructor
@@ -17,14 +19,17 @@ public class Booking extends PrintError {
         this.rentId = null;
         this.user = null;
         this.car = null;
-        this.date = null;
+        this.startDate = null;
+        this.endDate = null;
     }
 
-    public Booking(String tmpRentId, User tmpUser, Car tmpCar, String tmpDate) {
+    public Booking(String tmpRentId, Customer tmpUser, Car tmpCar, String tmpDate, String tmpEndDate, String tmpCost) {
         this.rentId = tmpRentId;
         this.user = tmpUser;
         this.car = tmpCar;
-        this.date = tmpDate;
+        this.startDate = tmpDate;
+        this.endDate = tmpEndDate;
+        totalCost = tmpCost;
     }
 
 
@@ -38,11 +43,11 @@ public class Booking extends PrintError {
     }
 
     // User
-    public User getUser() {
+    public Customer getUser() {
         return this.user;
     }
 
-    public void setUser(User tmpUser) {
+    public void setUser(Customer tmpUser) {
         this.user = tmpUser;
     }
 
@@ -55,13 +60,32 @@ public class Booking extends PrintError {
         this.car = tmpCar;
     }
 
-    // Date
-    public String getDate() {
-        return this.date;
+    // Start Date
+    public String getStartDate() {
+        return this.startDate;
     }
 
-    public void setDate(String tmpDate) {
-        this.date = tmpDate;
+    public void setStartDate(String tmpDate) {
+        this.startDate = tmpDate;
+    }
+    
+    // End Date
+        // Start Date
+    public String getEndDate() {
+        return this.endDate;
+    }
+
+    public void setEndDate(String tmpDate) {
+        this.endDate = tmpDate;
+    }
+    
+    // Total Cost
+    public String getTotalCost() {
+        return this.totalCost;
+    }
+    
+    public void setTotalCost(String tmpTotalCost) {
+        totalCost = tmpTotalCost;
     }
 
 

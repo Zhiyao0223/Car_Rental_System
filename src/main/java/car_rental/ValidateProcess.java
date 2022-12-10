@@ -81,6 +81,15 @@ public interface ValidateProcess {
     
     // Check if car available on selected date
     default boolean checkAvailableStatus(List <String[]> lineArray, int indexNo, String carID, String startDates, String endDates) {
+        /* 
+        Parameter:
+        lineArray : booking list
+        indexNo : skip duplicate booking (only applicable in edit booking
+        carId : Primary key of the car
+        startDates : Booking start date
+        endDates : Booking end date
+        */
+        
         // Check index
         int lineCounter = 0;
         
@@ -114,8 +123,8 @@ public interface ValidateProcess {
                 }
                 
                 // Start date or end date between other rent time
-                if ((startDate.compareTo(fileStartDate) >= 0 && startDate.compareTo(fileEndDate) <= 0) &&
-                        endDate.compareTo(fileStartDate) >= 0 && endDate.compareTo(fileEndDate) <= 0) {
+                if ((startDate.compareTo(fileStartDate) >= 0 && startDate.compareTo(fileEndDate) <= 0) ||
+                        (endDate.compareTo(fileStartDate) >= 0 && endDate.compareTo(fileEndDate) <= 0)) {
                     JOptionPane.showMessageDialog(null, "Car is not available at that moment");
                     return false;
                 }

@@ -5,16 +5,13 @@ public class Car {
     private String id;
     private String brand;
     private String model;
-    private String gear;
-    private String location;
-
     private String year;
-
+    private String gear;
     private String costHour;
     private String costDay;
     private String costWeek;
     private String mileage;
-
+    private String location;
     private String status;
 
     // Constructor
@@ -33,7 +30,7 @@ public class Car {
     }
 
 
-    public Car(String tmpId, String tmpBrand, String tmpModel, String tmpYear, String tmpGear, String tmpCostHour, String tmpCostDay, String tmpCostWeek, String tmpMileage, String tmpLocation, String tmpStatus) {
+    public Car(String tmpId, String tmpBrand, String tmpModel, String tmpYear, String tmpGear, String tmpCostHour, String tmpCostDay, String tmpCostWeek, String tmpMileage, String tmpLocation, String tmpStatus) {        
         this.id = tmpId;
         this.brand = tmpBrand;
         this.model = tmpModel;
