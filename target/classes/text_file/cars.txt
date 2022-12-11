@@ -17,7 +17,7 @@ Year Made - 2020
 Gear - Manual
 Cost per Hour - RM15
 Cost per Day - RM240
-Cost per Week - RM1680
+Cost per Week - RM1500
 Mileage - 34500
 Location - Sungai Besi
 Available Status - False
@@ -26,7 +26,7 @@ Car ID - C3
 Car Brand - Perodua
 Car Model - Saga
 Year Made - 2017
-Gear - 2017
+Gear - Manual
 Cost per Hour - RM11
 Cost per Day - RM240
 Cost per Week - RM1400
@@ -38,10 +38,10 @@ Car ID - C4
 Car Brand - Volkswagen
 Car Model - Tiguan
 Year Made - 2017
-Gear - 2017
+Gear - Automatic
 Cost per Hour - RM25
-Cost per Day - RM300
-Cost per Week - RM1800
+Cost per Day - RM450
+Cost per Week - RM2800
 Mileage - 35000
 Location - Bukit Jalil
 Available Status - False
@@ -61,12 +61,12 @@ Available status - True
 Car ID - C6
 Car Brand - Honda
 Car Model - Civic
-Year made - 2015
+Year Made - 2015
 Gear - Automatic
-Cost per hour - RM15
-Cost per day - RM340
-Cost per week - RM2000
+Cost per Hour - RM15
+Cost per Day - RM340
+Cost per Week - RM2000
 Mileage - 29000
 Location - Bukit Jalil
-Available status - True
+Available Status - False
 #-------------------------

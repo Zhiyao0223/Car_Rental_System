@@ -60,6 +60,11 @@ public class StaffReportPage extends javax.swing.JFrame implements ValidateProce
         userTable = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -71,6 +76,7 @@ public class StaffReportPage extends javax.swing.JFrame implements ValidateProce
         backBtn.setBorderPainted(false);
         backBtn.setContentAreaFilled(false);
         backBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        backBtn.setFocusPainted(false);
         backBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backBtnActionPerformed(evt);
@@ -301,7 +307,7 @@ public class StaffReportPage extends javax.swing.JFrame implements ValidateProce
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                         .addGap(26, 26, 26)
                         .addComponent(tabs, javax.swing.GroupLayout.PREFERRED_SIZE, 1377, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addContainerGap(28, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(reportBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -361,6 +367,11 @@ public class StaffReportPage extends javax.swing.JFrame implements ValidateProce
         currentTab = tabs.getSelectedIndex();
         filter("");
     }//GEN-LAST:event_tabsStateChanged
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        // Add login record into log file
+        new Log(admin, null).writeLog(2);
+    }//GEN-LAST:event_formWindowClosing
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

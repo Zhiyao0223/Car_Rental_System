@@ -90,6 +90,9 @@ public interface ValidateProcess {
         endDates : Booking end date
         */
         
+        // Return if empty end date
+        if (endDates == null) endDates = startDates;
+        
         // Check index
         int lineCounter = 0;
         
@@ -106,7 +109,7 @@ public interface ValidateProcess {
         }
 
         // Check empty date and prevent recursion
-        if (startDates.isBlank() || endDates.isBlank()) return false;
+        if (startDates.isBlank()) return false;
         
         // Check for past date
         try {
@@ -114,7 +117,7 @@ public interface ValidateProcess {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
         }
-        if (startDate.compareTo(todayDate) < 0 || endDate.compareTo(todayDate) < 0) {
+        if (startDate.compareTo(todayDate) < 0) {
             JOptionPane.showMessageDialog(null, "Hello, that day already past ye");
             return false;
         }
@@ -122,7 +125,7 @@ public interface ValidateProcess {
             JOptionPane.showMessageDialog(null, "Booking must be one day earlier");
             return false;
         }
-        
+
         // Loop over all car rows
         for (String[] lines: lineArray) {
             // Find selected car

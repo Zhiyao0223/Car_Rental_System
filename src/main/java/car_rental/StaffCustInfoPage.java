@@ -3,6 +3,8 @@ package car_rental;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.RowFilter;
+import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 
@@ -23,6 +25,12 @@ public class StaffCustInfoPage extends javax.swing.JFrame implements ValidatePro
         listPointer = 0;
         
         resetTable();
+        
+        // Set table value at center at active tab
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment( SwingConstants.CENTER );
+    
+        custTable.setDefaultRenderer(String.class, centerRenderer);
     }
 
     @SuppressWarnings("unchecked")
@@ -72,6 +80,7 @@ public class StaffCustInfoPage extends javax.swing.JFrame implements ValidatePro
         jButton1.setBorderPainted(false);
         jButton1.setContentAreaFilled(false);
         jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton1.setFocusPainted(false);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -354,6 +363,7 @@ public class StaffCustInfoPage extends javax.swing.JFrame implements ValidatePro
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         new StaffMainPage(admin).setVisible(true);
+        setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void viewBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewBtnActionPerformed
@@ -503,6 +513,9 @@ public class StaffCustInfoPage extends javax.swing.JFrame implements ValidatePro
         TableRowSorter <DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(model);
         custTable.setRowSorter(tr);
         tr.setRowFilter(RowFilter.regexFilter(query));
+        
+        // Reset selected row
+        custTable.getSelectionModel().clearSelection();
     }
     
 

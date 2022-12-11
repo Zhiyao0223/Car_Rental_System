@@ -206,6 +206,9 @@ public class LoginPage extends javax.swing.JFrame implements ValidateProcess, Fi
                     Admin currentAdmin = new Admin(line[0], line[1], line[2], line[3]);
                     new StaffMainPage(currentAdmin).setVisible(true);
                     setVisible(false);
+                    
+                    // Write into log file
+                    new Log(currentAdmin, null).writeLog(1);
                     return;
                 }
             }

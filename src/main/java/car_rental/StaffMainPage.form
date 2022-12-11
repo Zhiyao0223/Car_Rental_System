@@ -59,7 +59,7 @@
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
                   <Component id="logoutButton" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -67,9 +67,9 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                      <Component id="logoutButton" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="logoutButton" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="132" max="32767" attributes="0"/>
                   <Component id="greetingField" min="-2" max="-2" attributes="0"/>
@@ -176,7 +176,7 @@
                       <Component id="custButton" alignment="3" min="-2" pref="160" max="-2" attributes="0"/>
                       <Component id="carButton" alignment="3" min="-2" pref="160" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="66" max="32767" attributes="0"/>
+                  <EmptySpace pref="64" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="profileButton" alignment="3" min="-2" pref="160" max="-2" attributes="0"/>
                       <Component id="reportButton" alignment="3" min="-2" pref="160" max="-2" attributes="0"/>

@@ -10,7 +10,7 @@ public class Admin extends User{
     }
 
     public Admin(String tmpId, String tmpUsername, String tmpName, String tmpPass) {
-        super(tmpId, tmpPass, tmpName);
+        super(tmpId, tmpName, tmpPass);
         setUsername(tmpUsername);
     }
     

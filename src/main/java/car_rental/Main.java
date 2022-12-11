@@ -11,7 +11,6 @@ package car_rental;
 
 public class Main {
     public static void main(String[] args) { 
-//        new StartupPage().setVisible(true);
-        new LoginPage().setVisible(true);
+        new StartupPage().setVisible(true);
     }
 }

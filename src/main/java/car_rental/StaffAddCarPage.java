@@ -467,6 +467,6 @@ public class StaffAddCarPage extends javax.swing.JFrame implements FileProcess, 
 
     private void setCarId() {
         List<String[]> lineArray = readFile("cars.txt");
-        carIDField.setText(String.format("%s%d", "C", lineArray.size()+1));
+        carIDField.setText(String.format("%s%d", "C", Integer.valueOf(lineArray.get(lineArray.size()-1)[0].substring(1)) + 1));
     }
 }

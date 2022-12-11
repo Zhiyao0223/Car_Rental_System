@@ -5,6 +5,8 @@ import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.RowFilter;
+import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 
@@ -30,6 +32,12 @@ public class StaffCarInfoPage extends javax.swing.JFrame implements ValidateProc
         DefaultTableModel model = (DefaultTableModel) carTable.getModel();
         TableRowSorter sorter = new TableRowSorter<>(model);
         carTable.setRowSorter(sorter);
+        
+        // Set table value at center at active tab
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment( SwingConstants.CENTER );
+    
+        carTable.setDefaultRenderer(String.class, centerRenderer);
     }
 
     @SuppressWarnings("unchecked")
@@ -793,5 +801,8 @@ public class StaffCarInfoPage extends javax.swing.JFrame implements ValidateProc
         TableRowSorter <DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(model);
         carTable.setRowSorter(tr);
         tr.setRowFilter(RowFilter.regexFilter(query));
+        
+        // Reset selected row
+        carTable.getSelectionModel().clearSelection();
     }
 }

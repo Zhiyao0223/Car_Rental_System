@@ -479,8 +479,8 @@ public class CusPayment extends javax.swing.JFrame implements FileProcess, Valid
         String cardno = cardnum.getText();
         String cardcvv = cvv.getText();
         String datecard = carddate.getText();
-        String paymentid = getNewPaymentId();
-
+        String paymentid = getNewPaymentId();        
+        
         // Validation
         if(!checkBlank(duration.getText())){
             JOptionPane.showMessageDialog(null, "Please enter a duration");
@@ -516,15 +516,15 @@ public class CusPayment extends javax.swing.JFrame implements FileProcess, Valid
         String[] bookingDetails = new String[] {bookid, userid,carid, startdate, endtdate, price};
         appendFile(bookingDetails, "booking.txt");
             
-        SimpleDateFormat date = new SimpleDateFormat("dd/mm/yyyy");
+        SimpleDateFormat date = new SimpleDateFormat("dd/MM/yyyy");
         String method = "Card";
         
         String[] paymentDetails = new String[] {paymentid, bookid, method, date.format(new Date()), new SimpleDateFormat("hh:mm aa").format(new Date())};
         appendFile(paymentDetails, "payment.txt");
            
-        JOptionPane.showMessageDialog(null, "Payment success!!");    
+        JOptionPane.showMessageDialog(null, "Payment Success !");    
         
-        String[] cardetails = new String[] {car.getId(),car.getBrand(), car.getModel(), car.getYear(), car.getYear(), car.getCostHour().substring(2), 
+        String[] cardetails = new String[] {car.getId(),car.getBrand(), car.getModel(), car.getYear(), car.getGear(), car.getCostHour().substring(2), 
                                             car.getCostDay().substring(2), car.getCostWeek().substring(2), car.getMileage(), car.getLocation(), "False"};
         
         String status = "False";
@@ -632,7 +632,7 @@ public class CusPayment extends javax.swing.JFrame implements FileProcess, Valid
         }
         
         String startDates = new SimpleDateFormat("dd/MM/yyyy").format(startDate.getDate());
-        String endDates = new SimpleDateFormat("dd/MM/yyyy").format(new Date());
+        String endDates = null;
         
         if (checkBlank(duration.getText())) {
             Long durations = Long.valueOf(duration.getText());

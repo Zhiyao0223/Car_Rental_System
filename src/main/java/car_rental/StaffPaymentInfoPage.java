@@ -3,6 +3,8 @@ package car_rental;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.RowFilter;
+import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 
@@ -29,6 +31,12 @@ public class StaffPaymentInfoPage extends javax.swing.JFrame implements Validate
         DefaultTableModel model = (DefaultTableModel) paymentTable.getModel();
         TableRowSorter sorter = new TableRowSorter<>(model);
         paymentTable.setRowSorter(sorter);
+        
+        // Set table value at center at active tab
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment( SwingConstants.CENTER );
+    
+        paymentTable.setDefaultRenderer(String.class, centerRenderer);
     }
 
     @SuppressWarnings("unchecked")
@@ -408,7 +416,7 @@ public class StaffPaymentInfoPage extends javax.swing.JFrame implements Validate
         }
         
         // Initialise booking class
-        book = new Booking(bookLineArray[0], cust, car, bookLineArray[3], bookLineArray[4], bookLineArray[5]);
+        book = new Booking(bookLineArray[0], cust, car, bookLineArray[3], bookLineArray[4], bookLineArray[5].substring(2));
         
         // Pass paymentId into receipt page
         new ReceiptPage(cust, book, true).setVisible(true);
@@ -542,5 +550,8 @@ public class StaffPaymentInfoPage extends javax.swing.JFrame implements Validate
         TableRowSorter <DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(model);
         paymentTable.setRowSorter(tr);
         tr.setRowFilter(RowFilter.regexFilter(text));
+        
+        // Reset selected row
+        paymentTable.getSelectionModel().clearSelection();
     }
 }

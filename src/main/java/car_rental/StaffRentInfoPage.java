@@ -7,6 +7,8 @@ import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.RowFilter;
+import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 
@@ -32,6 +34,12 @@ public class StaffRentInfoPage extends javax.swing.JFrame implements ValidatePro
         DefaultTableModel model = (DefaultTableModel) rentTable.getModel();
         TableRowSorter sorter = new TableRowSorter<>(model);
         rentTable.setRowSorter(sorter);
+        
+        // Set table value at center at active tab
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment( SwingConstants.CENTER );
+    
+        rentTable.setDefaultRenderer(String.class, centerRenderer);
     }
 
     @SuppressWarnings("unchecked")
@@ -400,6 +408,7 @@ public class StaffRentInfoPage extends javax.swing.JFrame implements ValidatePro
             searchBar.setVisible(false);
         }
         else {
+            editButton.setVisible(true);
             searchText.setVisible(true);
             searchBar.setVisible(true);
             
@@ -506,7 +515,6 @@ public class StaffRentInfoPage extends javax.swing.JFrame implements ValidatePro
                 return;
             }
             
-
             boolean editStatus = editFile(newData, "booking.txt");
 
             if (editStatus) {
@@ -583,6 +591,7 @@ public class StaffRentInfoPage extends javax.swing.JFrame implements ValidatePro
         
         addCarComboBox();
         setListTab(lineArray, 0);
+        editButton.setVisible(true);
 
     }
     
@@ -610,6 +619,10 @@ public class StaffRentInfoPage extends javax.swing.JFrame implements ValidatePro
         totalCostField.setText(firstData[5].substring(2));
         startDateField.setDate(startDate);
         endDateField.setDate(endDate);
+        
+        Date today = new Date();
+        if (endDate.compareTo(today) > 0) checkOldData(false);
+        else checkOldData(true);
     }
     
     // Get list value
@@ -642,6 +655,9 @@ public class StaffRentInfoPage extends javax.swing.JFrame implements ValidatePro
         TableRowSorter <DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(model);
         rentTable.setRowSorter(tr);
         tr.setRowFilter(RowFilter.regexFilter(query));
+        
+        // Reset selected row
+        rentTable.getSelectionModel().clearSelection();
     }
 
     private void addCarComboBox() {
@@ -653,6 +669,23 @@ public class StaffRentInfoPage extends javax.swing.JFrame implements ValidatePro
         
         for (String[] lines : lineArray) {
             carIdField.addItem(lines[0]);
+        }
+    }
+    
+    private void checkOldData(boolean status) {
+        if (status) {
+            editButton.setVisible(false);
+            startDateField.setEnabled(false);
+            endDateField.setEnabled(false);
+            carIdField.setEnabled(false);
+            totalCostField.setEnabled(false);
+        }
+        else {
+            editButton.setVisible(true);
+            startDateField.setEnabled(true);
+            endDateField.setEnabled(true);
+            carIdField.setEnabled(true);
+            totalCostField.setEnabled(true);
         }
     }
 }

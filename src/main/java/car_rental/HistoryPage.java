@@ -45,7 +45,15 @@ public class HistoryPage extends javax.swing.JFrame implements ValidateProcess, 
             new String [] {
                 "Rent ID", "Car ID", "Start Date", "End Date", "Price", "Book date"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
@@ -60,9 +68,9 @@ public class HistoryPage extends javax.swing.JFrame implements ValidateProcess, 
         });
 
         jTextField1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+        jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextField1KeyReleased(evt);
             }
         });
 
@@ -107,7 +115,7 @@ public class HistoryPage extends javax.swing.JFrame implements ValidateProcess, 
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(46, 46, 46)
+                .addGap(28, 28, 28)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 5, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -117,20 +125,15 @@ public class HistoryPage extends javax.swing.JFrame implements ValidateProcess, 
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(jButton1))
-                .addGap(175, 175, 175))
+                    .addComponent(jButton1)
+                    .addComponent(jButton2))
+                .addGap(29, 29, 29))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        String searchString = jTextField1.getText();
-        search(searchString);
-    }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         if (jTable1.getRowCount() == 0) {
@@ -173,11 +176,19 @@ public class HistoryPage extends javax.swing.JFrame implements ValidateProcess, 
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jTextField1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyReleased
+        String searchString = jTextField1.getText();
+        search(searchString);
+    }//GEN-LAST:event_jTextField1KeyReleased
+
    public void search(String str){
         DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
         TableRowSorter<DefaultTableModel> trs = new TableRowSorter<>(model);
         jTable1.setRowSorter(trs);
         trs.setRowFilter(RowFilter.regexFilter(str));
+        
+        // Reset selected row
+        jTable1.getSelectionModel().clearSelection();
     }  
           
     private void viewHistory() {
