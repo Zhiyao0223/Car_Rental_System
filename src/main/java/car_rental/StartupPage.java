@@ -14,7 +14,7 @@ public class StartupPage extends javax.swing.JFrame {
         Thread t = new Thread(new Runnable() {
             @Override
             public void run() {
-                for (int i = 0; i <= 100; i++) {
+                for (int i = 0; i <= 100; i+=2) {
                     progressBar.setValue(i);
                     try {
                         Thread.sleep(100);

@@ -10,3 +10,15 @@ Password - 1234
 Phone Number - 0123456789
 Email - meng@hotmail.com
 #-------------------------
+User ID - 111111223333
+Username - Tan
+Password - 1234
+Phone Number - 0122223333
+Email - tan@gmail.com
+#-------------------------
+User ID - 111111224444
+Username - xiaowu
+Password - 1234
+Phone Number - 0123333555
+Email - xiaowuu@gmail.com
+#-------------------------

@@ -1,6 +1,7 @@
 package car_rental;
 
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
@@ -67,9 +68,9 @@ public class CustomerRentCarPage extends javax.swing.JFrame implements FileProce
             }
         });
 
-        jTextField57.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField57ActionPerformed(evt);
+        jTextField57.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextField57KeyReleased(evt);
             }
         });
 
@@ -84,9 +85,16 @@ public class CustomerRentCarPage extends javax.swing.JFrame implements FileProce
             Class[] types = new Class [] {
                 java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false, false, false, false
+            };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
             }
         });
         jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -312,7 +320,12 @@ public class CustomerRentCarPage extends javax.swing.JFrame implements FileProce
                                     mileage.getText(),
                                     location.getText(),
                                     status.getText());
-        System.out.println(carDetails.getCostWeek());
+        
+        if (carDetails.getId().isBlank()) {
+            JOptionPane.showMessageDialog(null, "No record is selected");
+            return;
+        }
+        
         CusPayment paypage = new CusPayment(customer, carDetails);
         paypage.setVisible(true);
         this.dispose(); 
@@ -337,15 +350,27 @@ public class CustomerRentCarPage extends javax.swing.JFrame implements FileProce
 
     public void search(String str){
         DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
-        TableRowSorter<DefaultTableModel> trs = new TableRowSorter<>(model);
+        TableRowSorter<DefaultTableModel> trs = new TableRowSorter<DefaultTableModel>(model);
         jTable1.setRowSorter(trs);
         trs.setRowFilter(RowFilter.regexFilter(str));
+        
+        // Reset selected row
+        jTable1.getSelectionModel().clearSelection();
+        
+        // Clear label
+        resetLabel();
     }
     
-    private void jTextField57ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField57ActionPerformed
-        String searchString = jTextField57.getText();
-        search(searchString);
-    }//GEN-LAST:event_jTextField57ActionPerformed
+    private void jTextField57KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField57KeyReleased
+        // Check if empty search bar
+        if (jTextField57.getText().trim().length() == 0) {
+            search(null);
+        }
+        // Filter search bar
+        else {
+            search(jTextField57.getText());
+        }
+    }//GEN-LAST:event_jTextField57KeyReleased
 
    
 
@@ -397,5 +422,20 @@ public class CustomerRentCarPage extends javax.swing.JFrame implements FileProce
         for (String[] loopArray : lineArray) {
             model.addRow(loopArray);
         }
+    }
+    
+    // Reset label
+    private void resetLabel() {
+        idField.setText("");
+        brand.setText("");
+        model1.setText("");
+        year.setText("");
+        gear.setText("");
+        costHour.setText("");
+        costDay.setText("");
+        costWeek.setText("");
+        mileage.setText("");
+        location.setText("");
+        status.setText("");
     }
 }

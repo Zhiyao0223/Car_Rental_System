@@ -30,7 +30,7 @@ public interface ValidateProcess {
         try {
             Long.valueOf(tmp);
         } catch (Exception e){
-            System.out.println(e);
+//            System.out.println(e);
             return false;
         }
         return true;
@@ -45,7 +45,7 @@ public interface ValidateProcess {
             if (tmp.length() != 4) return false;
             if (tmp.indexOf(0) == 2 | tmp.indexOf(0) == 1) return false;
         } catch(Exception e) {
-            System.out.println(e);
+//            System.out.println(e);
             return false;
         }
         return true;
@@ -68,7 +68,7 @@ public interface ValidateProcess {
         // Check if end date bigger than start date
         int dateValidateNo = endDate.compareTo(startDate);
         
-        System.out.println(endDate + " " + startDate);
+//        System.out.println(endDate + " " + startDate);
         
         // Smaller
         if (dateValidateNo < 0) {
@@ -94,7 +94,8 @@ public interface ValidateProcess {
         int lineCounter = 0;
         
         // Convert string to date
-        Date startDate, endDate, fileStartDate, fileEndDate;
+        Date startDate, endDate, fileStartDate, fileEndDate, todayDate = new Date();
+        String today = new SimpleDateFormat("dd/MM/yyyy").format(new Date());
         
         try {
             startDate = new SimpleDateFormat("dd/MM/yyyy").parse(startDates);
@@ -104,6 +105,24 @@ public interface ValidateProcess {
             return false;
         }
 
+        // Check empty date and prevent recursion
+        if (startDates.isBlank() || endDates.isBlank()) return false;
+        
+        // Check for past date
+        try {
+            todayDate = new SimpleDateFormat("dd/MM/yyyy").parse(today);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+        if (startDate.compareTo(todayDate) < 0 || endDate.compareTo(todayDate) < 0) {
+            JOptionPane.showMessageDialog(null, "Hello, that day already past ye");
+            return false;
+        }
+        else if (startDate.compareTo(todayDate) == 0) {
+            JOptionPane.showMessageDialog(null, "Booking must be one day earlier");
+            return false;
+        }
+        
         // Loop over all car rows
         for (String[] lines: lineArray) {
             // Find selected car
@@ -121,10 +140,10 @@ public interface ValidateProcess {
                     JOptionPane.showMessageDialog(null, e);
                     return false;
                 }
-                
+
                 // Start date or end date between other rent time
                 if ((startDate.compareTo(fileStartDate) >= 0 && startDate.compareTo(fileEndDate) <= 0) ||
-                        (endDate.compareTo(fileStartDate) >= 0 && endDate.compareTo(fileEndDate) <= 0)) {
+                    (endDate.compareTo(fileStartDate) >= 0 && endDate.compareTo(fileEndDate) <= 0)) {
                     JOptionPane.showMessageDialog(null, "Car is not available at that moment");
                     return false;
                 }

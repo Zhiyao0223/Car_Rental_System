@@ -286,19 +286,19 @@ public class SignUpPage extends javax.swing.JFrame implements ValidateProcess, F
             JOptionPane.showMessageDialog(null, "Different password detected.");
             return;
         }
-        // Check phone no format
-        else if (!checkPhoneNo(inputData[3])) {
-            JOptionPane.showMessageDialog(null, "Invalid phone number format");
+        // Check email format
+        else if (!checkEmail(inputData[4])) {
+            JOptionPane.showMessageDialog(null, "Invalid email format");
             return;
         }
-        // Check ic format
+                // Check ic format
         else if (!checkIc(inputData[0])) {
             JOptionPane.showMessageDialog(null, "Invalid IC Format");
             return;
         }
-        // Check email format
-        else if (!checkEmail(inputData[4])) {
-            JOptionPane.showMessageDialog(null, "Invalid email format");
+        // Check phone no format
+        else if (!checkPhoneNo(inputData[3])) {
+            JOptionPane.showMessageDialog(null, "Invalid phone number format");
             return;
         }
         
@@ -312,7 +312,7 @@ public class SignUpPage extends javax.swing.JFrame implements ValidateProcess, F
                 return;
             }
             else if (line[1].equals(inputData[1])) {
-                JOptionPane.showMessageDialog(null, "Account already exists");
+                JOptionPane.showMessageDialog(null, "Username is taken");
                 return;
             }
         }

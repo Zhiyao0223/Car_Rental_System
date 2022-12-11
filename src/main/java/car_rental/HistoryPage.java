@@ -2,6 +2,7 @@ package car_rental;
 
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
@@ -132,6 +133,16 @@ public class HistoryPage extends javax.swing.JFrame implements ValidateProcess, 
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        if (jTable1.getRowCount() == 0) {
+            JOptionPane.showMessageDialog(null, "No record found");
+            return;
+        }
+        
+        else if (jTable1.getSelectedRow() == -1) {
+            JOptionPane.showMessageDialog(null, "Please select a record to generate receipt");
+            return;
+        }
+        
         Car car = new Car();
 
         List <String[]> lineArray = readFile("booking.txt");

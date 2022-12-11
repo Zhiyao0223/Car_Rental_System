@@ -18,12 +18,9 @@ public class CusPayment extends javax.swing.JFrame implements FileProcess, Valid
     Car car;
     Booking book; 
     
-    Boolean startup;
-    
     public CusPayment(Customer cus, Car tmpCar) {
         customer = cus;
         this.car = tmpCar;
-        startup = false;
     
         initComponents();
         
@@ -47,7 +44,7 @@ public class CusPayment extends javax.swing.JFrame implements FileProcess, Valid
         jButton3 = new javax.swing.JButton();
         jComboBox1 = new javax.swing.JComboBox<>();
         duration = new javax.swing.JTextField();
-        jTextField1 = new javax.swing.JTextField();
+        nameField = new javax.swing.JTextField();
         jLabel18 = new javax.swing.JLabel();
         cvv = new javax.swing.JTextField();
         jSeparator3 = new javax.swing.JSeparator();
@@ -121,7 +118,7 @@ public class CusPayment extends javax.swing.JFrame implements FileProcess, Valid
             }
         });
 
-        jTextField1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        nameField.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
         jLabel18.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel18.setText("Type:");
@@ -254,7 +251,7 @@ public class CusPayment extends javax.swing.JFrame implements FileProcess, Valid
                         .addGap(139, 139, 139)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel5)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(nameField, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel6)
@@ -379,7 +376,7 @@ public class CusPayment extends javax.swing.JFrame implements FileProcess, Valid
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(nameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(33, 33, 33)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel6)
@@ -484,23 +481,34 @@ public class CusPayment extends javax.swing.JFrame implements FileProcess, Valid
         String datecard = carddate.getText();
         String paymentid = getNewPaymentId();
 
-        if (!checkCard(cardno, cardcvv, datecard)){
-            JOptionPane.showMessageDialog(null, "Card number is in a wrong format!");
-               return;
-        }else if(!checkBlank(duration.getText())){
+        // Validation
+        if(!checkBlank(duration.getText())){
             JOptionPane.showMessageDialog(null, "Please enter a duration");
-        }else if (!checkBlank(cardno)){
+            return;
+        }
+        else if (!(checkBlank(nameField.getText()) && checkBlank(cardnum.getText()) && checkBlank(cvv.getText()) && checkBlank(carddate.getText()))) {
+            JOptionPane.showMessageDialog(null, "All field is compulsory");
+            return;
+        }        
+        else if (!checkCard(cardno, cardcvv, datecard)){
+            JOptionPane.showMessageDialog(null, "Card number is in a wrong format!");
+            return;
+        }
+        else if (!checkBlank(cardno)){
             JOptionPane.showMessageDialog(null, "Please enter card number");
-           return;
-        }else if (!checkBlank(cardcvv)){
+            return;
+        }
+        else if (!checkBlank(cardcvv)){
             JOptionPane.showMessageDialog(null, "Please enter cvv");
-           return;
-        }else if (!checkBlank(datecard)){
+            return;
+        }
+        else if (!checkBlank(datecard)){
             JOptionPane.showMessageDialog(null, "Please enter card date");
-           return;
-        }else if (!checkInt(duration.getText())){
+            return;
+        }
+        else if (!checkInt(duration.getText())){
             JOptionPane.showMessageDialog(null, "Please enter numbers");
-           return;
+            return;
         }
         
         book = new Booking(bookid, customer, car, startdate, endtdate, price);
@@ -533,15 +541,35 @@ public class CusPayment extends javax.swing.JFrame implements FileProcess, Valid
 
     
     private void durationKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_durationKeyReleased
-        DecimalFormat df = new DecimalFormat("0.00");
+        // Return if duration is zero
+        if (duration.getText().isBlank()) {
+            startDate.setDate(null);
+            endDate.setDate(null);
+            return;
+        }
         
-        double durations = 0;
+        // Initialise variable
+        DecimalFormat df = new DecimalFormat("0.00");
+        int durations = 0;
         
         String select = jComboBox1.getSelectedItem().toString();
         try {
-            durations = Double.valueOf(duration.getText());
+            durations = Integer.valueOf(duration.getText());
         } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Accept only whole number");
+            duration.setText("");
+            startDate.setDate(null);
+            endDate.setDate(null);
             total.setText("0.00");
+            return;
+        }
+        
+
+        if (durations <= 0) {
+            JOptionPane.showMessageDialog(null, "Eh want play go other place lah");
+            duration.setText("");
+            startDate.setDate(null);
+            endDate.setDate(null);
             return;
         }
         
@@ -557,14 +585,14 @@ public class CusPayment extends javax.swing.JFrame implements FileProcess, Valid
             total.setText(String.valueOf(df.format(durations * day)));
         }
         else if ("Week".equals(select)){
-            System.out.println(String.valueOf(durations * week));
+
             total.setText(String.valueOf(df.format(durations * week)));
         }
         
         // Check if start date is filled
         if (startDate.getDate() != null) {
             Long durationss = Long.valueOf(duration.getText());
-            System.out.println(String.valueOf(durationss * 7));
+
             if (jComboBox1.getSelectedItem().toString().equals("Week")) durationss *= 7; 
             
             String startDates = new SimpleDateFormat("dd/MM/yyyy").format(startDate.getDate());
@@ -587,33 +615,25 @@ public class CusPayment extends javax.swing.JFrame implements FileProcess, Valid
                 Logger.getLogger(CusPayment.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+        
+        if (duration.getText().isBlank()) endDate.setDate(null);
     }//GEN-LAST:event_durationKeyReleased
 
+    
     private void startDatePropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_startDatePropertyChange
         if (!"date".equals(evt.getPropertyName())) {
             return;
         }
-        else if (startup == false) {
-            if (endDate.getDate() == null) {
-                startup = true;
-                return;
-            }
-        }
         
-        String startDates = new SimpleDateFormat("dd/MM/yyyy").format(startDate.getDate());
-        String endDates = new SimpleDateFormat("dd/MM/yyyy").format(endDate.getDate());
-        
-        if (!(checkBlank(startDates) && checkBlank(endDates))) {
-            JOptionPane.showMessageDialog(null, "Date cannot be empty");
-            return;
-        }
-        
-        if (!checkAvailableStatus(readFile("booking.txt"), -1, car.getId() , startDates, endDates)){
-            startDate.setDate(null);
+        // Return if empty start date field
+        if (startDate.getDate() == null) {
             endDate.setDate(null);
             return;
         }
-
+        
+        String startDates = new SimpleDateFormat("dd/MM/yyyy").format(startDate.getDate());
+        String endDates = new SimpleDateFormat("dd/MM/yyyy").format(new Date());
+        
         if (checkBlank(duration.getText())) {
             Long durations = Long.valueOf(duration.getText());
             if (jComboBox1.getSelectedItem().toString().equals("Week")) durations *= 7;       
@@ -633,12 +653,18 @@ public class CusPayment extends javax.swing.JFrame implements FileProcess, Valid
                 String[] tmpArray = tmpDate.split("/");
                 tmpDate = String.format("%s/%s/%s", tmpArray[0], tmpArray[1], tmpArray[2]);
                 
+                endDates = tmpDate;
+                
                 endDate.setDate(new SimpleDateFormat("dd/MM/yyyy").parse(tmpDate));
             } catch (ParseException ex) {
                 Logger.getLogger(CusPayment.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
         
+        if (!checkAvailableStatus(readFile("booking.txt"), -1, car.getId() , startDates, endDates)){
+            startDate.setDate(null);
+            endDate.setDate(null);
+        } 
     }//GEN-LAST:event_startDatePropertyChange
 
     // Print into file
@@ -682,8 +708,8 @@ public class CusPayment extends javax.swing.JFrame implements FileProcess, Valid
     private javax.swing.JPanel jPanel3;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField model;
+    private javax.swing.JTextField nameField;
     private javax.swing.JTextField rentId;
     private com.toedter.calendar.JDateChooser startDate;
     private javax.swing.JLabel startDateLabel;
@@ -693,8 +719,6 @@ public class CusPayment extends javax.swing.JFrame implements FileProcess, Valid
 
     private void setLabel() {
         String newId = getNewRentId();
-        
-        System.out.println(car.getCostDay() + " " + car.getCostWeek());
         
         // Set label
         rentId.setText(newId);
