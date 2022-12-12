@@ -187,19 +187,24 @@ public class StaffCustInfoPage extends javax.swing.JFrame implements ValidatePro
         jLabel13.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel13.setText("Email             :");
 
+        phoneNumber.setEditable(false);
         phoneNumber.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         phoneNumber.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
+        userId.setEditable(false);
         userId.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         userId.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         userId.setMargin(new java.awt.Insets(30, 30, 30, 30));
 
+        username.setEditable(false);
         username.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         username.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
+        email.setEditable(false);
         email.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         email.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
+        password.setEditable(false);
         password.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         password.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 

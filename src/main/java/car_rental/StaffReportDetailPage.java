@@ -28,6 +28,9 @@ public class StaffReportDetailPage extends javax.swing.JFrame implements FilePro
         
         // Set chart
         setChart();
+        
+        // Set GUI middle of screen
+        this.setLocationRelativeTo(null);
     }
 
     @SuppressWarnings("unchecked")

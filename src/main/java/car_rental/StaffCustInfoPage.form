@@ -437,6 +437,7 @@
                 </Component>
                 <Component class="javax.swing.JTextField" name="phoneNumber">
                   <Properties>
+                    <Property name="editable" type="boolean" value="false"/>
                     <Property name="horizontalAlignment" type="int" value="0"/>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
@@ -447,6 +448,7 @@
                 </Component>
                 <Component class="javax.swing.JTextField" name="userId">
                   <Properties>
+                    <Property name="editable" type="boolean" value="false"/>
                     <Property name="horizontalAlignment" type="int" value="0"/>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
@@ -460,6 +462,7 @@
                 </Component>
                 <Component class="javax.swing.JTextField" name="username">
                   <Properties>
+                    <Property name="editable" type="boolean" value="false"/>
                     <Property name="horizontalAlignment" type="int" value="0"/>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
@@ -470,6 +473,7 @@
                 </Component>
                 <Component class="javax.swing.JTextField" name="email">
                   <Properties>
+                    <Property name="editable" type="boolean" value="false"/>
                     <Property name="horizontalAlignment" type="int" value="0"/>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
@@ -480,6 +484,7 @@
                 </Component>
                 <Component class="javax.swing.JTextField" name="password">
                   <Properties>
+                    <Property name="editable" type="boolean" value="false"/>
                     <Property name="horizontalAlignment" type="int" value="0"/>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">

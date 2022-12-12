@@ -90,7 +90,7 @@ public class Booking extends PrintError {
 
     // Extra function
     public void printError(int errorNo) {
-        if (errorNo == 1) JOptionPane.showMessageDialog(null, "Error 1");
+        if (errorNo == 1) JOptionPane.showMessageDialog(null, "Error in reading booking data");
         else JOptionPane.showMessageDialog(null, "Unknown Error");
     }
 }

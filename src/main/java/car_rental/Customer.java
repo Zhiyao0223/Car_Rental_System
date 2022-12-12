@@ -37,4 +37,3 @@ public class Customer extends User{
         this.email = tmpEmail;
     }
 }
-

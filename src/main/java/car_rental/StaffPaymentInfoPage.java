@@ -86,6 +86,7 @@ public class StaffPaymentInfoPage extends javax.swing.JFrame implements Validate
         backBtn.setBorderPainted(false);
         backBtn.setContentAreaFilled(false);
         backBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        backBtn.setFocusPainted(false);
         backBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backBtnActionPerformed(evt);
